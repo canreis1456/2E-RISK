@@ -4,3 +4,4 @@
 Gördün mü bunu
 he gördüm
 reeeeeeeeeeeeeeeeeeeeeeeeee
+kjlkjl
