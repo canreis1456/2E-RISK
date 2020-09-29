@@ -6,3 +6,4 @@ he gördüm
 reeeeeeeeeeeeeeeeeeeeeeeeee
 Cahil ERTEMM!!!
 oldu mu
+oldu karşim
