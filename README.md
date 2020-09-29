@@ -1,6 +1,13 @@
 x# 2E-RISK
 ---------------------------------------- 
+Group members and github nicks
+1- Can Kılıç - canreis1456
+2- Ege Çetin - egecetin0
+3- Furkan Demir - Z4R1Z
+4- Emre Erciyas - ErciyasEmre
+5- Muzaffer Köksal - muzafferkoksal
 
+----------------------------------------
 We intend to implement few new ideas that changes the units, the behavior of the territories, and the dice system that units use for attacking and defending. We also plan to add new units that can support the base units in the Risk. These ideas are as following: 
 
 Base Units of Risk: Infantry, Cavalry, Artillery 
