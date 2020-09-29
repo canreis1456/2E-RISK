@@ -5,3 +5,4 @@ Gördün mü bunu
 he gördüm
 reeeeeeeeeeeeeeeeeeeeeeeeee
 Cahil ERTEMM!!!
+oldu mu
