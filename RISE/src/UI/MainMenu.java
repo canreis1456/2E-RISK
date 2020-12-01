@@ -1,5 +1,6 @@
 package UI;
 import java.awt.event.ActionEvent;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.EventListener;
@@ -46,8 +47,10 @@ public class MainMenu implements EventHandler {
         howtoPlay.setLayoutX(1100);
         howtoPlay.setLayoutY(610);
         howtoPlay.setMinSize(230, 100);
+        File currentDirFile = new File("");
+        String helper = currentDirFile.getAbsolutePath();
 
-        Image image = new Image(new FileInputStream("D:\\RISE\\src\\images\\wp4615565.png"));
+        Image image = new Image(new FileInputStream(helper + "\\src\\images\\wp4615565.png"));
         ImageView imageView = new ImageView(image);
         imageView.setX(20);
         imageView.setY(20);

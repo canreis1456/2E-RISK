@@ -21,6 +21,7 @@ import javafx.scene.text.Text;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Observable;
@@ -70,15 +71,19 @@ public class NewGame implements EventHandler {
         ukingdom = new Button();
         usa = new Button();
         countryButtons = new Button[]{select ,germany, italy, france, turkey, soviet, china, japan, ukingdom, usa};
-        Image german = new Image(new FileInputStream("D:\\RISE\\src\\images\\flags\\330px-German_Reich.png"));
-        Image franc = new Image(new FileInputStream("D:\\RISE\\src\\images\\flags\\330px-France.png"));
-        Image ital = new Image(new FileInputStream("D:\\RISE\\src\\images\\flags\\Italy.png"));
-        Image turk = new Image(new FileInputStream("D:\\RISE\\src\\images\\flags\\330px-Turkey.png"));
-        Image chin = new Image(new FileInputStream("D:\\RISE\\src\\images\\flags\\China.png"));
-        Image soviett = new Image(new FileInputStream("D:\\RISE\\src\\images\\flags\\330px-Soviet_Union.png"));
-        Image japann = new Image(new FileInputStream("D:\\RISE\\src\\images\\flags\\330px-Japan.png"));
-        Image kingdom = new Image(new FileInputStream("D:\\RISE\\src\\images\\flags\\330px-United_Kingdom.png"));
-        Image unitedsa = new Image(new FileInputStream("D:\\RISE\\src\\images\\flags\\330px-United_States.png"));
+        //String dir = FilenameUtils.getFullPathNoEndSeparator(file.getAbsolutePath());
+        File currentDirFile = new File("");
+        String currentDir = currentDirFile.getAbsolutePath();
+
+        Image german = new Image(new FileInputStream(currentDir + "\\src\\images\\flags\\330px-German_Reich.png"));
+        Image franc = new Image(new FileInputStream(currentDir +"\\src\\images\\flags\\330px-France.png"));
+        Image ital = new Image(new FileInputStream(currentDir +"\\src\\images\\flags\\Italy.png"));
+        Image turk = new Image(new FileInputStream(currentDir +"\\src\\images\\flags\\330px-Turkey.png"));
+        Image chin = new Image(new FileInputStream(currentDir +"\\src\\images\\flags\\China.png"));
+        Image soviett = new Image(new FileInputStream(currentDir +"\\src\\images\\flags\\330px-Soviet_Union.png"));
+        Image japann = new Image(new FileInputStream(currentDir +"\\src\\images\\flags\\330px-Japan.png"));
+        Image kingdom = new Image(new FileInputStream(currentDir +"\\src\\images\\flags\\330px-United_Kingdom.png"));
+        Image unitedsa = new Image(new FileInputStream(currentDir +"\\src\\images\\flags\\330px-United_States.png"));
         ImageView germanFlag = new ImageView(german);
         ImageView franceFlag = new ImageView(franc);
         ImageView italyFlag = new ImageView(ital);
@@ -136,17 +141,17 @@ public class NewGame implements EventHandler {
         countries.getChildren().addAll(germany, france, italy, turkey, china, soviet, japan, ukingdom, usa);
 
         //center countries
-        Image parsGermanBefore = new Image(new FileInputStream("D:\\RISE\\src\\images\\parsomens\\parsomenGermanBefore.png"));
-        Image parsItalyBefore = new Image(new FileInputStream("D:\\RISE\\src\\images\\parsomens\\parsomenItalyBefore.png"));
-        Image parsFranceBefore = new Image(new FileInputStream("D:\\RISE\\src\\images\\parsomens\\parsomenFranceBefore.png"));
-        Image parsTurkeyBefore = new Image(new FileInputStream("D:\\RISE\\src\\images\\parsomens\\parsomenTurkeyBefore.png"));
-        Image parsChinaBefore = new Image(new FileInputStream("D:\\RISE\\src\\images\\parsomens\\parsomenChinaBefore.png"));
-        Image parsSovietBefore = new Image(new FileInputStream("D:\\RISE\\src\\images\\parsomens\\parsomenSovietBefore.png"));
-        Image parsJapanBefore = new Image(new FileInputStream("D:\\RISE\\src\\images\\parsomens\\parsomenJapanBefore.png"));
-        Image parsUKBefore = new Image(new FileInputStream("D:\\RISE\\src\\images\\parsomens\\parsomenUKBefore.png"));
-        Image parsUsaBefore = new Image(new FileInputStream("D:\\RISE\\src\\images\\parsomens\\parsomenUSABefore.png"));
+        Image parsGermanBefore = new Image(new FileInputStream(currentDir + "\\src\\images\\parsomens\\parsomenGermanBefore.png"));
+        Image parsItalyBefore = new Image(new FileInputStream(currentDir + "\\src\\images\\parsomens\\parsomenItalyBefore.png"));
+        Image parsFranceBefore = new Image(new FileInputStream(currentDir + "\\src\\images\\parsomens\\parsomenFranceBefore.png"));
+        Image parsTurkeyBefore = new Image(new FileInputStream(currentDir + "\\src\\images\\parsomens\\parsomenTurkeyBefore.png"));
+        Image parsChinaBefore = new Image(new FileInputStream(currentDir + "\\src\\images\\parsomens\\parsomenChinaBefore.png"));
+        Image parsSovietBefore = new Image(new FileInputStream(currentDir + "\\src\\images\\parsomens\\parsomenSovietBefore.png"));
+        Image parsJapanBefore = new Image(new FileInputStream(currentDir + "\\src\\images\\parsomens\\parsomenJapanBefore.png"));
+        Image parsUKBefore = new Image(new FileInputStream(currentDir + "\\src\\images\\parsomens\\parsomenUKBefore.png"));
+        Image parsUsaBefore = new Image(new FileInputStream(currentDir + "\\src\\images\\parsomens\\parsomenUSABefore.png"));
 
-        Image pars = new Image(new FileInputStream("D:\\RISE\\src\\images\\parsomens\\parsomen.png"));
+        Image pars = new Image(new FileInputStream(currentDir + "\\src\\images\\parsomens\\parsomen.png"));
         backgrond = new ImageView(pars);
         backgrond.fitWidthProperty().bind(center.widthProperty());
         backgrond.fitHeightProperty().bind(center.heightProperty());
@@ -307,7 +312,7 @@ public class NewGame implements EventHandler {
             public void handle(ActionEvent event) {
                 System.out.println(Leaders.getValue());
                 try {
-                    backgrond.setImage( new Image( new FileInputStream("D:\\RISE\\src\\images\\parsomens\\" + Leaders.getValue() + ".png")));
+                    backgrond.setImage( new Image( new FileInputStream(currentDir + "\\src\\images\\parsomens\\" + Leaders.getValue() + ".png")));
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
