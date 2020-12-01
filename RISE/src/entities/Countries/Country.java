@@ -7,6 +7,7 @@ public abstract class Country implements BonusEffects {
     String ideology;
     String generals[];
     Leader inUse;
+
     int troopNumber;
 
     float pointBufferDefense;
