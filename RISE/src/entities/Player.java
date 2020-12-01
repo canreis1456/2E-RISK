@@ -2,6 +2,7 @@ package entities;
 
 import entities.Countries.Country;
 import entities.Countries.Germany;
+import entities.Countries.Leader;
 import entities.Troop.Troop;
 
 public class Player {
@@ -34,6 +35,15 @@ public class Player {
         return 0;
     }
 
+    //0 - Artillery, 1- Infantry, 2-Tank, 3-Nerds
+    public void setTroopTypePoints(){
+        for(int i = 0; i < country.getInUse().getHowManyUnitType(); i++)
+            for (Troop a: troops[country.getInUse().getWhichUnits()[i]]) {
+            a.setAttack(a.getAttack() + country.getInUse().getBufferAtack());
+            a.setDefense(a.getDefense() + country.getInUse().getBufferDefense());
+        }
+    }
+
     public float attackPointsAt(int[] coordinates){
         float attack = 0;
         for(int i = 0; i < troopNumber; i++ ){
@@ -44,11 +54,12 @@ public class Player {
     }
 
     public void print(){
-        System.out.println(countryName+ " : "+ leader + "\n" + troopNumber + "   " + country.getIdeology());
-        for (int i = 0 ; i < troopNumber ; i++){
-            System.out.println(troops[0][i].getAttack());
-            System.out.println(troops[0][i].getDefense());
-
+        System.out.println(countryName+ " : "+ country.getInUse().getName() + "\n" + troopNumber + "   " + country.getIdeology());
+        for (int i = 0 ; i < 4 ; i++) {
+            for (Troop a : troops[i]){
+                System.out.println(a.getType());
+            System.out.println(a.getAttack() + " " + a.getDefense());
+        }
         }
     }
 

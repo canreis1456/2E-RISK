@@ -33,7 +33,7 @@ public class NewGame implements EventHandler {
     ComboBox<String> Leaders;
     ImageView backgrond;
     Button hitler,wilhelm, stalin, trotsky;
-    String selection;
+    String selection, currentDir;
 
     public NewGame(Stage stage){
         stag = stage;
@@ -54,7 +54,8 @@ public class NewGame implements EventHandler {
         bottom.setPadding(new Insets(15, 12, 20, 12));
         bottom.setSpacing(10);
         bottom.setAlignment(Pos.BOTTOM_RIGHT);
-        bottom.getChildren().addAll(back, select);
+        bottom.getChildren().addAll(back);
+	
 
 
         VBox countries = new VBox();
@@ -73,7 +74,7 @@ public class NewGame implements EventHandler {
         countryButtons = new Button[]{select ,germany, italy, france, turkey, soviet, china, japan, ukingdom, usa};
         //String dir = FilenameUtils.getFullPathNoEndSeparator(file.getAbsolutePath());
         File currentDirFile = new File("");
-        String currentDir = currentDirFile.getAbsolutePath();
+        currentDir = currentDirFile.getAbsolutePath();
 
         Image german = new Image(new FileInputStream(currentDir + "\\src\\images\\flags\\330px-German_Reich.png"));
         Image franc = new Image(new FileInputStream(currentDir +"\\src\\images\\flags\\330px-France.png"));
@@ -168,7 +169,7 @@ public class NewGame implements EventHandler {
         Leaders = new ComboBox<>();
         Leaders.setItems(leaders);
         Leaders.setPromptText("Select a Leader!");
-        right.getChildren().add(Leaders);
+        right.getChildren().addAll(Leaders, select);
         Leaders.setMaxWidth(200);
 
         //German Reich
@@ -307,18 +308,7 @@ public class NewGame implements EventHandler {
         });
 
 
-        select.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println(Leaders.getValue());
-                try {
-                    backgrond.setImage( new Image( new FileInputStream(currentDir + "\\src\\images\\parsomens\\" + Leaders.getValue() + ".png")));
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-       // select.setOnAction(this::handle);
+        select.setOnAction(this::handle);
 
         BorderPane borde = new BorderPane();
         borde.setLeft(countries);
@@ -345,7 +335,12 @@ public class NewGame implements EventHandler {
             }
         }else if(event.getSource() == select){
             upperMenu.countrySelected(selection , Leaders.getValue());
-        }
+            try {
+                backgrond.setImage( new Image( new FileInputStream(currentDir + "\\src\\images\\parsomens\\" + Leaders.getValue() + ".png")));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+	}
 
     }
 }

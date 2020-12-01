@@ -41,6 +41,8 @@ public class GameController extends Application{
     public void initPlayer(String country, String leader){
         Player player1 = new Player(country, leader, "ben");
         player1.print();
+        player1.setTroopTypePoints();
+        player1.print();
     }
 
     public static void launchApp(String[] args) throws FileNotFoundException {
