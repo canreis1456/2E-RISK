@@ -23,8 +23,7 @@ public class Credits implements EventHandler{
     public void show(){
         Pane layout = new Pane();
         layout.setStyle("-fx-background-color: #701515;");
-        String credits = "Devs:  Can Kılıç \n \t Ege Çetin \n \t Emre Erciyas \n \t Furkan Demir \n \t Depresyon Stayla";
-        Text Muzoo;
+        String credits = "Devs:  Can Kılıç \n \t Ege Çetin \n \t Emre Erciyas \n \t Furkan Demir \n \t Muzaffer Köksal";
         Text t = new Text(credits);
         t.setFont(Font.font("Times New Roman", 36));
         t.setY(100);
