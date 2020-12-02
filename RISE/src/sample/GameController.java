@@ -40,9 +40,17 @@ public class GameController extends Application{
 
     public void initPlayer(String country, String leader){
         Player player1 = new Player(country, leader, "ben");
+        //player1.print();
+        player1.selectGeneral("Erich von Manstein");
         player1.print();
-        player1.setTroopTypePoints();
+        Player player2 = new Player("Soviet Union", "Stalin", "sen");
+        player2 .attackingTo(player1, 1);
         player1.print();
+    }
+
+    public boolean attacking(Player player, Player enemy, int landNo){
+        player.attackingTo(enemy, landNo);
+        return true;
     }
 
     public static void launchApp(String[] args) throws FileNotFoundException {

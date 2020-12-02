@@ -7,5 +7,6 @@ public class Artillery extends Troop{
         setDefense(7);
         setType("Artillery");
         setResourceValue(5);
+        setPosition(1);
     }
 }

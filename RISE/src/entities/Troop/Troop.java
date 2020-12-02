@@ -3,7 +3,7 @@ package entities.Troop;
 public abstract class Troop {
     String type;
     float attack, defense;
-    int[] position;
+    int position;
     int resourceValue;
 
     public float getAttack() {
@@ -18,7 +18,7 @@ public abstract class Troop {
         return resourceValue;
     }
 
-    public int[] getPosition() {
+    public int getPosition() {
         return position;
     }
 
@@ -34,7 +34,7 @@ public abstract class Troop {
         this.defense = defense;
     }
 
-    public void setPosition(int[] position) {
+    public void setPosition(int position) {
         this.position = position;
     }
 

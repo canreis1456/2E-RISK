@@ -7,5 +7,6 @@ public class Tank extends Troop{
         setDefense(1);
         setType("Tank");
         setResourceValue(5);
+        setPosition(0);
     }
 }
