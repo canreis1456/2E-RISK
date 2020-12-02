@@ -7,5 +7,6 @@ public class Nerds extends Troop{
         setDefense(2);
         setType("Nerds");
         setResourceValue(5);
+        setPosition(0);
     }
 }

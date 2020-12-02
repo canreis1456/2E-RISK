@@ -7,5 +7,6 @@ public class Infantry extends Troop {
         setDefense(3);
         setType("Infantry");
         setResourceValue(5);
+        setPosition(0);
     }
 }
