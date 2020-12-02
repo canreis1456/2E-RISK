@@ -45,11 +45,11 @@ public class SovietUnion extends Country {
     @Override//her ülkeye farklı troop destesi verelim diye
     public Troop[][] initializeTroops(Troop[][] troops) {
         troops[0] = new Artillery[10];
-        for (int i = 0; i < 15; i++) {
+        for (int i = 0; i < 10; i++) {
             troops[0][i] = new Artillery();
         }
         troops[1] = new Infantry[25];
-        for (int i = 0; i < 13; i++) {
+        for (int i = 0; i < 25; i++) {
             troops[1][i] = new Infantry();
         }
         troops[2] = new Tank[25];
@@ -57,7 +57,7 @@ public class SovietUnion extends Country {
             troops[2][i] = new Tank();
         }
         troops[3] = new Nerds[3];
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 3; i++) {
             troops[3][i] = new Nerds();
         }
         return troops;
