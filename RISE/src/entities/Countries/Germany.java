@@ -11,11 +11,15 @@ public class Germany extends Country {
     Leader inUse;
     Leader[] leaders = {Hitler, Wilhelm};
 
-    General Manstein = new General("Erich von Manstein", -2, 0, 5, "");
-    General Rommel = new General("Erwin Rommel", 1, 1, 0, "Soviet Union"); //Bu adam normalde Soviete karşı buff alıyo, onu sonradan ekleriz, o tarz şeyleri geçin şimdilik
-   // General Bock = new General("Fedor von Bock", )
+    //general oluştururken önce tüm trooplara etkisini giriyoz sonra belli bi ülkeye karşı varsa onları giriyoz, belli ülkeye yoksa null, 0, 0 gir
+    General Manstein = new General("Erich von Manstein", new float[]{0,0,0,0}, new float[]{-2,-2,-2,-2}, 4, null , 0, 0);
+    General Rommel = new General("Erwin Rommel", new float[]{1,1,1,1}, new float[]{0,0,0,0}, 0, "Soviet Union", -4, -4);
+    General Bock = new General("Fedor von Bock",new float[]{0,2,-1,0}, new float[]{0,2,-1,0}, 0,null, 0,0 );
     General inUseForBattle;
-    General[] generals = {Manstein, Rommel};
+    General[] generals = {Manstein, Rommel, Bock};
+
+    //Land[] lands;    şimdilik boş kalsın bunlar
+    //ResearchTree tree;
 
     public Germany(String leader){
         selected = leader;
