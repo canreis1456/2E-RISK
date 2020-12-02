@@ -1,14 +1,21 @@
 package entities.Countries;
 
 import entities.Troop.*;
+import javafx.scene.input.GestureEvent;
 
 public class Germany extends Country {
 
     String selected;
     Leader Hitler = new Leader("Adolf Hitler", "Fascist", -5, 3, 4, 4, new int[]{0, 1, 2, 3});
-    Leader Wilhelm = new Leader("Wilhelm II", "Emperor", -5, 3, 4, 4 , new int[]{0, 1, 2, 3});
+    Leader Wilhelm = new Leader("Wilhelm II", "Emperor", 2, 2, 4, 4 , new int[]{0, 1, 2, 3});
     Leader inUse;
     Leader[] leaders = {Hitler, Wilhelm};
+
+    General Manstein = new General("Erich von Manstein", -2, 0, 5, "");
+    General Rommel = new General("Erwin Rommel", 1, 1, 0, "Soviet Union"); //Bu adam normalde Soviete karşı buff alıyo, onu sonradan ekleriz, o tarz şeyleri geçin şimdilik
+   // General Bock = new General("Fedor von Bock", )
+    General inUseForBattle;
+    General[] generals = {Manstein, Rommel};
 
     public Germany(String leader){
         selected = leader;
@@ -24,6 +31,10 @@ public class Germany extends Country {
 
     public Leader getInUse() {
         return inUse;
+    }
+
+    public General[] getGenerals() {
+        return generals;
     }
 
     //Troops
@@ -46,6 +57,14 @@ public class Germany extends Country {
             troops[3][i] = new Nerds();
         }
         return troops;
+    }
+    
+    public General selectGeneral(String name){
+        for (General g: generals) {
+            if(g.getName().equals(name))
+                return g;
+        }
+        return null;
     }
 
 
