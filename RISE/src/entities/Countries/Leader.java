@@ -34,6 +34,12 @@ public class Leader implements BonusEffects{
         return whichUnits;
     }
 
+    public boolean isSelected() {
+        return selected;
+    }
+
+
+
     public String getName(){
         return name;
     }
