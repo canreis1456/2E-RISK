@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 public class MenuController {
 
     Stage stag;
+    int playerCount;
     String selectedCountry, selectedLeader;
     GameController cntrl = new GameController();
     public MenuController(Stage stage){
@@ -25,6 +26,12 @@ public class MenuController {
         cre.show();
     }
     public void newGame() throws FileNotFoundException {
+        PlayersMenu playerMenu = new PlayersMenu(stag);
+        playerMenu.askForPlayerCount(this);
+    }
+
+    public void countrySelection() throws  FileNotFoundException{
+        System.out.println(playerCount);
         NewGame newG = new NewGame(stag);
         newG.show();
     }
@@ -36,5 +43,9 @@ public class MenuController {
     }
     public String getCountry(){
         return selectedCountry;
+    }
+
+    public void setPlayerCount(int playerCount) {
+        this.playerCount = playerCount;
     }
 }

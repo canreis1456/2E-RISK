@@ -1,9 +1,6 @@
 package entities;
 
-import entities.Countries.Country;
-import entities.Countries.General;
-import entities.Countries.Germany;
-import entities.Countries.Leader;
+import entities.Countries.*;
 import entities.Troop.Troop;
 
 public class Player {
@@ -25,6 +22,10 @@ public class Player {
             country.initializeTroops(troops);
             troopNumber = country.getTroopNumber();
             setTroopTypePoints();
+        } else if(countr == "Soviet Union"){
+            country = new SovietUnion(leader);
+            country.initializeTroops(troops);
+            setTroopTypePoints();
         }
     }
 
@@ -42,11 +43,13 @@ public class Player {
 
     //0 - Artillery, 1- Infantry, 2-Tank, 3-Nerds
     public void setTroopTypePoints(){
-        for(int i = 0; i < country.getInUse().getHowManyUnitType(); i++)
-            for (Troop a: troops[country.getInUse().getWhichUnits()[i]]) {
-            a.setAttack(a.getAttack() + country.getInUse().getBufferAtack());
-            a.setDefense(a.getDefense() + country.getInUse().getBufferDefense());
+        for(int i = 0; i < country.getInUse().getHowManyUnitType(); i++){
+            for(int j = 0; j < troops[country.getInUse().getWhichUnits()[i]].length; j++){
+                troops[country.getInUse().getWhichUnits()[i]][j].setAttack(troops[country.getInUse().getWhichUnits()[i]][j].getAttack() + country.getInUse().getBufferAtack());
+                troops[country.getInUse().getWhichUnits()[i]][j].setDefense(troops[country.getInUse().getWhichUnits()[i]][j].getDefense() + country.getInUse().getBufferDefense());
+            }
         }
+
     }
 
     public  void printTroops(){
@@ -67,7 +70,6 @@ public class Player {
         }
         for(int i = 0; i < 4; i++) {
             attack += selectedGeneral.attackEffectOnCertainUnit(troops, i, coordinates);
-            System.out.println("attackPoints : " + attack);
         }
         return attack;
     }
@@ -90,23 +92,20 @@ public class Player {
     }
 
     public float generalAggressionDefenseEffect(String enemy, int attackingland){
-        System.out.println("enemyName: " + enemy + " attackingland:  " + attackingland+ "  selectedGeneral: "+ selectedGeneral.getName());
+       // System.out.println("enemyName: " + enemy + " attackingland:  " + attackingland+ "  selectedGeneral: "+ selectedGeneral.getName());
         return selectedGeneral.againstCountryDefense(enemy,troops, attackingland);
     }
 
     public float generalAggressionAttackEffect(String enemy, int attackingland){
-        System.out.println("enemyName: " + enemy + " attackingland:  " + attackingland+ "  selectedGeneral: "+ selectedGeneral.getName());
+       // System.out.println("enemyName: " + enemy + " attackingland:  " + attackingland+ "  selectedGeneral: "+ selectedGeneral.getName());
         return selectedGeneral.againstCountryAttack(enemy,troops, attackingland);
     }
 
     public boolean attackingTo(Player enemy, int attackingland) {
-        float def = enemy.defensePointsAt(attackingland);
-        System.out.println("defff:  " + def);
-        def += enemy.generalAggressionDefenseEffect(this.getCountry(), attackingland);
+        float def = enemy.defensePointsAt(attackingland) + enemy.generalAggressionDefenseEffect(this.getCountry(), attackingland);
         System.out.println("defens:  " + def);
-        float attack = 0.0F;
-        System.out.println("attacjjjjk : " + attack);
-        System.out.println(attack);
+        float attack = this.attackPointsAt(attackingland) + this.generalAggressionAttackEffect(enemy.getCountry(), attackingland);
+        System.out.println("attack : " + attack);
         return attack > def;
     }
 

@@ -1,5 +1,6 @@
 package UI;
 
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -10,26 +11,21 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import javax.swing.text.Style;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.Observable;
 
 public class NewGame implements EventHandler {
     Stage stag;
-    style sata = new style();
     Button back, select,  germany, italy, france, turkey, soviet, china, japan, ukingdom, usa;
     Button countryButtons[];
     ComboBox<String> Leaders;
@@ -96,24 +92,14 @@ public class NewGame implements EventHandler {
         ImageView japanFlag = new ImageView(japann);
         ImageView ukFlag = new ImageView(kingdom);
         ImageView usaFlag = new ImageView(unitedsa);
-        germanFlag.setFitWidth(80);
-        germanFlag.setFitHeight(50);
-        italyFlag.setFitWidth(80);
-        italyFlag.setFitHeight(50);
-        franceFlag.setFitWidth(80);
-        franceFlag.setFitHeight(50);
-        turkeyFlag.setFitWidth(80);
-        turkeyFlag.setFitHeight(50);
-        chinaFlag.setFitWidth(80);
-        chinaFlag.setFitHeight(50);
-        sovietFlag.setFitWidth(80);
-        sovietFlag.setFitHeight(50);
-        japanFlag.setFitWidth(80);
-        japanFlag.setFitHeight(50);
-        ukFlag.setFitWidth(80);
-        ukFlag.setFitHeight(50);
-        usaFlag.setFitWidth(80);
-        usaFlag.setFitHeight(50);
+        ImageView flags[] = {germanFlag, franceFlag, italyFlag, turkeyFlag, chinaFlag, sovietFlag, japanFlag, ukFlag, usaFlag};
+
+        for (ImageView i:
+             flags) {
+            i.setFitHeight(70);
+            i.setFitWidth(95);
+        }
+
         germany.setGraphic(germanFlag);
         germany.setText("Germany");
         italy.setGraphic(italyFlag);
@@ -132,17 +118,21 @@ public class NewGame implements EventHandler {
         ukingdom.setText("UK");
         usa.setGraphic(usaFlag);
         usa.setText("USA");
-        germany.setMinSize(200,50);
-        italy.setMinSize(200,50);
-        france.setMinSize(200,50);
-        turkey.setMinSize(200,50);
-        china.setMinSize(200,50);
-        soviet.setMinSize(200,50);
-        japan.setMinSize(200,50);
-        ukingdom.setMinSize(200,50);
-        usa.setMinSize(200,50);
-        germany.getStyleClass().clear();
-        germany.getStyleClass().add(sata.show());
+
+        String countryButtonCss = "-fx-background-color: #AA520E;\n" +
+                "    -fx-border-color: rgb(49, 89, 23);\n" +
+                "    ;\n" +
+                "    ;\n" +
+                "-fx-background-radius: 20;";
+        for (Button b :
+              countryButtons  ) {
+            if(b != select) {
+                b.setMinSize(200, 70);
+                b.getStyleClass().clear();
+                b.setStyle(countryButtonCss);
+            }
+        }
+
         countries.getChildren().addAll(germany, france, italy, turkey, china, soviet, japan, ukingdom, usa);
 
         //center countries
@@ -333,7 +323,7 @@ public class NewGame implements EventHandler {
         if(event.getSource() == back){
             MainMenu men = new MainMenu(stag);
             try {
-                men.show();
+                upperMenu.newGame();
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }

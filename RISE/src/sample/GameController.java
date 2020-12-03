@@ -43,9 +43,10 @@ public class GameController extends Application{
         //player1.print();
         player1.selectGeneral("Erich von Manstein");
         player1.print();
-        Player player2 = new Player("Soviet Union", "Stalin", "sen");
-        player2 .attackingTo(player1, 1);
-        player1.print();
+        Player player2 = new Player("Soviet Union", "Joseph Stalin", "sen");
+        player2.selectGeneral("Georgy Zhukov");
+        player2.print();
+        System.out.println(player2.attackingTo(player1, 1));
     }
 
     public boolean attacking(Player player, Player enemy, int landNo){
