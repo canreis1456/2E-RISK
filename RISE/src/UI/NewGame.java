@@ -21,6 +21,7 @@ import javafx.scene.text.Text;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import javax.swing.text.Style;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -28,6 +29,7 @@ import java.util.Observable;
 
 public class NewGame implements EventHandler {
     Stage stag;
+    style sata = new style();
     Button back, select,  germany, italy, france, turkey, soviet, china, japan, ukingdom, usa;
     Button countryButtons[];
     ComboBox<String> Leaders;
@@ -139,6 +141,8 @@ public class NewGame implements EventHandler {
         japan.setMinSize(200,50);
         ukingdom.setMinSize(200,50);
         usa.setMinSize(200,50);
+        germany.getStyleClass().clear();
+        germany.getStyleClass().add(sata.show());
         countries.getChildren().addAll(germany, france, italy, turkey, china, soviet, japan, ukingdom, usa);
 
         //center countries

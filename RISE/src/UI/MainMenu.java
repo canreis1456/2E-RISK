@@ -41,6 +41,7 @@ public class MainMenu implements EventHandler {
         credits.setLayoutX(1100);
         credits.setLayoutY(440);
         credits.setMinSize(230, 100);
+        credits.getStyleClass().add("country-Buttons");
         credits.setOnAction(this::handle);
 
         Button howtoPlay = new Button("How To Play");
