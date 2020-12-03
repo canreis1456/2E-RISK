@@ -99,18 +99,15 @@ public class Player {
         return selectedGeneral.againstCountryAttack(enemy,troops, attackingland);
     }
 
-    public boolean attackingTo(Player enemy, int attackingland){
-        float def = enemy.defensePointsAt(attackingland) + enemy.generalAggressionDefenseEffect(this.getCountry(), attackingland);
+    public boolean attackingTo(Player enemy, int attackingland) {
+        float def = enemy.defensePointsAt(attackingland);
         System.out.println("defff:  " + def);
-
-     //   System.out.println("defens:  " + def);
-        float attack = this.attackPointsAt(attackingland) + this.generalAggressionAttackEffect(enemy.getCountry(), attackingland);
+        def += enemy.generalAggressionDefenseEffect(this.getCountry(), attackingland);
+        System.out.println("defens:  " + def);
+        float attack = 0.0F;
         System.out.println("attacjjjjk : " + attack);
         System.out.println(attack);
-        if(attack > def)
-            return true;
-        else
-            return false;
+        return attack > def;
     }
 
     public void print(){
