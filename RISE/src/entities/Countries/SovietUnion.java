@@ -11,7 +11,7 @@ public class SovietUnion extends Country {
     Leader inUse;
     Leader[] leaders = {Stalin, Trotsky};
 
-    //general oluştururken önce tüm trooplara etkisini giriyoz sonra belli bi ülkeye karşı varsa onları giriyoz, belli ülkeye yoksa null, 0, 0 gir
+    //general oluştururken önce tüm trooplara etkisini gir4343iyoz sonra belli bi ülkeye karşı varsa onları giriyoz, belli ülkeye yoksa null, 0, 0 gir
     General Zhukov = new General("Georgy Zhukov", new float[]{0,0,0,0}, new float[]{0,0,0,0}, 4, "German Reich" , 2, 0);
     General Tukhachevsky = new General("Mikhail Tukhachevsky", new float[]{1,1,1,1}, new float[]{1,1,1,1}, 0, null, 0, 0);
     General Rokossovsky = new General("Konstantin Rokossovsky",new float[]{0,0,3,0}, new float[]{0,0,3,0}, 0,null, 0,0 );
