@@ -51,7 +51,7 @@ public class GameController extends Application{
         players[playerIndex] = new Player(country, leader, playerName);
         selectedCountries.add(country);
         players[playerIndex].print();
-
+//
        /* player1.selectGeneral("Erich von Manstein");
         player1.print();
         Player player2 = new Player("Soviet Union", "Joseph Stalin", "sen");
