@@ -44,7 +44,7 @@ public class MenuController {
         selectedCountries.add(country);
         cntrl.initPlayer(country, leader, playerName, playerIndex);
         playerIndex++;
-    }
+    }//
     public String getCountry(){
         return selectedCountry;
     }
