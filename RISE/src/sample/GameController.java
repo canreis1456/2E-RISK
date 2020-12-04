@@ -44,12 +44,10 @@ public class GameController extends Application{
 
     public void setPlayerCount(int playerCount){
         players= new Player[playerCount];
-        System.out.println(" asd" + playerCount);
     }
 
     public void initPlayer(String country, String leader, String playerName, int playerIndex){
 
-        System.out.println("pla " + playerIndex);
         players[playerIndex] = new Player(country, leader, playerName);
         selectedCountries.add(country);
         players[playerIndex].print();
