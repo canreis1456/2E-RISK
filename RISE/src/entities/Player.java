@@ -30,8 +30,7 @@ public class Player {
             country = new France(leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
-        }
-        else if(countr == "Italy"){
+        } else if(countr == "Italy"){
             country = new Italy(leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
