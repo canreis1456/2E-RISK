@@ -1,5 +1,6 @@
 package UI;
 
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -10,33 +11,38 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.Observable;
+import java.util.ArrayList;
 
 public class NewGame implements EventHandler {
     Stage stag;
-    Button back, select,  germany, italy, france, turkey, soviet, china, japan, ukingdom, usa;
-    Button countryButtons[];
+    Button back, select,  germany, italy, france, turkey, soviet, china, japan, ukingdom, usa, lock;
+    Button[] countryButtons;
+    TextField playerName;
     ComboBox<String> Leaders;
     ImageView backgrond;
-    Button hitler,wilhelm, stalin, trotsky;
     String selection, currentDir;
+    ArrayList<String> selectedCountries;
+    MenuController upperMenu;
+    int playerCount = 0;
 
-    public NewGame(Stage stage){
+    public NewGame(Stage stage, int playerCount, MenuController upper, ArrayList<String> selectedCountries){
         stag = stage;
+        this.playerCount = playerCount;
+        upperMenu = upper;
+        this.selectedCountries = selectedCountries;
     }
 
     public void show() throws FileNotFoundException {
@@ -45,6 +51,10 @@ public class NewGame implements EventHandler {
         VBox right = new VBox();
         //bottom
         HBox bottom = new HBox(100);
+        lock = new Button("Ready");
+        lock.setOnAction(this::handle);
+        lock.setMinSize(40,15);
+        lock.setDisable(true);
         back = new Button("< Back");
         back.setOnAction(this::handle);
         back.setMinSize(40,15);
@@ -71,7 +81,7 @@ public class NewGame implements EventHandler {
         japan = new Button();
         ukingdom = new Button();
         usa = new Button();
-        countryButtons = new Button[]{select ,germany, italy, france, turkey, soviet, china, japan, ukingdom, usa};
+        countryButtons = new Button[]{select ,germany, italy, france, turkey, soviet, china, japan, ukingdom, usa, lock};
         //String dir = FilenameUtils.getFullPathNoEndSeparator(file.getAbsolutePath());
         File currentDirFile = new File("");
         currentDir = currentDirFile.getAbsolutePath();
@@ -94,26 +104,16 @@ public class NewGame implements EventHandler {
         ImageView japanFlag = new ImageView(japann);
         ImageView ukFlag = new ImageView(kingdom);
         ImageView usaFlag = new ImageView(unitedsa);
-        germanFlag.setFitWidth(80);
-        germanFlag.setFitHeight(50);
-        italyFlag.setFitWidth(80);
-        italyFlag.setFitHeight(50);
-        franceFlag.setFitWidth(80);
-        franceFlag.setFitHeight(50);
-        turkeyFlag.setFitWidth(80);
-        turkeyFlag.setFitHeight(50);
-        chinaFlag.setFitWidth(80);
-        chinaFlag.setFitHeight(50);
-        sovietFlag.setFitWidth(80);
-        sovietFlag.setFitHeight(50);
-        japanFlag.setFitWidth(80);
-        japanFlag.setFitHeight(50);
-        ukFlag.setFitWidth(80);
-        ukFlag.setFitHeight(50);
-        usaFlag.setFitWidth(80);
-        usaFlag.setFitHeight(50);
+        ImageView[] flags = {germanFlag, franceFlag, italyFlag, turkeyFlag, chinaFlag, sovietFlag, japanFlag, ukFlag, usaFlag};
+
+        for (ImageView i:
+             flags) {
+            i.setFitHeight(70);
+            i.setFitWidth(95);
+        }
+
         germany.setGraphic(germanFlag);
-        germany.setText("Germany");
+        germany.setText("German Reich");
         italy.setGraphic(italyFlag);
         italy.setText("Italy");
         france.setGraphic(franceFlag);
@@ -130,15 +130,21 @@ public class NewGame implements EventHandler {
         ukingdom.setText("UK");
         usa.setGraphic(usaFlag);
         usa.setText("USA");
-        germany.setMinSize(200,50);
-        italy.setMinSize(200,50);
-        france.setMinSize(200,50);
-        turkey.setMinSize(200,50);
-        china.setMinSize(200,50);
-        soviet.setMinSize(200,50);
-        japan.setMinSize(200,50);
-        ukingdom.setMinSize(200,50);
-        usa.setMinSize(200,50);
+
+        String countryButtonCss = "-fx-background-color: #AA520E;\n" +
+                "    -fx-border-color: rgb(49, 89, 23);\n" +
+                "    ;\n" +
+                "    ;\n" +
+                "-fx-background-radius: 20;";
+        for (Button b :
+              countryButtons  ) {
+            if(b != select && b != lock) {
+                b.setMinSize(200, 70);
+                b.getStyleClass().clear();
+                b.setStyle(countryButtonCss);
+            }
+        }
+
         countries.getChildren().addAll(germany, france, italy, turkey, china, soviet, japan, ukingdom, usa);
 
         //center countries
@@ -163,13 +169,13 @@ public class NewGame implements EventHandler {
         right.setMinWidth(200);
         right.setMaxWidth(200);
         Text ledr = new Text("Leader:          General: ");
-
+        playerName = new TextField("Enter PlayerName for Player " + playerCount);
 
         ObservableList<String> leaders = FXCollections.observableArrayList();
         Leaders = new ComboBox<>();
         Leaders.setItems(leaders);
         Leaders.setPromptText("Select a Leader!");
-        right.getChildren().addAll(Leaders, select);
+        right.getChildren().addAll(playerName, Leaders, select, lock);
         Leaders.setMaxWidth(200);
 
         //German Reich
@@ -177,7 +183,7 @@ public class NewGame implements EventHandler {
             @Override public void handle(ActionEvent e) {
                 backgrond.setImage(parsGermanBefore);
                 for(Button b: countryButtons){
-                    if(b.isDisabled())
+                    if(b.isDisabled() && !selectedCountries.contains(b.getText()))
                         b.setDisable(false);
                 }
                 Leaders.getSelectionModel().clearSelection();
@@ -192,7 +198,7 @@ public class NewGame implements EventHandler {
             @Override public void handle(ActionEvent e) {
                 backgrond.setImage(parsSovietBefore);
                 for(Button b: countryButtons){
-                    if(b.isDisabled())
+                    if(b.isDisabled()&& !selectedCountries.contains(b.getText()))
                         b.setDisable(false);
                 }
                 soviet.setDisable(true);
@@ -207,7 +213,7 @@ public class NewGame implements EventHandler {
             @Override public void handle(ActionEvent e) {
                 backgrond.setImage(parsItalyBefore);
                 for(Button b: countryButtons){
-                    if(b.isDisabled())
+                    if(b.isDisabled() && !selectedCountries.contains(b.getText()))
                         b.setDisable(false);
                 }
                 italy.setDisable(true);
@@ -222,7 +228,7 @@ public class NewGame implements EventHandler {
             @Override public void handle(ActionEvent e) {
                 backgrond.setImage(parsTurkeyBefore);
                 for(Button b: countryButtons){
-                    if(b.isDisabled())
+                    if(b.isDisabled()&& !selectedCountries.contains(b.getText()))
                         b.setDisable(false);
                 }
                 turkey.setDisable(true);
@@ -237,7 +243,7 @@ public class NewGame implements EventHandler {
             @Override public void handle(ActionEvent e) {
                 backgrond.setImage(parsChinaBefore);
                 for(Button b: countryButtons){
-                    if(b.isDisabled())
+                    if(b.isDisabled()&& !selectedCountries.contains(b.getText()))
                         b.setDisable(false);
                 }
                 china.setDisable(true);
@@ -252,7 +258,7 @@ public class NewGame implements EventHandler {
             @Override public void handle(ActionEvent e) {
                 backgrond.setImage(parsFranceBefore);
                 for(Button b: countryButtons){
-                    if(b.isDisabled())
+                    if(b.isDisabled()&& !selectedCountries.contains(b.getText()))
                         b.setDisable(false);
                 }
                 france.setDisable(true);
@@ -267,7 +273,7 @@ public class NewGame implements EventHandler {
             @Override public void handle(ActionEvent e) {
                 backgrond.setImage(parsJapanBefore);
                 for(Button b: countryButtons){
-                    if(b.isDisabled())
+                    if(b.isDisabled()&& !selectedCountries.contains(b.getText()))
                         b.setDisable(false);
                 }
                 japan.setDisable(true);
@@ -282,7 +288,7 @@ public class NewGame implements EventHandler {
             @Override public void handle(ActionEvent e) {
                 backgrond.setImage(parsUKBefore);
                 for(Button b: countryButtons){
-                    if(b.isDisabled())
+                    if(b.isDisabled()&& !selectedCountries.contains(b.getText()))
                         b.setDisable(false);
                 }
                 ukingdom.setDisable(true);
@@ -297,7 +303,7 @@ public class NewGame implements EventHandler {
             @Override public void handle(ActionEvent e) {
                 backgrond.setImage(parsUsaBefore);
                 for(Button b: countryButtons){
-                    if(b.isDisabled())
+                    if(b.isDisabled()&& !selectedCountries.contains(b.getText()))
                         b.setDisable(false);
                 }
                 usa.setDisable(true);
@@ -306,6 +312,11 @@ public class NewGame implements EventHandler {
                 selection = "USA";
             }
         });
+
+        for (Button b: countryButtons) {
+            if(selectedCountries.contains(b.getText()))
+                b.setDisable(true);
+        }
 
 
         select.setOnAction(this::handle);
@@ -325,22 +336,28 @@ public class NewGame implements EventHandler {
 
     @Override
     public void handle(Event event) {
-        MenuController upperMenu = new MenuController(stag);
         if(event.getSource() == back){
-            MainMenu men = new MainMenu(stag);
             try {
-                men.show();
+                upperMenu.newGame();
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
         }else if(event.getSource() == select){
-            upperMenu.countrySelected(selection , Leaders.getValue());
             try {
                 backgrond.setImage( new Image( new FileInputStream(currentDir + "\\src\\images\\parsomens\\" + Leaders.getValue() + ".png")));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
-	}
-
+	}else if(event.getSource() == lock){
+            if(playerCount != 0) {
+                upperMenu.countrySelected(selection, Leaders.getValue(), playerName.getText());
+                System.out.println(--playerCount);
+                try {
+                    upperMenu.countrySelection();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 }

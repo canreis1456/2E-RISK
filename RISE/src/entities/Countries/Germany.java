@@ -44,8 +44,8 @@ public class Germany extends Country {
     //Troops
     @Override//her ülkeye farklı troop destesi verelim diye
     public Troop[][] initializeTroops(Troop[][] troops) {
-        troops[0] = new Artillery[15];
-        for (int i = 0; i < 15; i++) {
+        troops[0] = new Artillery[10];
+        for (int i = 0; i < 10; i++) {
             troops[0][i] = new Artillery();
         }
         troops[1] = new Infantry[13];
