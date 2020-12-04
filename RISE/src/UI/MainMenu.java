@@ -19,10 +19,12 @@ public class MainMenu implements EventHandler {
     Button newG = new Button("New Game");
     Button credits;
     int selection;
+    MenuController upperMenu;
     Stage stag;
 
-    public MainMenu(Stage stage){
+    public MainMenu(Stage stage, MenuController upperMenu){
         stag = stage;
+        this.upperMenu = upperMenu;
     }
     public void show() throws FileNotFoundException{
         Pane layout = new Pane();
@@ -41,6 +43,7 @@ public class MainMenu implements EventHandler {
         credits.setLayoutX(1100);
         credits.setLayoutY(440);
         credits.setMinSize(230, 100);
+        credits.getStyleClass().add("country-Buttons");
         credits.setOnAction(this::handle);
 
         Button howtoPlay = new Button("How To Play");
@@ -64,7 +67,6 @@ public class MainMenu implements EventHandler {
     }
 
     public void handle(Event event) {
-        MenuController upperMenu = new MenuController(stag);
         if(event.getSource() == credits){
             upperMenu.credits();
         }else if(event.getSource() == newG){
