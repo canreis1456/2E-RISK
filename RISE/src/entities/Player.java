@@ -2,7 +2,7 @@ package entities;
 
 import entities.Countries.Country;
 import entities.Countries.General;
-import entities.Countries.Germany;
+import entities.Countries.*;
 import entities.Countries.Leader;
 import entities.Troop.Troop;
 
@@ -22,6 +22,54 @@ public class Player {
         troops = new Troop[4][];
         if(countr == "German Reich") {
             country = new Germany(leader);
+            country.initializeTroops(troops);
+            troopNumber = country.getTroopNumber();
+            setTroopTypePoints();
+        }
+        else if(countr == "Italy") {
+            country = new Italy(leader);
+            country.initializeTroops(troops);
+            troopNumber = country.getTroopNumber();
+            setTroopTypePoints();
+        }
+        else if(countr == "Japan") {
+            country = new Japan(leader);
+            country.initializeTroops(troops);
+            troopNumber = country.getTroopNumber();
+            setTroopTypePoints();
+        }
+        else if(countr == "Soviet Union") {
+            country = new SovietUnion(leader);
+            country.initializeTroops(troops);
+            troopNumber = country.getTroopNumber();
+            setTroopTypePoints();
+        }
+        else if(countr == "France") {
+            country = new France(leader);
+            country.initializeTroops(troops);
+            troopNumber = country.getTroopNumber();
+            setTroopTypePoints();
+        }
+        else if(countr == "United Kingdom") {
+            country = new UnitedKingdom(leader);
+            country.initializeTroops(troops);
+            troopNumber = country.getTroopNumber();
+            setTroopTypePoints();
+        }
+        else if(countr == "Turkey") {
+            //country = new Turkey(leader);
+            country.initializeTroops(troops);
+            troopNumber = country.getTroopNumber();
+            setTroopTypePoints();
+        }
+        else if(countr == "China") {
+            //country = new China(leader);
+            country.initializeTroops(troops);
+            troopNumber = country.getTroopNumber();
+            setTroopTypePoints();
+        }
+        else {
+            country = new UnitedStatesofAmerica(leader);
             country.initializeTroops(troops);
             troopNumber = country.getTroopNumber();
             setTroopTypePoints();
