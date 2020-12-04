@@ -1,6 +1,8 @@
 package UI;
 
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -16,14 +18,17 @@ import java.io.FileNotFoundException;
 
 public class Credits implements EventHandler{
     private Event event;
+    MenuController men;
     Stage stag;
-    public Credits(Stage stage){
+    public Credits(Stage stage, MenuController men){
         stag = stage;
+        this.men = men;
     }
     public void show(){
-        Pane layout = new Pane();
+        HBox layout = new HBox();
         layout.setStyle("-fx-background-color: #701515;");
-        String credits = "Devs:  Can Kılıç \n \t Ege Çetin \n \t Emre Erciyas \n \t Furkan Demir \n \t Muzaffer Köksal";
+        layout.setAlignment(Pos.CENTER);
+        String credits = "Devs:  Can Kılıç \n \t   Ege Çetin \n \t   Emre Erciyas \n \t   Furkan Demir \n \t   Muzaffer Köksal";
         Text t = new Text(credits);
         t.setFont(Font.font("Times New Roman", 36));
         t.setY(100);
@@ -40,9 +45,8 @@ public class Credits implements EventHandler{
 
 
     public void handle(Event event){
-        MainMenu men = new MainMenu(stag);
         try {
-            men.show();
+            men.launch();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

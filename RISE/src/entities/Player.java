@@ -26,7 +26,7 @@ public class Player {
             country = new SovietUnion(leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
-        }
+        } // bu else ifleri biri tamamlasın
     }
 
     public String getCountry() {
@@ -110,7 +110,7 @@ public class Player {
     }
 
     public void print(){
-        System.out.println(countryName+ " : "+ country.getInUse().getName() + "\n" + troopNumber + "   " + country.getIdeology());
+        System.out.println(name + "\n"  +  countryName+ " : "+ country.getInUse().getName() + "\n" + troopNumber + "   " + country.getIdeology());
         for (int i = 0 ; i < 4 ; i++) {
             System.out.println(troops[i][0].getType());
             System.out.println(troops[i][0].getAttack() + " " + troops[i][0].getDefense());
