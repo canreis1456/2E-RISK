@@ -42,7 +42,16 @@ public class Player {
             country = new UnitedKingdom(leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
-        } else if(countr == "USA"){
+        } else if(countr == "China") {
+            //country = new China(leader);
+            //country.initializeTroops(troops);
+            //setTroopTypePoints();
+        } else if(countr == "Turkey"){
+            //country = new Turkey(leader);
+            //country.initializeTroops(troops);
+            //setTroopTypePoints();
+        }
+        else if (countr == "USA"){
             country = new UnitedStatesofAmerica(leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
