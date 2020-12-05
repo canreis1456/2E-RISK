@@ -3,6 +3,7 @@ package UI;
 import entities.Player;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
@@ -15,7 +16,7 @@ public class GamePlay {
     Stage stag;
     int playerCount;
     Player[] players;
-    int turn, turnIndex;
+    int turn, turnIndex = 0;
 
     public GamePlay(Stage stage, int playerCount, Player[] players){
         stag = stage;
@@ -27,17 +28,19 @@ public class GamePlay {
     public void show(){
         HBox playerInfo = new HBox(10);
         Text info = new Text();
-        playerInfo.getChildren().add(info);
+        Button turnEnd = new Button("Turn");
+        playerInfo.getChildren().addAll(info, turnEnd);
         playerInfo.setAlignment(Pos.CENTER);
-        while(!isOver()){
-            turnIndex = 0;
-            while(turnIndex < playerCount){
-                info.setText(players[turnIndex].toString());
+        info.setText(players[turnIndex].toString());
+        turnEnd.setOnAction(e -> {
+            if(turnIndex < playerCount-1)
                 turnIndex++;
-            }
-        }
+            else
+                turnIndex = 0;
+            info.setText(players[turnIndex].toString());
+        });
         Pane pane = new Pane();
-        Scene scene = new Scene(pane);
+        Scene scene = new Scene(playerInfo, 1440, 800);
         stag.setTitle("RISE");
         stag.setScene(scene);
         stag.show();
@@ -46,5 +49,9 @@ public class GamePlay {
 
     public boolean isOver(){
         return false;
+    }
+
+    public void endTurn(){
+
     }
 }

@@ -134,9 +134,9 @@ public class Player {
     }
 
     public String toString(){
-        String result = name;  //+ "\n"  +  countryName+ " : "+ country.getInUse().getName() + "\n" + troopNumber + "   " + country.getIdeology();
-      //  for (int i = 0; i< 4; i++)
-        //    result += "\n " + troops.get(i).get(0).getType() + "\n " + troops.get(i).get(0).getAttack() + " " + troops.get(i).get(0).getDefense();
+        String result = name  + "\n"  +  countryName+ " : "+ country.getInUse().getName() + "   " + country.getIdeology() + "\n";
+        for (int i = 0; i< 4; i++)
+            result += "\n " + troops.get(i).get(0).getType() + "\n " + troops.get(i).get(0).getAttack() + " " + troops.get(i).get(0).getDefense();
         return  result;
     }
 
