@@ -2,12 +2,12 @@ package entities.Countries;
 
 import entities.Troop.Troop;
 
+import java.util.ArrayList;
+
 public class General implements BonusEffects{
     String name;
     boolean selected;
     String aggresion;
-    int howManyUnitType;
-    int whichUnits[];
     float[] attackBuffers; //her element hangi unitin atakta ne kadar buff alıcağını gösteriyor, eğer attackBuffers[2] = 3 ise, Tankların atağı 3 artıyor demek
     float[] defenseBuffers; //size = 4
     float researchTurnAmmount;
@@ -18,8 +18,6 @@ public class General implements BonusEffects{
         attackBuffers = atckBuffers;
         defenseBuffers = defBuffers;
         researchTurnAmmount = turn;
-        this.howManyUnitType = howManyUnitType;
-        this.whichUnits = whichUnits;
         this.aggresion = aggresion;
         if(aggresion != null){
             aggresionAttack = aggresionPointAttack;
@@ -61,11 +59,11 @@ public class General implements BonusEffects{
 
 
 
-    public float againstCountryAttack(String enemy, Troop[][] troops, int landNo) {
+    public float againstCountryAttack(String enemy, ArrayList<ArrayList<Troop>> troops, int landNo) {
         float ammountOfPoints = 0;
         if (aggresion != null && aggresion.equals(enemy)) {
             for (int i = 0; i < 4; i++) {
-                for (Troop a : troops[i]) {
+                for (Troop a : troops.get(i)) {
                     if (a.getPosition() == landNo) {
                         ammountOfPoints += aggresionAttack;
                     }
@@ -75,11 +73,11 @@ public class General implements BonusEffects{
         return ammountOfPoints;
     }
 
-    public float againstCountryDefense(String enemy, Troop[][] troops, int landNo) {
+    public float againstCountryDefense(String enemy, ArrayList<ArrayList<Troop>> troops, int landNo) {
         float ammountOfPoints = 0;
         if (aggresion != null && aggresion.equals(enemy)) {
             for (int i = 0; i < 4; i++) {
-                for (Troop a : troops[i]) {
+                for (Troop a : troops.get(i)) {
                     if (a.getPosition() == landNo) {
                         ammountOfPoints += aggresionDef;
                     }
@@ -89,9 +87,9 @@ public class General implements BonusEffects{
         return ammountOfPoints;
     }
 
-    public float attackEffectOnCertainUnit(Troop[][] troops, int unitType, int landNo){
+    public float attackEffectOnCertainUnit(ArrayList<ArrayList<Troop>> troops, int unitType, int landNo){
         float attack= 0;
-            for (Troop a : troops[unitType]) {
+            for (Troop a : troops.get(unitType)) {
                 if (a.getPosition() == landNo) {
                     attack += attackBuffers[unitType];
                     System.out.println(attackBuffers[unitType]);
@@ -100,9 +98,9 @@ public class General implements BonusEffects{
         return attack;
     }
 
-    public float defenseEffectOnCertainUnit(Troop[][] troops, int unitType, int landNo){
+    public float defenseEffectOnCertainUnit(ArrayList<ArrayList<Troop>> troops, int unitType, int landNo){
         float defense = 0;
-            for (Troop a : troops[unitType]) {
+            for (Troop a : troops.get(unitType)) {
                 if (a.getPosition() == landNo) {
                     defense += defenseBuffers[unitType];
                     System.out.println(defenseBuffers[unitType]);

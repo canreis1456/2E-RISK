@@ -51,13 +51,13 @@ public class GameController extends Application{
         players[playerIndex] = new Player(country, leader, playerName);
         selectedCountries.add(country);
         players[playerIndex].print();
-
-       /* player1.selectGeneral("Erich von Manstein");
-        player1.print();
+//
+        players[playerIndex].selectGeneral("Erich von Manstein");
+        //player1.print();
         Player player2 = new Player("Soviet Union", "Joseph Stalin", "sen");
         player2.selectGeneral("Georgy Zhukov");
         player2.print();
-        System.out.println(player2.attackingTo(player1, 1));*/
+        System.out.println(player2.attackingTo(players[playerIndex], 1));
     }
 
     public boolean attacking(Player player, Player enemy, int landNo){
@@ -65,7 +65,7 @@ public class GameController extends Application{
         return true;
     }
 
-    public static void launchApp(String[] args) throws FileNotFoundException {
+    public static void launchApp(String[] args) {
         launch(args);
     }
 
