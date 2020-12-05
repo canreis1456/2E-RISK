@@ -20,7 +20,6 @@ public class Player {
         if(countr.equals("German Reich")) {
             country = new Germany(leader);
             country.initializeTroops(troops);
-            troopNumber = country.getTroopNumber();
             setTroopTypePoints();
         } else if(countr.equals("Soviet Union")){
             country = new SovietUnion(leader);
