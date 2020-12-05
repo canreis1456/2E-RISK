@@ -2,10 +2,12 @@ package entities.Countries;
 
 import entities.Troop.Troop;
 
+import java.util.ArrayList;
+
 public abstract class Country implements BonusEffects {
     String name;
     String ideology;
-    String generals[];
+    String[] generals;
     Leader inUse;
     General inUseForBattle;
 
@@ -29,7 +31,7 @@ public abstract class Country implements BonusEffects {
         return ideology;
     }
 
-    public Troop[][] initializeTroops(Troop troops[][]){
+    public ArrayList<ArrayList<Troop>> initializeTroops(ArrayList<ArrayList<Troop>> troops){
         return troops;
     }
 
