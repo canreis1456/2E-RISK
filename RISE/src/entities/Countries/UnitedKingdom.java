@@ -3,6 +3,8 @@ package entities.Countries;
 import entities.Troop.*;
 import javafx.scene.input.GestureEvent;
 
+import java.util.ArrayList;
+
 public class UnitedKingdom extends Country {
 
     String selected;
@@ -42,22 +44,24 @@ public class UnitedKingdom extends Country {
 
     //Troops
     @Override//her ülkeye farklı troop destesi verelim diye
-    public Troop[][] initializeTroops(Troop[][] troops) {
-        troops[0] = new Artillery[10];
-        for (int i = 0; i < 10; i++) {
-            troops[0][i] = new Artillery();
+    public ArrayList<ArrayList<Troop>> initializeTroops(ArrayList<ArrayList<Troop>> troops) {
+
+        //  ArrayList<Troop> artill = new ArrayList<>();
+        troops.add( 0,new ArrayList<>());
+        for (int i = 0; i < 20; i++) {
+            troops.get(0).add( new Artillery());
         }
-        troops[1] = new Infantry[25];
-        for (int i = 0; i < 25; i++) {
-            troops[1][i] = new Infantry();
+        troops.add(1, new ArrayList<>());
+        for (int i = 0; i < 20; i++) {
+            troops.get(1).add( new Infantry());
         }
-        troops[2] = new Tank[25];
-        for (int i = 0; i < 25; i++) {
-            troops[2][i] = new Tank();
+        troops.add(2, new ArrayList<>());
+        for (int i = 0; i < 20; i++) {
+            troops.get(2).add( new Tank());
         }
-        troops[3] = new Nerds[3];
-        for (int i = 0; i < 3; i++) {
-            troops[3][i] = new Nerds();
+        troops.add(3, new ArrayList<>());
+        for (int i = 0; i < 20; i++) {
+            troops.get(3).add( new Nerds());
         }
         return troops;
     }
