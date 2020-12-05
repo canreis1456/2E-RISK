@@ -26,7 +26,23 @@ public class Player {
             country = new SovietUnion(leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
-        } // bu else ifleri biri tamamlasın
+        } else if(countr == "France"){
+            country = new France(leader);
+            country.initializeTroops(troops);
+            setTroopTypePoints();
+        } else if(countr == "Italy"){
+            country = new Italy(leader);
+            country.initializeTroops(troops);
+            setTroopTypePoints();
+        } else if(countr == "Japan"){
+            country = new Japan(leader);
+            country.initializeTroops(troops);
+            setTroopTypePoints();
+        } else if(countr == "United Kingdom"){
+            country = new UnitedKingdom(leader);
+            country.initializeTroops(troops);
+            setTroopTypePoints();
+        }
     }
 
     public String getCountry() {
@@ -115,6 +131,13 @@ public class Player {
             System.out.println(troops.get(i).get(0).getType());
             System.out.println(troops.get(i).get(0).getAttack() + " " + troops.get(i).get(0).getDefense());
         }
+    }
+
+    public String toString(){
+        String result = name;  //+ "\n"  +  countryName+ " : "+ country.getInUse().getName() + "\n" + troopNumber + "   " + country.getIdeology();
+      //  for (int i = 0; i< 4; i++)
+        //    result += "\n " + troops.get(i).get(0).getType() + "\n " + troops.get(i).get(0).getAttack() + " " + troops.get(i).get(0).getDefense();
+        return  result;
     }
 
 }

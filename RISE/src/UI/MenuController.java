@@ -45,6 +45,11 @@ public class MenuController {
         cntrl.initPlayer(country, leader, playerName, playerIndex);
         playerIndex++;
     }//
+
+    public void gameplay(){
+        cntrl.gameplay(stag);
+    }
+
     public String getCountry(){
         return selectedCountry;
     }
