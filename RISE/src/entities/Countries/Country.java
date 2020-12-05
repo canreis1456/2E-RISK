@@ -4,7 +4,7 @@ import entities.Troop.Troop;
 
 import java.util.ArrayList;
 
-public abstract class Country implements BonusEffects {
+public abstract class Country{
     String name;
     String ideology;
     String[] generals;

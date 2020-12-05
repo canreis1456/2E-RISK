@@ -1,8 +1,6 @@
 package sample;
 
-import UI.MainMenu;
-import UI.MenuController;
-import UI.NewGame;
+import UI.*;
 import entities.Player;
 import javafx.stage.Stage;
 
@@ -52,12 +50,17 @@ public class GameController extends Application{
         selectedCountries.add(country);
         players[playerIndex].print();
 //
-        players[playerIndex].selectGeneral("Erich von Manstein");
+        /*players[playerIndex].selectGeneral("Erich von Manstein");
         //player1.print();
         Player player2 = new Player("Soviet Union", "Joseph Stalin", "sen");
         player2.selectGeneral("Georgy Zhukov");
         player2.print();
-        System.out.println(player2.attackingTo(players[playerIndex], 1));
+        System.out.println(player2.attackingTo(players[playerIndex], 1));*/
+    }
+
+    public void gameplay(Stage stag){
+        GamePlay gmp = new GamePlay(stag, players.length, players);
+        gmp.show();
     }
 
     public boolean attacking(Player player, Player enemy, int landNo){
