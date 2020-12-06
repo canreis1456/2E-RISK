@@ -361,7 +361,11 @@ public class NewGame implements EventHandler {
             }else{
                 System.out.println("qasd");
                 upperMenu.countrySelected(selection, Leaders.getValue(), playerName.getText());
-                upperMenu.gameplay();
+                try {
+                    upperMenu.gameplay();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }

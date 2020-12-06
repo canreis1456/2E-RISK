@@ -26,20 +26,33 @@ public class Player {
             country = new SovietUnion(leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
-        } else if(countr == "France"){
+        } else if(countr.equals("France")){
             country = new France(leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
-        } else if(countr == "Italy"){
+        } else if(countr.equals("Italy")){
             country = new Italy(leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
-        } else if(countr == "Japan"){
+        } else if(countr.equals("Japan")){
             country = new Japan(leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
-        } else if(countr == "United Kingdom"){
+        } else if(countr.equals("United Kingdom")){
             country = new UnitedKingdom(leader);
+            country.initializeTroops(troops);
+            setTroopTypePoints();
+        } else if(countr.equals("China")) {
+            //country = new China(leader);
+            //country.initializeTroops(troops);
+            //setTroopTypePoints();
+        } else if(countr.equals("Turkey")){
+            //country = new Turkey(leader);
+            //country.initializeTroops(troops);
+            //setTroopTypePoints();
+        }
+        else if (countr.equals("USA")){
+            country = new UnitedStatesofAmerica(leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
         }
@@ -47,6 +60,10 @@ public class Player {
 
     public String getCountry() {
         return countryName;
+    }
+
+    public Country getCountryObjejct(){
+        return country;
     }
 
     public String getLeader() {

@@ -46,7 +46,7 @@ public class MenuController {
         playerIndex++;
     }//
 
-    public void gameplay(){
+    public void gameplay() throws FileNotFoundException {
         cntrl.gameplay(stag);
     }
 
