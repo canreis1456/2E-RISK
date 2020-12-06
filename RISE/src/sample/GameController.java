@@ -58,7 +58,8 @@ public class GameController extends Application{
         System.out.println(player2.attackingTo(players[playerIndex], 1));*/
     }
 
-    public void gameplay(Stage stag){
+    public void gameplay(Stage stag) throws FileNotFoundException {
+        //stag.setFullScreen(true);
         GamePlay gmp = new GamePlay(stag, players.length, players);
         gmp.show();
     }

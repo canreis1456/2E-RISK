@@ -20,37 +20,38 @@ public class Player {
         if(countr.equals("German Reich")) {
             country = new Germany(leader);
             country.initializeTroops(troops);
+            troopNumber = country.getTroopNumber();
             setTroopTypePoints();
         } else if(countr.equals("Soviet Union")){
             country = new SovietUnion(leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
-        } else if(countr == "France"){
+        } else if(countr.equals("France")){
             country = new France(leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
-        } else if(countr == "Italy"){
+        } else if(countr.equals("Italy")){
             country = new Italy(leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
-        } else if(countr == "Japan"){
+        } else if(countr.equals("Japan")){
             country = new Japan(leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
-        } else if(countr == "United Kingdom"){
+        } else if(countr.equals("United Kingdom")){
             country = new UnitedKingdom(leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
-        } else if(countr == "China") {
+        } else if(countr.equals("China")) {
             //country = new China(leader);
             //country.initializeTroops(troops);
             //setTroopTypePoints();
-        } else if(countr == "Turkey"){
+        } else if(countr.equals("Turkey")){
             //country = new Turkey(leader);
             //country.initializeTroops(troops);
             //setTroopTypePoints();
         }
-        else if (countr == "USA"){
+        else if (countr.equals("USA")){
             country = new UnitedStatesofAmerica(leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
@@ -59,6 +60,10 @@ public class Player {
 
     public String getCountry() {
         return countryName;
+    }
+
+    public Country getCountryObjejct(){
+        return country;
     }
 
     public String getLeader() {
@@ -143,6 +148,13 @@ public class Player {
             System.out.println(troops.get(i).get(0).getType());
             System.out.println(troops.get(i).get(0).getAttack() + " " + troops.get(i).get(0).getDefense());
         }
+    }
+
+    public String toString(){
+        String result = name  + "\n"  +  countryName+ " : "+ country.getInUse().getName() + "   " + country.getIdeology() + "\n";
+        for (int i = 0; i< 4; i++)
+            result += "\n " + troops.get(i).get(0).getType() + "\n " + troops.get(i).get(0).getAttack() + " " + troops.get(i).get(0).getDefense();
+        return  result;
     }
 
 }
