@@ -20,7 +20,6 @@ public class Player {
         if(countr.equals("German Reich")) {
             country = new Germany(leader);
             country.initializeTroops(troops);
-            troopNumber = country.getTroopNumber();
             setTroopTypePoints();
         } else if(countr.equals("Soviet Union")){
             country = new SovietUnion(leader);
@@ -40,6 +39,19 @@ public class Player {
             setTroopTypePoints();
         } else if(countr == "United Kingdom"){
             country = new UnitedKingdom(leader);
+            country.initializeTroops(troops);
+            setTroopTypePoints();
+        } else if(countr == "China") {
+            //country = new China(leader);
+            //country.initializeTroops(troops);
+            //setTroopTypePoints();
+        } else if(countr == "Turkey"){
+            //country = new Turkey(leader);
+            //country.initializeTroops(troops);
+            //setTroopTypePoints();
+        }
+        else if (countr == "USA"){
+            country = new UnitedStatesofAmerica(leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
         }
@@ -131,13 +143,6 @@ public class Player {
             System.out.println(troops.get(i).get(0).getType());
             System.out.println(troops.get(i).get(0).getAttack() + " " + troops.get(i).get(0).getDefense());
         }
-    }
-
-    public String toString(){
-        String result = name  + "\n"  +  countryName+ " : "+ country.getInUse().getName() + "   " + country.getIdeology() + "\n";
-        for (int i = 0; i< 4; i++)
-            result += "\n " + troops.get(i).get(0).getType() + "\n " + troops.get(i).get(0).getAttack() + " " + troops.get(i).get(0).getDefense();
-        return  result;
     }
 
 }
