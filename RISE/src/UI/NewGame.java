@@ -349,11 +349,20 @@ public class NewGame implements EventHandler {
                 e.printStackTrace();
             }
 	}else if(event.getSource() == lock){
-            if(playerCount != 0) {
+            System.out.println("pl: " +playerCount);
+            if(playerCount > 1) {
                 upperMenu.countrySelected(selection, Leaders.getValue(), playerName.getText());
-                System.out.println(--playerCount);
+                playerCount--;
                 try {
                     upperMenu.countrySelection();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }else{
+                System.out.println("qasd");
+                upperMenu.countrySelected(selection, Leaders.getValue(), playerName.getText());
+                try {
+                    upperMenu.gameplay();
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }

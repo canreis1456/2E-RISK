@@ -9,7 +9,7 @@ public class SovietUnion extends Country {
 
     String selected;
     Leader Stalin = new Leader("Joseph Stalin", "Communism", 0, 0, 4, 4, new int[]{0, 1, 2, 3});
-    Leader Trotsky = new Leader("Wilhelm II", "Communism", 0, 0, 4, 4 , new int[]{0, 1, 2, 3});
+    Leader Trotsky = new Leader("Leon Trotsky", "Communism", 0, 0, 4, 4 , new int[]{0, 1, 2, 3});
     Leader inUse;
     Leader[] leaders = {Stalin, Trotsky};
 
