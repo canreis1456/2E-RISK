@@ -43,13 +43,13 @@ public class Player {
             country.initializeTroops(troops);
             setTroopTypePoints();
         } else if(countr.equals("China")) {
-            //country = new China(leader);
-            //country.initializeTroops(troops);
-            //setTroopTypePoints();
+            country = new China(leader);
+            country.initializeTroops(troops);
+            setTroopTypePoints();
         } else if(countr.equals("Turkey")){
-            //country = new Turkey(leader);
-            //country.initializeTroops(troops);
-            //setTroopTypePoints();
+            country = new Turkey(leader);
+            country.initializeTroops(troops);
+            setTroopTypePoints();
         }
         else if (countr.equals("USA")){
             country = new UnitedStatesofAmerica(leader);
@@ -62,7 +62,7 @@ public class Player {
         return countryName;
     }
 
-    public Country getCountryObjejct(){
+    public Country getCountryObject(){
         return country;
     }
 
