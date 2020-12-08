@@ -5,7 +5,7 @@ import javafx.scene.input.GestureEvent;
 
 import java.util.ArrayList;
 
-public class France extends Country {
+public class                            France extends Country {
 
     String selected;
     Leader Charles = new Leader("Charles de Gaulle", "Democrat", 0, 0, 4, 4, new int[]{0, 1, 2, 3});

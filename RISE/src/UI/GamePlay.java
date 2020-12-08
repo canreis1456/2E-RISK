@@ -42,7 +42,7 @@ public class GamePlay {
         currentDir = currentDirFile.getAbsolutePath();
 
         //map- center
-        Land landTry = new Land(1, players[0].getCountryObjejct(), new Image(new FileInputStream(currentDir + "\\src\\images\\countries\\germany.png")));
+        Land landTry = new Land(1, players[0].getCountryObject(), new Image(new FileInputStream(currentDir + "\\src\\images\\countries\\germany.png")));
         Text landInfo = new Text();
         Group map = new Group();
         landTry.setPickOnBounds(true); // allows click on transparent areas
