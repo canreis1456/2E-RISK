@@ -7,7 +7,8 @@ import java.util.ArrayList;
 
 public class Research{
 
-    String name, aggressionCountry, aggressionIdeology;
+    //String name, aggressionCountry, aggressionIdeology;
+    String name;
     float[] pointBufferAttack, pointBufferDefense, aggressionAttack, aggressionDefense;
     float researchTurnAmmount;
     int cost, remaining;
@@ -21,11 +22,11 @@ public class Research{
         available = false;
     }
 
-    public void setAggressionCountry(String aggressionCountry, float[] atck, float[] def) {
+   /* public void setAggressionCountry(String aggressionCountry, float[] atck, float[] def) {
         this.aggressionCountry = aggressionCountry;
         aggressionAttack = atck;
         aggressionDefense = def;
-    }
+    }*/
 
     public boolean startResearch(){
         if(!isAvailable())
