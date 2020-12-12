@@ -20,7 +20,7 @@ public class UnitedStatesofAmerica extends Country {
     General inUseForBattle;
     General[] generals = {MacArthur, Patton, Eisenhower};
 
-    //Land[] lands;    şimdilik boş kalsın bunlar
+    int[] landNo = new int[]{1,2,3,4,5,6,7,8,9,10};
     //ResearchTree tree;
 
     public UnitedStatesofAmerica(String leader){

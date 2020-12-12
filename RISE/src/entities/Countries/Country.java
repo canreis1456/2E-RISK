@@ -1,23 +1,35 @@
 package entities.Countries;
 
-import entities.Troop.Troop;
+import entities.Troop.*;
 
 import java.util.ArrayList;
 
-public abstract class Country{
+public class Country{
     String name;
     String ideology;
-    String[] generals;
     Leader inUse;
+    Leader[] leaders;
+    General[] generals;
     General inUseForBattle;
+    CountryStrategy strategy;
+
+
+    public Country(CountryStrategy strategy, String leader){
+        this.strategy = strategy;
+        initializeGenerals();
+        initializeLeaders();
+        for (Leader a: leaders) {
+            System.out.println(a.getName());
+            if(leader.equals(a.getName()))
+                inUse = a;
+        }
+    }
 
     int troopNumber;
 
     float pointBufferDefense;
     float getPointBufferAttack;
     float researchTurnAmmount;
-
-    public General selectGeneral(String name){ return inUseForBattle; }
 
     public Leader getInUse() {
         return inUse;
@@ -31,11 +43,47 @@ public abstract class Country{
         return ideology;
     }
 
-    public ArrayList<ArrayList<Troop>> initializeTroops(ArrayList<ArrayList<Troop>> troops){
-        return troops;
-    }
-
     public int getTroopNumber() {
         return troopNumber;
     }
+
+    public ArrayList<ArrayList<Troop>> initializeTroops(ArrayList<ArrayList<Troop>> troops) {
+
+        //  ArrayList<Troop> artill = new ArrayList<>();
+        troops.add( 0,new ArrayList<>());
+        for (int i = 0; i < 20; i++) {
+            troops.get(0).add( new Artillery());
+        }
+        troops.add(1, new ArrayList<>());
+        for (int i = 0; i < 20; i++) {
+            troops.get(1).add( new Infantry());
+        }
+        troops.add(2, new ArrayList<>());
+        for (int i = 0; i < 20; i++) {
+            troops.get(2).add( new Tank());
+        }
+        troops.add(3, new ArrayList<>());
+        for (int i = 0; i < 20; i++) {
+            troops.get(3).add( new Nerds());
+        }
+        return troops;
+    }
+
+    public void initializeGenerals(){
+        strategy.initializeGenerals(this.generals);
+    }
+
+
+    public void initializeLeaders(){
+        strategy.initializeLeaders(this.leaders);
+    }
+
+    public General selectGeneral(String name){
+        for (General g: generals) {
+            if(g.getName().equals(name))
+                return g;
+        }
+        return null;
+    }
+
 }

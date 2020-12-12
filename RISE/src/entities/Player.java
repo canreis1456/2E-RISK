@@ -1,6 +1,8 @@
 package entities;
 
-import entities.Countries.*;
+
+import entities.Countries.Country;
+import entities.Countries.;
 import entities.Troop.Troop;
 
 import java.util.ArrayList;
@@ -18,7 +20,7 @@ public class Player {
         leader = leade;
         this.name = name;
         if(countr.equals("German Reich")) {
-            country = new Germany(leader);
+            country = new Country(new GermanStrategy(), leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
         } else if(countr.equals("Soviet Union")){

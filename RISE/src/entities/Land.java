@@ -26,6 +26,6 @@ public class Land extends ImageView {
     public String toString() {
         return "Land{" +
                 "landNo=" + landNo +
-                '}' +  "\n" + "owner: " + owner ;
+                '}' +  "\n" + "owner: " + owner.getName() ;
     }
 }
