@@ -60,6 +60,8 @@ public class Country{
         for (int i = 0; i < 20; i++) {
             troops.get(1).add( new Infantry());
         }
+        /*asdasd*/
+
         troops.add(2, new ArrayList<>());
         for (int i = 0; i < 20; i++) {
             troops.get(2).add( new Tank());
