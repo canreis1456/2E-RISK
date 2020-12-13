@@ -22,6 +22,7 @@ public class UnitedKingdom extends Country {
     //Land[] lands;    şimdilik boş kalsın bunlar
     //ResearchTree tree;
 
+    //Push
     public UnitedKingdom(String leader) {
         selected = leader;
         for (Leader a : leaders) {
