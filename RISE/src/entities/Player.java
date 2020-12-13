@@ -1,9 +1,7 @@
 package entities;
 
 
-import entities.Countries.Country;
-import entities.Countries.;
-import entities.Troop.Troop;
+import entities.Troops.Troop;
 
 import java.util.ArrayList;
 
@@ -11,49 +9,51 @@ public class Player {
     String countryName, leader, name;
     Country country;
     ArrayList<ArrayList<Troop>> troops = new ArrayList<>();
+    Research res;
 //    int attackingland;
     General selectedGeneral;
-    int troopNumber;
+    int troopNumber, turnCount;
 
     public Player(String countr, String leade, String name){
         countryName = countr;
         leader = leade;
         this.name = name;
+        turnCount = 0;
         if(countr.equals("German Reich")) {
-            country = new Country(new GermanStrategy(), leader);
+            country = new Country(new GermanyInitializer(), leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
         } else if(countr.equals("Soviet Union")){
-            country = new SovietUnion(leader);
+            country = new Country(new SovietInitializer(), leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
         } else if(countr.equals("France")){
-            country = new France(leader);
+            country = new Country(new FranceInitializer(), leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
         } else if(countr.equals("Italy")){
-            country = new Italy(leader);
+            country = new Country(new ItalyInitializer(), leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
         } else if(countr.equals("Japan")){
-            country = new Japan(leader);
+            country = new Country(new JapanInitializer(), leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
         } else if(countr.equals("United Kingdom")){
-            country = new UnitedKingdom(leader);
+            country = new Country(new UKInitializer(), leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
         } else if(countr.equals("China")) {
-            country = new China(leader);
+            country = new Country(new ChinaInitializer(), leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
         } else if(countr.equals("Turkey")){
-            country = new Turkey(leader);
+            country = new Country(new TurkeyInitializer(), leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
         }
         else if (countr.equals("USA")){
-            country = new UnitedStatesofAmerica(leader);
+            country = new Country(new USAInitializer(), leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
         }
@@ -69,6 +69,23 @@ public class Player {
 
     public String getLeader() {
         return leader;
+    }
+
+    public void turnCounter() {
+        turnCount++;
+        if (res != null) {
+            res.turnCounter(troops);
+            for (ArrayList<Troop> a:troops
+            ) {
+                System.out.println(a.get(0).getType() +" \n atck: " + a.get(0).getAttack() + " def: "+ a.get(0).getDefense());
+            }
+        }
+    }
+
+    public void startResearch(){
+        res = new Research("ıoıu", new TroopResearch(2,0, new int[]{0, 1}),3 );
+        res.setAvailable(true);
+        res.startResearch();
     }
 
     public float getAttackPoints(){

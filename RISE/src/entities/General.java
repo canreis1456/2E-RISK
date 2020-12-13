@@ -1,10 +1,10 @@
-package entities.Countries;
+package entities;
 
-import entities.Troop.Troop;
+import entities.Troops.Troop;
 
 import java.util.ArrayList;
 
-public class General implements BonusEffects{
+public class General {
     String name;
     boolean selected;
     String aggresion;

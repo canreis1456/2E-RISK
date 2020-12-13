@@ -1,7 +1,7 @@
 package sample;
 
 import UI.Board;
-import entities.Countries.Country;
+import entities.Country;
 import entities.Land;
 import javafx.scene.layout.Pane;
 

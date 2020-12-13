@@ -1,9 +1,7 @@
 package entities;
 
-import entities.Countries.Country;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.shape.Polygon;
 
 
 public class Land extends ImageView {
