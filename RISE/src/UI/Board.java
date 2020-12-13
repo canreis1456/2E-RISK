@@ -1,10 +1,9 @@
 package UI;
 
-import entities.Countries.Country;
+import entities.Country;
 import entities.Land;
 import entities.Player;
 import javafx.scene.image.Image;
-import javafx.scene.layout.Pane;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -28,15 +27,15 @@ public class Board{
         File currentDirFile = new File("");
         currentDir = currentDirFile.getAbsolutePath();
         for(int i = 1; i < 5; i++) {
-            lands[i] = new Land(i, new Image(new FileInputStream(currentDir + "\\src\\images\\countries\\1 ("+ i + ").png")));
+         //   lands[i] = new Land(i, new Image(new FileInputStream(currentDir + "\\src\\images\\countries\\1 ("+ i + ").png")));
         }
     }
 
-    public Land[] getLands() {
-        return lands;
-    }
+    //public Land[] getLands() {
+   //     return lands;
+    //}
 
-    public Land getLand(int landNo){
-        return lands[landNo];
-    }
+  //  public Land getLand(int landNo){
+    //    return lands[landNo];
+  //  }
 }

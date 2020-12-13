@@ -64,16 +64,28 @@ public class GamePlay {
         VBox playerInfo = new VBox(10);
         Text info = new Text();
 
+        Button research = new Button("REsearhc");
+        research.setOnAction(e -> {
+            if(turnIndex == 0) {
+                players[0].startResearch();
+            }
+        });
+
         Button turnEnd = new Button("Turn");
-        playerInfo.getChildren().addAll(info, turnEnd, landInfo);
+        playerInfo.getChildren().addAll(info, turnEnd, landInfo, research);
         playerInfo.setAlignment(Pos.CENTER);
         playerInfo.setSpacing(10);
         info.setText(players[turnIndex].toString());
         turnEnd.setOnAction(e -> {
             if(turnIndex < playerCount-1)
                 turnIndex++;
-            else
+            else {
                 turnIndex = 0;
+                for (Player a:players
+                     ) {
+                    a.turnCounter();
+                }
+            }
             info.setText(players[turnIndex].toString());
         });
         BorderPane pane = new BorderPane();

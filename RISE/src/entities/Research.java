@@ -1,7 +1,6 @@
 package entities;
 
-import entities.Countries.BonusEffects;
-import entities.Troop.Troop;
+import entities.Troops.Troop;
 
 import java.util.ArrayList;
 
@@ -9,15 +8,13 @@ public class Research{
 
     //String name, aggressionCountry, aggressionIdeology;
     String name;
-    float[] pointBufferAttack, pointBufferDefense, aggressionAttack, aggressionDefense;
-    float researchTurnAmmount;
     int cost, remaining;
     boolean available;
-    public Research(String name, float[] atck, float[] def, float turn, int cost){
+    ResearchTypes type;
+
+    public Research(String name, ResearchTypes type, int cost){
         this.name = name;
-        pointBufferAttack = atck;
-        pointBufferDefense = def;
-        researchTurnAmmount = turn;
+        this.type = type;
         this.cost = cost;
         available = false;
     }
@@ -29,6 +26,7 @@ public class Research{
     }*/
 
     public boolean startResearch(){
+        System.out.println("55436");
         if(!isAvailable())
             return false;
         else{
@@ -50,17 +48,28 @@ public class Research{
         System.out.println("research: " + name + " is done");
     }
 
+
+    public void turnCounter(ArrayList<ArrayList<Troop>> troops){
+        if(remaining > 0)
+            remaining--;
+        else {
+            researchDone(troops);
+            System.out.println("ıgıgı");
+
+        }
+    }
+
     public void setTroopTypePoints(ArrayList<ArrayList<Troop>> troops){
-        for(int i = 0; i < 4; i++){
+       /* for(int i = 0; i < 4; i++){
             for(int j = 0; j < troops.get(i).size(); j++){
                 troops.get(i).get(j).setAttack(troops.get(i).get(j).getAttack() + pointBufferAttack[i]);
                 troops.get(i).get(j).setDefense(troops.get(i).get(j).getDefense() + pointBufferDefense[i]);
             }
-        }
-
+        }*/
+        type.setTroopTypePoints(troops);
     }
 
-    public float[] getPointBufferAttack() {
+   /*public float[] getPointBufferAttack() {
         return pointBufferAttack;
     }
 
@@ -70,5 +79,5 @@ public class Research{
 
     public float getResearchTurnAmmount() {
         return researchTurnAmmount;
-    }
+    }*/
 }
