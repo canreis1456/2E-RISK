@@ -1,47 +1,81 @@
 package UI;
 
-import entities.Research;
+
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.control.Button;
+
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 
-import java.awt.event.ActionEvent;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.awt.*;
+
 import java.io.IOException;
 
 public class Researches {
 
     Stage stag;
+    GamePlay play;
+    String selected;
 
-    public Researches(){
+    @FXML
+    Button start;
+
+    public Researches() {
         stag = new Stage();
+        start = new Button("Start Research");
+        start.setId("start");
+        start.setDisable(true);
     }
 
-    public void show() throws IOException {
 
-        FXMLLoader loader = new FXMLLoader();
-        File currentDirFile = new File("");
-        String currentDir = currentDirFile.getAbsolutePath();
-        String fxml = currentDir + "\\src\\UI\\Researches.fxml";
-        FileInputStream fxmlStream = new FileInputStream(fxml);
-        ScrollPane root = (ScrollPane) loader.load(fxmlStream);
+    public void setGamePlay (GamePlay play){
+        this.play = play;
+    }
 
-        Scene scene = new Scene(root, 600,600);
+    public void show (GamePlay play) throws IOException {
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/UI/Researches.fxml"));
+        ScrollPane root = (ScrollPane) loader.load();
+        Researches control = loader.<Researches>getController();
+        control.setGamePlay(play);
+        Scene scene = new Scene(root, 600, 600);
         stag.setTitle("RISE");
         stag.setScene(scene);
         stag.show();
     }
 
-    @FXML
-    public boolean researchClicked(ActionEvent event){
-        System.out.println(event.getSource().toString());
-        return true;
+
+
+
+    public void researchClicked(Event e){
+        String id = "", full = e.getSource().toString();
+        for (int i = 10; i < full.length(); i++) {
+            if(full.charAt(i) == ',' )
+                break;
+            id += full.charAt(i);
+        }
+        boolean flag = play.players[play.getTurnIndex()].getTree().isAvailable(id);
+        System.out.println("flag: " + flag);
+        if(flag){
+            System.out.println("yyyyy");
+            start.setDisable(false);
+            selected = id;
+            play.players[play.getTurnIndex()].getTree().setFlag(false);
+        }else{
+            System.out.println("ugugn");
+            start.setDisable(true);
+        }
+    }
+
+    public void researchStarted(){
+        System.out.println("selec: " +selected);
+        play.players[play.getTurnIndex()].startResearch(selected);
     }
 }
+
+

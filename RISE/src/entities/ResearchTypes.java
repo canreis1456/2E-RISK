@@ -6,24 +6,26 @@ import entities.Troops.Troop;
 import java.util.ArrayList;
 
 interface ResearchTypes {
-    void setTroopTypePoints(ArrayList<ArrayList<Troop>> troops);
+    void researchBuff(Research res, Player player);
 }
 
 class TroopResearch implements ResearchTypes{
 
-    int def, atck;
     int[] unitType;
-    public TroopResearch(int def, int atck, int[] unitType){
+    /*int def, atck;
+
+   /* public TroopResearch(int def, int atck, int[] unitType){
         this.def = def;
         this.atck = atck;
         this.unitType = unitType;
-    }
+    }*/
 
-    public void setTroopTypePoints(ArrayList<ArrayList<Troop>> troops){
+    public void researchBuff(Research res, Player player){
+        unitType = res.getUnitType();
         for (int i = 0; i < unitType.length; i++){
-            for (Troop a: troops.get(i)) {
-                a.setDefense(a.getDefense() + def);
-                a.setAttack(a.getAttack() + atck);
+            for (Troop a: player.getTroops().get(i)) {
+                a.setDefense(a.getDefense() + res.getPointBufferDefense());
+                a.setAttack(a.getAttack() + res.getPointBufferAttack());
             }
         }
     }
@@ -31,7 +33,17 @@ class TroopResearch implements ResearchTypes{
 
 class ResearchTurnResearch implements ResearchTypes{
 
-    public void setTroopTypePoints(ArrayList<ArrayList<Troop>> troops) {
+
+    public void researchBuff( Research res, Player player) {
         ;
+    }
+}
+
+class ResourceResearch implements ResearchTypes{
+
+
+    public void researchBuff( Research res, Player player) {
+        player.setResourceBuff(player.getResourceBuff() + res.resource);
+        System.out.println(player.getResourceBuff());
     }
 }

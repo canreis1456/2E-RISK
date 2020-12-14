@@ -6,13 +6,16 @@ import entities.Troops.Troop;
 import java.util.ArrayList;
 
 public class Player {
-    String countryName, leader, name;
-    Country country;
-    ArrayList<ArrayList<Troop>> troops = new ArrayList<>();
-    Research res;
-//    int attackingland;
-    General selectedGeneral;
-    int troopNumber, turnCount;
+    private String countryName, leader, name;
+    private Country country;
+    private ArrayList<ArrayList<Troop>> troops = new ArrayList<>();
+    private Research res;
+    private ResearchTree.Node current;
+    private ResearchTree tree;
+    private int resourceBuff;
+    private General selectedGeneral;
+    private int troopNumber, turnCount;
+    private boolean researching;
 
     public Player(String countr, String leade, String name){
         countryName = countr;
@@ -57,6 +60,9 @@ public class Player {
             country.initializeTroops(troops);
             setTroopTypePoints();
         }
+        tree = new ResearchTree();
+        current = tree.getHead();
+        researching = false;
     }
 
     public String getCountry() {
@@ -73,8 +79,9 @@ public class Player {
 
     public void turnCounter() {
         turnCount++;
-        if (res != null) {
-            res.turnCounter(troops);
+        if (tree != null && researching) {
+            System.out.println("boş deği");
+            tree.turnCounter(this);
             for (ArrayList<Troop> a:troops
             ) {
                 System.out.println(a.get(0).getType() +" \n atck: " + a.get(0).getAttack() + " def: "+ a.get(0).getDefense());
@@ -82,10 +89,25 @@ public class Player {
         }
     }
 
-    public void startResearch(){
-        res = new Research("ıoıu", new TroopResearch(2,0, new int[]{0, 1}),3 );
+    public ArrayList<ArrayList<Troop>> getTroops() {
+        return troops;
+    }
+
+    public void startResearch(String name){
+
+        tree.startResearch(name);
+        researching = true;
+        /*res = new Research("Tr", new TroopResearch(),3, 0, 2, 0,0 , new int[]{0,1,2,3});
         res.setAvailable(true);
-        res.startResearch();
+        res.startResearch();*/
+    }
+
+    public void setResearching(boolean researching) {
+        this.researching = researching;
+    }
+
+    public ResearchTree getTree() {
+        return tree;
     }
 
     public float getAttackPoints(){
@@ -109,6 +131,14 @@ public class Player {
                 System.out.println(troops.get(j).get(i).getType() + ":   " + troops.get(j).get(i).getAttack());
             }
         }
+    }
+
+    public void setResourceBuff(int resourceBuff) {
+        this.resourceBuff = resourceBuff;
+    }
+
+    public int getResourceBuff() {
+        return resourceBuff;
     }
 
     public float attackPointsAt(int coordinates){

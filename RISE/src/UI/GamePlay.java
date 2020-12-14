@@ -21,6 +21,7 @@ import javax.swing.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 
 public class GamePlay {
@@ -64,10 +65,13 @@ public class GamePlay {
         VBox playerInfo = new VBox(10);
         Text info = new Text();
 
-        Button research = new Button("REsearhc");
+        Button research = new Button("Research");
         research.setOnAction(e -> {
-            if(turnIndex == 0) {
-                players[0].startResearch();
+            Researches researches = new Researches();
+            try {
+                researches.show(this);
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
             }
         });
 
@@ -80,6 +84,7 @@ public class GamePlay {
             if(turnIndex < playerCount-1)
                 turnIndex++;
             else {
+                System.out.println("turn ended");
                 turnIndex = 0;
                 for (Player a:players
                      ) {
@@ -95,8 +100,7 @@ public class GamePlay {
         pane.setCenter(map);
         map.setStyle("-fx-background-color: #0EA0F0");
         pane.setRight(playerInfo);
-        Scene scene = new Scene(pane, 1920, 1080);
-        stag.setFullScreen(true);
+        Scene scene = new Scene(pane, 1440, 720);
         stag.setTitle("RISE");
         stag.setScene(scene);
         stag.show();
@@ -105,6 +109,10 @@ public class GamePlay {
 
     public boolean isOver(){
         return false;
+    }
+
+    public int getTurnIndex() {
+        return turnIndex;
     }
 
     public void endTurn(){
