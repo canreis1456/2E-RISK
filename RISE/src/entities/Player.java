@@ -169,8 +169,10 @@ public class Player {
                     def += troops.get(j).get(i).getDefense();
             }
         }
-        for(int i = 0; i < 4; i++)
-            def += selectedGeneral.defenseEffectOnCertainUnit(troops,i, coordinates);
+        for(int i = 0; i < 4; i++) {
+             if (selectedGeneral != null)
+                def += selectedGeneral.defenseEffectOnCertainUnit(troops, i, coordinates);
+        }
         return def;
     }
 
@@ -196,11 +198,36 @@ public class Player {
         return attack > def;
     }
 
+    public void positionTroops(int unitType, int amount, int landNo){
+        int i = 0;
+        for (Troop a :troops.get(unitType)
+        ) {
+            if(i == amount)
+                break;
+
+            if(a.getPosition() == 0) {
+                a.setPosition(landNo);
+                i++;
+            }
+        }
+    }
+
+    public boolean isEnoughTroop(int unitType, int amount){
+        int ammnt = 0;
+        for (Troop a :troops.get(unitType)
+             ) {
+            if(a.getPosition() == 0)
+                ammnt++;
+        }
+
+        return ammnt > amount;
+    }
+
     public void print(){
         System.out.println(name + "\n"  +  countryName+ " : "+ country.getInUse().getName() + "\n" + troopNumber + "   " + country.getIdeology());
         for (int i = 0 ; i < 4 ; i++) {
             System.out.println(troops.get(i).get(0).getType());
-            System.out.println(troops.get(i).get(0).getAttack() + " " + troops.get(i).get(0).getDefense());
+            System.out.println(troops.get(i).get(0).getAttack() + " " + troops.get(i).get(0).getDefense() + "  " + troops.get(i).get(0).getPosition());
         }
     }
 
