@@ -8,14 +8,15 @@ public class Research{
 
     //String name, aggressionCountry, aggressionIdeology;
     int[] unitType;
-    String name;
+    String name, text;
     boolean done;
     int cost, remaining, resource;
     boolean available;
     ResearchTypes type;
-    float attack, def, turn;
+    float attack, def;
+    int turn;
 
-    public Research(String name, ResearchTypes type, int cost, float attack, float def, float turn, int resource,int[] unitType){
+    public Research(String name, ResearchTypes type, int cost, float attack, float def, int turn, int resource,int[] unitType){
         this.unitType = unitType;
         this.name = name;
         this.type = type;
@@ -28,11 +29,9 @@ public class Research{
         done = false;
     }
 
-   /* public void setAggressionCountry(String aggressionCountry, float[] atck, float[] def) {
-        this.aggressionCountry = aggressionCountry;
-        aggressionAttack = atck;
-        aggressionDefense = def;
-    }*/
+    public void setText(String text){
+        this.text = text;
+    }
 
     public String getName() {
         return name;
@@ -46,6 +45,10 @@ public class Research{
             remaining = cost;
             return true;
         }
+    }
+
+    public String print(){
+        return name + "\n" + text;
     }
 
     public boolean isDone() {
@@ -71,6 +74,7 @@ public class Research{
     public void researchDone(Player player){
         researchBuff(player);
         System.out.println("research: " + name + " is done");
+        this.available = false;
     }
 
 
@@ -99,7 +103,7 @@ public class Research{
         return def;
     }
 
-    public float getResearchTurnAmmount() {
+    public int getResearchTurnAmmount() {
         return turn;
     }
 

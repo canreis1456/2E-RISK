@@ -15,15 +15,21 @@ public class ResearchTree {
     Node head, current;
     int remaining, turnCost;
     boolean flag;
+    String text;
 
     public ResearchTree(){
         head = new Node();
         head.next = new Node(new Research("TroopResearch1",new TroopResearch(),1,1,0,0,0,new int[]{0,1,2,3}));
+        head.next.res.setText("All units will have +1 attack");
         head.next.res.setAvailable(true);
         head.next.next1 = new Node(new Research("TroopResearch2",new TroopResearch(),3,2,-1,0,0,new int[]{1,2}));
+        head.next.next1.res.setText("Infantries and Tanks will have +2 attack but -1 defense");
         head.next.next = new Node(new Research("ResearchResearch1",new ResearchTurnResearch(),2,0,0,1,0,null));
+        head.next.next.res.setText("Every research will cost 1 turn less");
         head.next.next2 = new Node(new Research("ResourceResearch1",new ResourceResearch(),4,0,0,0,1,null));
+        head.next.next2.res.setText("Resources increase");
         flag = false;
+        text = "";
     }
 
     public Node getHead() {
@@ -80,7 +86,7 @@ public class ResearchTree {
             current.res.researchDone(player);
             player.setResearching(false);
             System.out.println("ıgıgı");
-//            if(current.next1 != null)
+            if(current.next1 != null)
                 current.next1.res.setAvailable(true);
             if(current.next != null)
                 current.next.res.setAvailable(true);
@@ -89,37 +95,68 @@ public class ResearchTree {
         }
     }
 
-    public void startResearch(String name){
+
+
+    public String printResearch(String name){
+        printResearch(name, head);
+        return text;
+    }
+
+    public void printResearch(String name, Node head){
+        if (head.next1 != null) {
+            if (head.next1.res.getName().equals(name))
+                text = head.next1.res.print();
+            else
+                printResearch(name, head.next1);
+        }if (head.next != null) {
+            if (head.next.res.getName().equals(name))
+                text = head.next.res.print();
+            else
+                printResearch(name, head.next);
+        }if (head.next2 != null) {
+            if (head.next2.res.getName().equals(name))
+                text = head.next2.res.print();
+            else
+                printResearch(name, head.next2);
+        }
+    }
+
+    public void startResearch(String name, Player player){
+        startResearch(head, name, player);
+    }
+
+    public void startResearch(Node head, String name, Player player){
+        System.out.println("head");
         if (head.next1 != null) {
              System.out.println("next1 : " + head.next1.res.getName() + " " + name);
             if (head.next1.res.getName().equals(name)) {
                   System.out.println(head.next1.res.getName());
                 current = head.next1;
-                turnCost = current.res.getCost();
+                turnCost = current.res.getCost() - player.getResearchBuff();
                 remaining = turnCost;
             }
             else {
                  System.out.println("asdasdasd");
-                isAvailable(head.next1, name);
+                startResearch(head.next1, name, player);
             }
         }if (head.next != null) {
              System.out.println("next2: " + head.next.res.getName());
             if (head.next.res.getName().equals(name)) {
                      System.out.println("asd " + head.next.res.getName());
                 current = head.next;
-                turnCost = current.res.getCost();
+                turnCost = current.res.getCost() - player.getResearchBuff();
                 remaining = turnCost;
                 System.out.println("rema: " + remaining);
             } else
-                isAvailable(head.next, name);
+                startResearch(head.next, name, player);
         }if (head.next2 != null) {
                System.out.println("next3: "+head.next2.res.getName());
             if (head.next2.res.getName().equals(name)){
                 current = head.next2;
-                turnCost = current.res.getCost();
+                turnCost = current.res.getCost() - player.getResearchBuff();
                 remaining = turnCost;
             }else
-                isAvailable(head.next2, name);
+                startResearch(head.next2, name, player);
         }
     }
 }

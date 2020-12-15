@@ -6,6 +6,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.control.Button;
 
@@ -25,6 +27,9 @@ public class Researches {
     @FXML
     Button start;
 
+    @FXML
+    TextArea researchScreen;
+
     public Researches() {
         stag = new Stage();
         start = new Button("Start Research");
@@ -43,7 +48,7 @@ public class Researches {
         ScrollPane root = (ScrollPane) loader.load();
         Researches control = loader.<Researches>getController();
         control.setGamePlay(play);
-        Scene scene = new Scene(root, 600, 600);
+        Scene scene = new Scene(root, 600, 450);
         stag.setTitle("RISE");
         stag.setScene(scene);
         stag.show();
@@ -60,7 +65,7 @@ public class Researches {
             id += full.charAt(i);
         }
         boolean flag = play.players[play.getTurnIndex()].getTree().isAvailable(id);
-        System.out.println("flag: " + flag);
+            researchScreen.setText(play.players[play.getTurnIndex()].getTree().printResearch(id));
         if(flag){
             System.out.println("yyyyy");
             start.setDisable(false);
