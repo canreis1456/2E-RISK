@@ -35,7 +35,7 @@ class ResearchTurnResearch implements ResearchTypes{
 
 
     public void researchBuff( Research res, Player player) {
-        ;
+        player.setResearchBuff(player.getResearchBuff() + res.getResearchTurnAmmount());
     }
 }
 

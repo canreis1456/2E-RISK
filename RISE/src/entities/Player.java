@@ -14,7 +14,7 @@ public class Player {
     private ResearchTree tree;
     private int resourceBuff;
     private General selectedGeneral;
-    private int troopNumber, turnCount;
+    private int troopNumber, turnCount, researchBuff;
     private boolean researching;
 
     public Player(String countr, String leade, String name){
@@ -22,6 +22,7 @@ public class Player {
         leader = leade;
         this.name = name;
         turnCount = 0;
+        researchBuff = 0;
         if(countr.equals("German Reich")) {
             country = new Country(new GermanyInitializer(), leader);
             country.initializeTroops(troops);
@@ -77,10 +78,17 @@ public class Player {
         return leader;
     }
 
+    public int getResearchBuff() {
+        return researchBuff;
+    }
+
+    public void setResearchBuff(int researchBuff) {
+        this.researchBuff = researchBuff;
+    }
+
     public void turnCounter() {
         turnCount++;
         if (tree != null && researching) {
-            System.out.println("boş deği");
             tree.turnCounter(this);
             for (ArrayList<Troop> a:troops
             ) {
@@ -95,11 +103,9 @@ public class Player {
 
     public void startResearch(String name){
 
-        tree.startResearch(name);
+
+        tree.startResearch(name, this);
         researching = true;
-        /*res = new Research("Tr", new TroopResearch(),3, 0, 2, 0,0 , new int[]{0,1,2,3});
-        res.setAvailable(true);
-        res.startResearch();*/
     }
 
     public void setResearching(boolean researching) {
