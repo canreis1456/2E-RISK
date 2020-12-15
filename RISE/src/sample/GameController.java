@@ -1,6 +1,7 @@
 package sample;
 
 import UI.*;
+import entities.Land;
 import entities.Player;
 import javafx.stage.Stage;
 
@@ -29,6 +30,7 @@ public class GameController extends Application{
 
     MenuController men;
     Player[] players = new Player[6];
+    Land[] lands = new Land[42];
     ArrayList<String> selectedCountries = new ArrayList<>();
     @Override
     public void start(Stage stage) throws FileNotFoundException {
@@ -44,6 +46,10 @@ public class GameController extends Application{
         players= new Player[playerCount];
     }
 
+    public void initBoard(){
+        //BoardBuilder.
+    }
+
     public void initPlayer(String country, String leader, String playerName, int playerIndex){
 
         players[playerIndex] = new Player(country, leader, playerName);
@@ -57,6 +63,8 @@ public class GameController extends Application{
         player2.print();
         System.out.println(player2.attackingTo(players[playerIndex], 1));*/
     }
+
+    //public
 
     public void gameplay(Stage stag) throws FileNotFoundException {
         //stag.setFullScreen(true);

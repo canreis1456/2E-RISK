@@ -1,61 +1,69 @@
 package entities;
 
-import entities.Countries.*;
-import entities.Troop.Troop;
+
+import entities.Troops.Troop;
 
 import java.util.ArrayList;
 
 public class Player {
-    String countryName, leader, name;
-    Country country;
-    ArrayList<ArrayList<Troop>> troops = new ArrayList<>();
-//    int attackingland;
-    General selectedGeneral;
-    int troopNumber;
+    private String countryName, leader, name;
+    private Country country;
+    private ArrayList<ArrayList<Troop>> troops = new ArrayList<>();
+    private Research res;
+    private ResearchTree.Node current;
+    private ResearchTree tree;
+    private int resourceBuff;
+    private General selectedGeneral;
+    private int troopNumber, turnCount, researchBuff;
+    private boolean researching;
 
     public Player(String countr, String leade, String name){
         countryName = countr;
         leader = leade;
         this.name = name;
+        turnCount = 0;
+        researchBuff = 0;
         if(countr.equals("German Reich")) {
-            country = new Germany(leader);
+            country = new Country(new GermanyInitializer(), leader);
             country.initializeTroops(troops);
-            troopNumber = country.getTroopNumber();
             setTroopTypePoints();
         } else if(countr.equals("Soviet Union")){
-            country = new SovietUnion(leader);
+            country = new Country(new SovietInitializer(), leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
         } else if(countr.equals("France")){
-            country = new France(leader);
+            country = new Country(new FranceInitializer(), leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
         } else if(countr.equals("Italy")){
-            country = new Italy(leader);
+            country = new Country(new ItalyInitializer(), leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
         } else if(countr.equals("Japan")){
-            country = new Japan(leader);
+            country = new Country(new JapanInitializer(), leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
         } else if(countr.equals("United Kingdom")){
-            country = new UnitedKingdom(leader);
+            country = new Country(new UKInitializer(), leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
         } else if(countr.equals("China")) {
-            country = new China(leader);
+            country = new Country(new ChinaInitializer(), leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
         } else if(countr.equals("Turkey")){
-            country = new Turkey(leader);
+            country = new Country(new TurkeyInitializer(), leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
         }
         else if (countr.equals("USA")){
-            country = new UnitedStatesofAmerica(leader);
+            country = new Country(new USAInitializer(), leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
         }
+        tree = new ResearchTree();
+        current = tree.getHead();
+        researching = false;
     }
 
     public String getCountry() {
@@ -68,6 +76,44 @@ public class Player {
 
     public String getLeader() {
         return leader;
+    }
+
+    public int getResearchBuff() {
+        return researchBuff;
+    }
+
+    public void setResearchBuff(int researchBuff) {
+        this.researchBuff = researchBuff;
+    }
+
+    public void turnCounter() {
+        turnCount++;
+        if (tree != null && researching) {
+            tree.turnCounter(this);
+            for (ArrayList<Troop> a:troops
+            ) {
+                System.out.println(a.get(0).getType() +" \n atck: " + a.get(0).getAttack() + " def: "+ a.get(0).getDefense());
+            }
+        }
+    }
+
+    public ArrayList<ArrayList<Troop>> getTroops() {
+        return troops;
+    }
+
+    public void startResearch(String name){
+
+
+        tree.startResearch(name, this);
+        researching = true;
+    }
+
+    public void setResearching(boolean researching) {
+        this.researching = researching;
+    }
+
+    public ResearchTree getTree() {
+        return tree;
     }
 
     public float getAttackPoints(){
@@ -91,6 +137,14 @@ public class Player {
                 System.out.println(troops.get(j).get(i).getType() + ":   " + troops.get(j).get(i).getAttack());
             }
         }
+    }
+
+    public void setResourceBuff(int resourceBuff) {
+        this.resourceBuff = resourceBuff;
+    }
+
+    public int getResourceBuff() {
+        return resourceBuff;
     }
 
     public float attackPointsAt(int coordinates){
