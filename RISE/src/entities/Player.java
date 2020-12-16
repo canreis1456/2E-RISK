@@ -68,6 +68,10 @@ public class Player {
         researching = false;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public String getCountry() {
         return countryName;
     }

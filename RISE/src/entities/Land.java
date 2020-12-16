@@ -14,12 +14,14 @@ public class Land {
     float defensePoints;
     boolean ownedByPlayer;
     String owner;
-    int[] troopcounts;
+    int[] troopcounts, borders;
+    Player own;
     ArrayList<ArrayList<Troop>> troop;
 
-    public Land(int landNo, String owner){
+    public Land(int landNo, String owner, int[] borders){
         this.landNo = landNo;
         this.owner = owner;
+        this.borders = borders;
         troopcounts = new int[4];
         defensePoints = 30;
         ownedByPlayer = false;
@@ -48,6 +50,18 @@ public class Land {
     public float getDefensePoints() {
         return defensePoints;
 
+    }
+
+    public boolean hasBorder(int landNo){
+        for (int i = 0; i < borders.length; i++){
+            if(borders[i] == landNo)
+                return true;
+        }
+        return false;
+    }
+
+    public void isAttackable() {
+        this.own = own;
     }
 
     public void setOwnedByPlayer(boolean ownedByPlayer) {

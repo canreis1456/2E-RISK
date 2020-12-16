@@ -10,27 +10,8 @@ public class Lands {
     public Lands(GameController control) {
         this.control = control;
         lands = new Land[42];
-        lands[0] = new Land(0, "Empty");
-        for (int i = 1; i < 42; i++) {
-            if (i < 5)
-                lands[i] = new Land(i, "USA");
-            else if (i < 10)
-                lands[i] = new Land(i, "United Kingdom");
-            else if (i < 14)
-                lands[i] = new Land(i, "German Reich");
-            else if (i < 19)
-                lands[i] = new Land(i, "Soviet Union");
-            else if (i < 24)
-                lands[i] = new Land(i, "France");
-            else if (i < 28)
-                lands[i] = new Land(i, "Italy");
-            else if (i < 33)
-                lands[i] = new Land(i, "Turkey");
-            else if (i < 38)
-                lands[i] = new Land(i, "China");
-            else
-                lands[i] = new Land(i, "Japan");
-        }
+        lands[0] = new Land(0, "Empty", null);
+        lands[1] = new Land(1, "USA", new int[]{2,3,37});
 
 
     }
