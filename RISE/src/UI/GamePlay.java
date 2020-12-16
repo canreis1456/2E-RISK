@@ -66,7 +66,9 @@ public class GamePlay {
 
         //right
         VBox playerInfo = new VBox(10);
+        playerInfo.setMaxWidth(100);
         Text info = new Text();
+        info.setWrappingWidth(200);
 
         Button attack = new Button("Attack!!");
         attack.setOnAction(e -> {
