@@ -125,4 +125,8 @@ public class GameController extends Application{
         launch(args);
     }
 
+    public void tradeCard(){
+
+    }
+
 }

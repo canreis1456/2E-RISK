@@ -9,12 +9,13 @@ public class Player {
     private String countryName, leader, name;
     private Country country;
     private ArrayList<ArrayList<Troop>> troops = new ArrayList<>();
+    private ArrayList<Card> cards = new ArrayList<>();
     private Research res;
     private ResearchTree.Node current;
     private ResearchTree tree;
     private int resourceBuff;
     private General selectedGeneral;
-    private int troopNumber, turnCount, researchBuff;
+    private int troopNumber, turnCount, researchBuff, setsTraded;
     private boolean researching;
 
     public Player(String countr, String leade, String name){
@@ -23,6 +24,7 @@ public class Player {
         this.name = name;
         turnCount = 0;
         researchBuff = 0;
+        setsTraded = 0;
         if(countr.equals("German Reich")) {
             country = new Country(new GermanyInitializer(), leader);
             country.initializeTroops(troops);
@@ -147,9 +149,9 @@ public class Player {
         return resourceBuff;
     }
 
-    public float attackPointsAt(int coordinates){
-        float attack = 0;
-        for (int j = 0; j < 4; j++) {
+        float attack = 0;    public float attackPointsAt(int coordinates){
+
+            for (int j = 0; j < 4; j++) {
             for (int i = 0; i < troops.get(j).size(); i++) {
                 if (troops.get(j).get(i).getPosition() == coordinates)
                     attack += troops.get(j).get(i).getAttack();
@@ -253,4 +255,17 @@ public class Player {
         return  result;
     }
 
+    //NOT CORRECTLY IMPLEMENTED!!!!!
+    public boolean tradeCards(){
+            Card[] cardsTemp = new Card[3];
+            for(int i = 0; i < cards.size(); i++){
+                cardsTemp[0] = cards.get(i);
+                for(int j = i + 1; j < cards.size(); j++){
+                    if (cards.get(j).equalsTroop(cardsTemp[0])){
+                        return true;
+                    }
+                }
+            }
+            return false;
+    }
 }
