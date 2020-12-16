@@ -3,6 +3,7 @@ import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.EventListener;
 
 import entities.Player;
@@ -57,7 +58,7 @@ public class MainMenu implements EventHandler {
 
             try {
                 upperMenu.gameplay();
-            } catch (FileNotFoundException fileNotFoundException) {
+            } catch (IOException fileNotFoundException) {
                 fileNotFoundException.printStackTrace();
             }
         });

@@ -12,6 +12,7 @@ import UI.MainMenu;
 import javafx.application.Application;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javafx.fxml.FXMLLoader;
@@ -105,7 +106,7 @@ public class GameController extends Application{
             System.out.println("not the owner");
     }
 
-    public void gameplay(Stage stag) throws FileNotFoundException {
+    public void gameplay(Stage stag) throws IOException {
         //stag.setFullScreen(true);
         GamePlay gmp = new GamePlay(stag, players.length, players, this);
         gmp.show();
