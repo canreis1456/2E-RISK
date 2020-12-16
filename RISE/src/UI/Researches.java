@@ -44,6 +44,8 @@ public class Researches {
 
     public void show (GamePlay play) throws IOException {
 
+
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/UI/Researches.fxml"));
         ScrollPane root = (ScrollPane) loader.load();
         Researches control = loader.<Researches>getController();

@@ -50,6 +50,7 @@ public class MainMenu implements EventHandler {
         Button deneme = new Button("sona");
         deneme.setOnAction(e -> {
             upperMenu.setPlayerCount(3);
+            upperMenu.initBoard();
             upperMenu.countrySelected("German Reich", "Adolf Hitler", "ben");
             upperMenu.countrySelected("Soviet Union", "Joseph Stalin", "sen");
             upperMenu.countrySelected("Italy", "Benito Mussolini", "biz");

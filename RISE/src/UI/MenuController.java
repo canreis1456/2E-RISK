@@ -29,6 +29,7 @@ public class MenuController {
         cre.show();
     }
     public void newGame() throws FileNotFoundException {
+        cntrl.initBoard();
         PlayersMenu playerMenu = new PlayersMenu(stag);
         playerMenu.askForPlayerCount(this);
     }
@@ -48,6 +49,10 @@ public class MenuController {
 
     public void gameplay() throws FileNotFoundException {
         cntrl.gameplay(stag);
+    }
+
+    public void initBoard(){
+        cntrl.initBoard();
     }
 
     public String getCountry(){
