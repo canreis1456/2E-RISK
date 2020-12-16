@@ -15,7 +15,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import sample.BoardBuilder;
+//import sample.BoardBuilder;
 import sample.GameController;
 
 import javax.swing.*;
@@ -42,7 +42,7 @@ public class GamePlay {
         turn = 0;
     }
 
-    public void show() throws FileNotFoundException {
+    public void show() throws IOException {
 
         File currentDirFile = new File("");
         currentDir = currentDirFile.getAbsolutePath();
@@ -51,7 +51,8 @@ public class GamePlay {
         /*Land landTry = new Land(1, players[0].getCountryObject(), new Image(new FileInputStream(currentDir + "\\src\\images\\countries\\1 (1).png")));
         Land landTry2 = new Land(2, players[0].getCountryObject(), new Image(new FileInputStream(currentDir + "\\src\\images\\countries\\1 (2).png")));
         */Text landInfo = new Text();
-        Pane map = new Pane();
+        Board board = new Board();
+        Pane map = board.show(this);
         /*landTry.setPickOnBounds(false); // allows click on transparent areas
         landTry2.setPickOnBounds(false);
         landTry.maxHeight(100);
@@ -110,7 +111,7 @@ public class GamePlay {
         pane.setCenter(map);
         map.setStyle("-fx-background-color: #0EA0F0");
         pane.setRight(playerInfo);
-        Scene scene = new Scene(pane, 1440, 720);
+        Scene scene = new Scene(pane, 1920, 1000);
         stag.setTitle("RISE");
         stag.setScene(scene);
         stag.show();

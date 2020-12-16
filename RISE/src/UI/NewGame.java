@@ -24,6 +24,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class NewGame implements EventHandler {
@@ -363,7 +364,7 @@ public class NewGame implements EventHandler {
                 upperMenu.countrySelected(selection, Leaders.getValue(), playerName.getText());
                 try {
                     upperMenu.gameplay();
-                } catch (FileNotFoundException e) {
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
