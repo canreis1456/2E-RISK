@@ -16,6 +16,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import sample.BoardBuilder;
+import sample.GameController;
 
 import javax.swing.*;
 import java.io.File;
@@ -31,8 +32,10 @@ public class GamePlay {
     Player[] players;
     int turn, turnIndex = 0;
     String currentDir;
+    GameController control;
 
-    public GamePlay(Stage stage, int playerCount, Player[] players){
+    public GamePlay(Stage stage, int playerCount, Player[] players, GameController control){
+        this.control = control;
         stag = stage;
         this.playerCount = playerCount;
         this.players = players;
@@ -65,6 +68,11 @@ public class GamePlay {
         VBox playerInfo = new VBox(10);
         Text info = new Text();
 
+        Button attack = new Button("Attack!!");
+        attack.setOnAction(e -> {
+            control.attacking(players[turnIndex], 12);
+        });
+
         Button research = new Button("Research");
         research.setOnAction(e -> {
             Researches researches = new Researches();
@@ -76,7 +84,7 @@ public class GamePlay {
         });
 
         Button turnEnd = new Button("Turn");
-        playerInfo.getChildren().addAll(info, turnEnd, landInfo, research);
+        playerInfo.getChildren().addAll(info, turnEnd, landInfo, research, attack);
         playerInfo.setAlignment(Pos.CENTER);
         playerInfo.setSpacing(10);
         info.setText(players[turnIndex].toString());

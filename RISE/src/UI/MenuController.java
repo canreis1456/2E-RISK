@@ -51,6 +51,10 @@ public class MenuController {
         cntrl.gameplay(stag);
     }
 
+    public void initBoard(){
+        cntrl.initBoard();
+    }
+
     public String getCountry(){
         return selectedCountry;
     }

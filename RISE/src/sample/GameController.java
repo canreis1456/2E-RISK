@@ -107,12 +107,17 @@ public class GameController extends Application{
 
     public void gameplay(Stage stag) throws FileNotFoundException {
         //stag.setFullScreen(true);
-        GamePlay gmp = new GamePlay(stag, players.length, players);
+        GamePlay gmp = new GamePlay(stag, players.length, players, this);
         gmp.show();
     }
 
-    public boolean attacking(Player player, Player enemy, int landNo){
-        player.attackingTo(enemy, landNo);
+    public boolean attacking(Player player, int landNo){
+        if(lands.isOwnedByPlayer(landNo)) {
+            System.out.println("koıjkıj: " + lands.getLand(landNo).getOwnerName());
+            player.attackingTo(getPlayer(lands.getLand(landNo).getOwnerName()), landNo);
+
+        }else
+            player.attackingToBot(landNo, lands.getLand(landNo).getOwnerName());
         return true;
     }
 

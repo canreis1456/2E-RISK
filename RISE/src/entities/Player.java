@@ -156,6 +156,7 @@ public class Player {
             }
         }
         for(int i = 0; i < 4; i++) {
+            if (selectedGeneral != null)
             attack += selectedGeneral.attackEffectOnCertainUnit(troops, i, coordinates);
         }
         return attack;
@@ -182,18 +183,32 @@ public class Player {
 
     public float generalAggressionDefenseEffect(String enemy, int attackingland){
        // System.out.println("enemyName: " + enemy + " attackingland:  " + attackingland+ "  selectedGeneral: "+ selectedGeneral.getName());
+        if (selectedGeneral != null)
         return selectedGeneral.againstCountryDefense(enemy,troops, attackingland);
+        else
+            return 0;
     }
 
     public float generalAggressionAttackEffect(String enemy, int attackingland){
        // System.out.println("enemyName: " + enemy + " attackingland:  " + attackingland+ "  selectedGeneral: "+ selectedGeneral.getName());
+        if (selectedGeneral != null)
         return selectedGeneral.againstCountryAttack(enemy,troops, attackingland);
+        else
+            return 0;
     }
 
     public boolean attackingTo(Player enemy, int attackingland) {
         float def = enemy.defensePointsAt(attackingland) + enemy.generalAggressionDefenseEffect(this.getCountry(), attackingland);
         System.out.println("defens:  " + def);
         float attack = this.attackPointsAt(attackingland) + this.generalAggressionAttackEffect(enemy.getCountry(), attackingland);
+        System.out.println("attack : " + attack);
+        return attack > def;
+    }
+
+    public boolean attackingToBot(int attackingLand, String enemy){
+        float def = 30;
+        System.out.println("defens:  " + def);
+        float attack = this.attackPointsAt(attackingLand) + this.generalAggressionAttackEffect(enemy, attackingLand);
         System.out.println("attack : " + attack);
         return attack > def;
     }
