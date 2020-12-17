@@ -27,7 +27,11 @@ public class MenuController {
 
     public void credits(){
         Credits cre = new Credits(stag, this);
-        cre.show();
+        try {
+            cre.show();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
     public void newGame() throws FileNotFoundException {
         cntrl.initBoard();

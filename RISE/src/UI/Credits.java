@@ -47,8 +47,12 @@ public class Credits implements EventHandler{
     String currentDir = currentDirFile.getAbsolutePath();
 
     public void imageLoad() throws FileNotFoundException {
-        credits.add(new Image(new FileInputStream(currentDir + "\\src\\images\\flags\\330px-German_Reich.png")));
-        credits.add(new Image(new FileInputStream(currentDir + "\\src\\images\\parsomens\\parsomenItalyBefore.png")));
+        credits.add(new Image(new FileInputStream(currentDir + "\\src\\images\\Credits\\DevelopmentTeam.png")));
+        credits.add(new Image(new FileInputStream(currentDir + "\\src\\images\\Credits\\DesignTeam.png")));
+        credits.add(new Image(new FileInputStream(currentDir + "\\src\\images\\Credits\\Directors.png")));
+        credits.add(new Image(new FileInputStream(currentDir + "\\src\\images\\Credits\\MarketingTeam.png")));
+        credits.add(new Image(new FileInputStream(currentDir + "\\src\\images\\Credits\\CustomerSup.png")));
+        credits.add(new Image(new FileInputStream(currentDir + "\\src\\images\\Credits\\specialThanks.png")));
 
     }
     public void show() throws FileNotFoundException{
@@ -56,32 +60,28 @@ public class Credits implements EventHandler{
         imageLoad();
 
         HBox layout = new HBox();
-        BorderPane bPane1 = new BorderPane();
-        bPane1.setStyle("-fx-background-color: #701515;");
+        BorderPane bPane = new BorderPane();
+        bPane.setStyle("-fx-background-color: #701515;");
         //bPane1.setCenter(Pos);
         VBox pane = new VBox();
-        Timer timer = new Timer();
 
-        Image im3 = new Image(new FileInputStream(currentDir + "\\src\\images\\parsomens\\parsomenItalyBefore.png"));
+        //Image im3 = new Image(new FileInputStream(currentDir + "\\src\\images\\parsomens\\parsomenItalyBefore.png"));
 
         ImageView iv1 = new ImageView(credits.get(0));
-        ImageView iv2 = new ImageView( im3 );
-        ImageView[] ivarr = {iv1, iv2};
+        ImageView iv2 = new ImageView(credits.get(1));
+        ImageView iv3 = new ImageView(credits.get(2));
+        ImageView iv4 = new ImageView(credits.get(3));
+        ImageView iv5 = new ImageView(credits.get(4));
+        ImageView iv6 = new ImageView(credits.get(5));
+        ImageView[] ivarr = {iv1, iv2, iv3, iv4, iv5, iv6};
 
         for (ImageView i:
                 ivarr) {
-            i.setFitHeight(350);
-            i.setFitWidth(500);
+            i.setFitHeight(770);
+            i.setFitWidth(1440);
         }
 
-
         pane.getChildren().addAll(iv1);
-        //try {
-        //   Thread.sleep(5000);
-        //} catch (InterruptedException e) {
-        //    e.printStackTrace();
-        //}
-        pane.getChildren().addAll(iv2);
 
 
         Button back = new Button("Back");
@@ -89,24 +89,10 @@ public class Credits implements EventHandler{
         back.setLayoutY(600);
         back.setOnAction(this::handle);
         pane.getChildren().addAll(back);
-        bPane1.setCenter(pane);
-        Scene scene = new Scene(bPane1, 1440, 800);
+        Scene scene = new Scene(bPane, 1440, 800);
         stag.setTitle("RISE");
         stag.setScene(scene);
         stag.show();
-        /*
-        String credits = "Devs:  Can Kılıç \n \t   Ege Çetin \n \t   Emre Erciyas \n \t   Furkan Demir \n \t   Muzaffer Köksal";
-        Text t = new Text(credits);
-        t.setFont(Font.font("Times New Roman", 36));
-        t.setY(100);
-
-        Development Team
-        Design Team
-        Marketing Team
-        Directors
-        Customer Support Team
-        special thanks
-         */
     }
 
 
