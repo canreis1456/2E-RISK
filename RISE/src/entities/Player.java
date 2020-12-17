@@ -1,61 +1,71 @@
 package entities;
 
-import entities.Countries.*;
-import entities.Troop.Troop;
+
+import entities.Troops.Troop;
 
 import java.util.ArrayList;
 
 public class Player {
-    String countryName, leader, name;
-    Country country;
-    ArrayList<ArrayList<Troop>> troops = new ArrayList<>();
-//    int attackingland;
-    General selectedGeneral;
-    int troopNumber;
+    private String countryName, leader, name;
+    private Country country;
+    private ArrayList<ArrayList<Troop>> troops = new ArrayList<>();
+    private ArrayList<Card> cards = new ArrayList<>();
+    private Research res;
+    private ResearchTree.Node current;
+    private ResearchTree tree;
+    private int resourceBuff;
+    private General selectedGeneral;
+    private int troopNumber, turnCount, researchBuff, setsTraded;
+    private boolean researching;
 
     public Player(String countr, String leade, String name){
         countryName = countr;
         leader = leade;
         this.name = name;
+        turnCount = 0;
+        researchBuff = 0;
+        setsTraded = 0;
         if(countr.equals("German Reich")) {
-            country = new Germany(leader);
+            country = new Country(new GermanyInitializer(), leader);
             country.initializeTroops(troops);
-            troopNumber = country.getTroopNumber();
             setTroopTypePoints();
         } else if(countr.equals("Soviet Union")){
-            country = new SovietUnion(leader);
+            country = new Country(new SovietInitializer(), leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
         } else if(countr.equals("France")){
-            country = new France(leader);
+            country = new Country(new FranceInitializer(), leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
         } else if(countr.equals("Italy")){
-            country = new Italy(leader);
+            country = new Country(new ItalyInitializer(), leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
         } else if(countr.equals("Japan")){
-            country = new Japan(leader);
+            country = new Country(new JapanInitializer(), leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
         } else if(countr.equals("United Kingdom")){
-            country = new UnitedKingdom(leader);
+            country = new Country(new UKInitializer(), leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
         } else if(countr.equals("China")) {
-            country = new China(leader);
+            country = new Country(new ChinaInitializer(), leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
         } else if(countr.equals("Turkey")){
-            country = new Turkey(leader);
+            country = new Country(new TurkeyInitializer(), leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
         }
         else if (countr.equals("USA")){
-            country = new UnitedStatesofAmerica(leader);
+            country = new Country(new USAInitializer(), leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
         }
+        tree = new ResearchTree();
+        current = tree.getHead();
+        researching = false;
     }
 
     public String getCountry() {
@@ -68,6 +78,44 @@ public class Player {
 
     public String getLeader() {
         return leader;
+    }
+
+    public int getResearchBuff() {
+        return researchBuff;
+    }
+
+    public void setResearchBuff(int researchBuff) {
+        this.researchBuff = researchBuff;
+    }
+
+    public void turnCounter() {
+        turnCount++;
+        if (tree != null && researching) {
+            tree.turnCounter(this);
+            for (ArrayList<Troop> a:troops
+            ) {
+                System.out.println(a.get(0).getType() +" \n atck: " + a.get(0).getAttack() + " def: "+ a.get(0).getDefense());
+            }
+        }
+    }
+
+    public ArrayList<ArrayList<Troop>> getTroops() {
+        return troops;
+    }
+
+    public void startResearch(String name){
+
+
+        tree.startResearch(name, this);
+        researching = true;
+    }
+
+    public void setResearching(boolean researching) {
+        this.researching = researching;
+    }
+
+    public ResearchTree getTree() {
+        return tree;
     }
 
     public float getAttackPoints(){
@@ -93,15 +141,24 @@ public class Player {
         }
     }
 
-    public float attackPointsAt(int coordinates){
-        float attack = 0;
-        for (int j = 0; j < 4; j++) {
+    public void setResourceBuff(int resourceBuff) {
+        this.resourceBuff = resourceBuff;
+    }
+
+    public int getResourceBuff() {
+        return resourceBuff;
+    }
+
+        float attack = 0;    public float attackPointsAt(int coordinates){
+
+            for (int j = 0; j < 4; j++) {
             for (int i = 0; i < troops.get(j).size(); i++) {
                 if (troops.get(j).get(i).getPosition() == coordinates)
                     attack += troops.get(j).get(i).getAttack();
             }
         }
         for(int i = 0; i < 4; i++) {
+            if (selectedGeneral != null)
             attack += selectedGeneral.attackEffectOnCertainUnit(troops, i, coordinates);
         }
         return attack;
@@ -115,8 +172,10 @@ public class Player {
                     def += troops.get(j).get(i).getDefense();
             }
         }
-        for(int i = 0; i < 4; i++)
-            def += selectedGeneral.defenseEffectOnCertainUnit(troops,i, coordinates);
+        for(int i = 0; i < 4; i++) {
+             if (selectedGeneral != null)
+                def += selectedGeneral.defenseEffectOnCertainUnit(troops, i, coordinates);
+        }
         return def;
     }
 
@@ -126,12 +185,18 @@ public class Player {
 
     public float generalAggressionDefenseEffect(String enemy, int attackingland){
        // System.out.println("enemyName: " + enemy + " attackingland:  " + attackingland+ "  selectedGeneral: "+ selectedGeneral.getName());
+        if (selectedGeneral != null)
         return selectedGeneral.againstCountryDefense(enemy,troops, attackingland);
+        else
+            return 0;
     }
 
     public float generalAggressionAttackEffect(String enemy, int attackingland){
        // System.out.println("enemyName: " + enemy + " attackingland:  " + attackingland+ "  selectedGeneral: "+ selectedGeneral.getName());
+        if (selectedGeneral != null)
         return selectedGeneral.againstCountryAttack(enemy,troops, attackingland);
+        else
+            return 0;
     }
 
     public boolean attackingTo(Player enemy, int attackingland) {
@@ -142,11 +207,44 @@ public class Player {
         return attack > def;
     }
 
+    public boolean attackingToBot(int attackingLand, String enemy){
+        float def = 30;
+        System.out.println("defens:  " + def);
+        float attack = this.attackPointsAt(attackingLand) + this.generalAggressionAttackEffect(enemy, attackingLand);
+        System.out.println("attack : " + attack);
+        return attack > def;
+    }
+
+    public void positionTroops(int unitType, int amount, int landNo){
+        int i = 0;
+        for (Troop a :troops.get(unitType)
+        ) {
+            if(i == amount)
+                break;
+
+            if(a.getPosition() == 0) {
+                a.setPosition(landNo);
+                i++;
+            }
+        }
+    }
+
+    public boolean isEnoughTroop(int unitType, int amount){
+        int ammnt = 0;
+        for (Troop a :troops.get(unitType)
+             ) {
+            if(a.getPosition() == 0)
+                ammnt++;
+        }
+
+        return ammnt > amount;
+    }
+
     public void print(){
         System.out.println(name + "\n"  +  countryName+ " : "+ country.getInUse().getName() + "\n" + troopNumber + "   " + country.getIdeology());
         for (int i = 0 ; i < 4 ; i++) {
             System.out.println(troops.get(i).get(0).getType());
-            System.out.println(troops.get(i).get(0).getAttack() + " " + troops.get(i).get(0).getDefense());
+            System.out.println(troops.get(i).get(0).getAttack() + " " + troops.get(i).get(0).getDefense() + "  " + troops.get(i).get(0).getPosition());
         }
     }
 
@@ -157,4 +255,17 @@ public class Player {
         return  result;
     }
 
+    //NOT CORRECTLY IMPLEMENTED!!!!!
+    public boolean tradeCards(){
+            Card[] cardsTemp = new Card[3];
+            for(int i = 0; i < cards.size(); i++){
+                cardsTemp[0] = cards.get(i);
+                for(int j = i + 1; j < cards.size(); j++){
+                    if (cards.get(j).equalsTroop(cardsTemp[0])){
+                        return true;
+                    }
+                }
+            }
+            return false;
+    }
 }

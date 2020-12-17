@@ -4,6 +4,7 @@ import javafx.stage.Stage;
 import sample.GameController;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class MenuController {
@@ -29,6 +30,7 @@ public class MenuController {
         cre.show();
     }
     public void newGame() throws FileNotFoundException {
+        cntrl.initBoard();
         PlayersMenu playerMenu = new PlayersMenu(stag);
         playerMenu.askForPlayerCount(this);
     }
@@ -46,8 +48,12 @@ public class MenuController {
         playerIndex++;
     }//
 
-    public void gameplay() throws FileNotFoundException {
+    public void gameplay() throws IOException {
         cntrl.gameplay(stag);
+    }
+
+    public void initBoard(){
+        cntrl.initBoard();
     }
 
     public String getCountry(){

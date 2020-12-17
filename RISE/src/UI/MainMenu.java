@@ -3,8 +3,10 @@ import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.EventListener;
 
+import entities.Player;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -46,6 +48,21 @@ public class MainMenu implements EventHandler {
         credits.getStyleClass().add("country-Buttons");
         credits.setOnAction(this::handle);
 
+        Button deneme = new Button("sona");
+        deneme.setOnAction(e -> {
+            upperMenu.setPlayerCount(3);
+            upperMenu.initBoard();
+            upperMenu.countrySelected("German Reich", "Adolf Hitler", "ben");
+            upperMenu.countrySelected("Soviet Union", "Joseph Stalin", "sen");
+            upperMenu.countrySelected("Italy", "Benito Mussolini", "biz");
+
+            try {
+                upperMenu.gameplay();
+            } catch (IOException fileNotFoundException) {
+                fileNotFoundException.printStackTrace();
+            }
+        });
+
         Button howtoPlay = new Button("How To Play");
         howtoPlay.setLayoutX(1100);
         howtoPlay.setLayoutY(610);
@@ -59,7 +76,7 @@ public class MainMenu implements EventHandler {
         imageView.setY(20);
         imageView.setFitHeight(750);
         imageView.setFitWidth(1000);
-        layout.getChildren().addAll(newG,loadG,credits,howtoPlay, imageView);
+        layout.getChildren().addAll(newG,loadG,credits,howtoPlay, imageView, deneme);
         Scene scene = new Scene(layout, 1440, 800);
         stag.setTitle("RISE");
         stag.setScene(scene);

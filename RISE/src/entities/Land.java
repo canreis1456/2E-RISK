@@ -1,31 +1,93 @@
 package entities;
 
-import entities.Countries.Country;
+import entities.Troops.Troop;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.shape.Polygon;
+
+import java.util.ArrayList;
 
 
-public class Land extends ImageView {
+public class Land {
 
+    String name;
     int landNo;
-    Country owner;
+    float defensePoints;
+    boolean ownedByPlayer;
+    String owner;
+    int[] troopcounts;
+    ArrayList<ArrayList<Troop>> troop;
 
-    public Land(int landNo, Country owner, Image img){
-        this.setImage(img);
+    public Land(int landNo, String owner){
         this.landNo = landNo;
         this.owner = owner;
-        this.setAccessibleText(owner.getName());
+        troopcounts = new int[4];
+        defensePoints = 30;
+        ownedByPlayer = false;
     }
 
-    public void setOwner(Country owner) {
-        this.owner = owner;
-    }
+ //   public void setOwner(Country owner) {
+  //      this.owner = owner;
+   // }
 
     @Override
     public String toString() {
         return "Land{" +
                 "landNo=" + landNo +
-                '}' +  "\n" + "owner: " + owner ;
+                '}' +  "\n" + "owner: " + owner + "\n Artillery: " + troopcounts[0] + "\n Infantry: " + troopcounts[1] +
+                "\n Tank: " + troopcounts[2] + "\n Nerds: " + troopcounts[3] + "\n is: " + ownedByPlayer + "\n defPoints: " + defensePoints;
+    }
+
+    public int[] getTroopcounts() {
+        return troopcounts;
+    }
+
+    public void setTroopcounts(int[] troopcounts) {
+        this.troopcounts = troopcounts;
+    }
+
+    public float getDefensePoints() {
+        return defensePoints;
+
+    }
+
+    public void setOwnedByPlayer(boolean ownedByPlayer) {
+        this.ownedByPlayer = ownedByPlayer;
+        defensePoints = 0;
+    }
+
+    public boolean isOwnedByPlayer() {
+        return ownedByPlayer;
+    }
+
+    public void setDefensePoints(Player player)
+    {
+        this.defensePoints = player.defensePointsAt(landNo);
+    }
+
+    public int getLandNo() {
+        return landNo;
+    }
+
+    /*public Country getOwner() {
+        return owner;
+    }*/
+
+    public int getArtilleryAmount(){
+        return troopcounts[0];
+    }
+
+    public int getInfantryAmount(){
+        return troopcounts[1];
+    }
+
+    public int getTankAmount(){
+        return troopcounts[2];
+    }
+    public int getNerdsAmount(){
+        return troopcounts[3];
+    }
+
+    public String getOwnerName(){
+        return owner;
     }
 }
