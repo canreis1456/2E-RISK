@@ -18,17 +18,18 @@ public class Land {
     Player own;
     ArrayList<ArrayList<Troop>> troop;
 
-    public Land(int landNo, String owner){
+    public Land(int landNo, String owner, int[] borders){
         this.landNo = landNo;
         this.owner = owner;
+        this.borders = borders;
         troopcounts = new int[4];
         defensePoints = 30;
         ownedByPlayer = false;
     }
 
- //   public void setOwner(Country owner) {
-  //      this.owner = owner;
-   // }
+    //   public void setOwner(Country owner) {
+    //      this.owner = owner;
+    // }
 
     @Override
     public String toString() {
