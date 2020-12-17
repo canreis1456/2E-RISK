@@ -1,34 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.LandInterface">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="353.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.LandInterface">
    <children>
-      <HBox alignment="BOTTOM_CENTER" layoutY="336.0" prefHeight="64.0" prefWidth="600.0" spacing="100.0">
-         <children>
-            <Button fx:id="relocate" mnemonicParsing="false" onAction="#relocated" text="Relocate" />
-            <Button mnemonicParsing="false" text="Button" />
-         </children>
-         <padding>
-            <Insets bottom="20.0" />
-         </padding>
-      </HBox>
       <TextField layoutX="316.0" layoutY="6.0" prefHeight="102.0" prefWidth="276.0" />
       <Text layoutX="311.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Artillery: " />
       <Text layoutX="311.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nerds: " />
       <Text layoutX="311.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tank: " />
       <Text layoutX="311.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Infantry: " />
       <Text layoutX="311.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Defense Points: " />
-      <Text fx:id="Artillery" layoutX="384.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-      <Text fx:id="Infantry" layoutX="384.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-      <Text fx:id="Nerds" layoutX="384.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-      <Text fx:id="Tank" layoutX="384.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-      <Text fx:id="DefensePoints" layoutX="431.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text fx:id="Artillery" layoutX="177.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text fx:id="Infantry" layoutX="177.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="22.13671875" />
+      <Text fx:id="Nerds" layoutX="177.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text fx:id="Tank" layoutX="177.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text fx:id="DefensePoints" layoutX="177.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
       <Text fx:id="isBot" layoutX="311.0" layoutY="307.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <TextField fx:id="Artil" layoutX="404.0" layoutY="130.0" />
+      <TextField fx:id="Infan" layoutX="404.0" layoutY="160.0" />
+      <TextField fx:id="TankA" layoutX="404.0" layoutY="190.0" />
+      <TextField fx:id="Nerd" layoutX="404.0" layoutY="220.0" />
+      <Text layoutX="404.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount to relocate" />
    </children>
 </Pane>
