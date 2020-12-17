@@ -114,24 +114,21 @@ public class LandInterface {
         control.setTexts(land);
         control.textFields(true);
 
-        relocate.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-                control.textFields(false);
-                apply.setDisable(false);
-                control.getAmounts(artil, inf, tnk, nrd);
-            }
-        });
+        relocate.setOnAction(this::handle);
 
         apply.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                board.getPlay().setInfoDisable(false);
-                System.out.println("a: " + artil + " i: " + inf + " t: " + tnk + " n: " + nrd);
-                try {
-                    board.getPlay().relocateMap(board.relocateMap());
-                } catch (IOException ioException) {
-                    ioException.printStackTrace();
+                if(artil > land.getArtilleryAmount() || inf > land.getInfantryAmount() || tnk > land.getTankAmount() || nrd > land.getNerdsAmount())
+                    System.out.println("insufficient a: " +  artil + " i : " + inf );
+                    else{
+                    board.getPlay().setInfoDisable(false);
+                    System.out.println("a: " + artil + " i: " + inf + " t: " + tnk + " n: " + nrd);
+                    try {
+                        board.getPlay().relocateMap(board.relocateMap());
+                    } catch (IOException ioException) {
+                        ioException.printStackTrace();
+                    }
                 }
             }
         });
@@ -145,15 +142,17 @@ public class LandInterface {
         this.artil = artil;
     }
 
-    public void getAmounts(int arti, int inf, int tnk, int nrd) {
+    public void getAmounts(LandInterface control) {
         final int[] artil = new int[4];
         Artil.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                 if (!newValue.matches("\\d{0,7}([\\.]\\d{0,4})?")) {
                     Artil.setText(newValue.replaceAll("[^\\d]", ""));
-                        artil[0] = parseInt(Artil.getText());
+                //    System.out.println(artil[0]);
                 }
+                artil[0] = parseInt(Artil.getText());
+                control.setInts(artil[0]);
             }
         });
         Infan.textProperty().addListener(new ChangeListener<String>() {
@@ -161,8 +160,10 @@ public class LandInterface {
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                 if (!newValue.matches("\\d*")) {
                     Infan.setText(newValue.replaceAll("[^\\d]", ""));
-                    artil[1] = parseInt(Infan.getText());
+
                 }
+                artil[1] = parseInt(Infan.getText());
+                control.setInf(artil[1]);
             }
         });
         TankA.textProperty().addListener(new ChangeListener<String>() {
@@ -172,6 +173,8 @@ public class LandInterface {
                     TankA.setText(newValue.replaceAll("[^\\d]", ""));
                 //    tnk = parseInt(TankA.getText());
                 }
+                artil[2] = parseInt(TankA.getText());
+                control.setTank(artil[2]);
             }
         });
         Nerd.textProperty().addListener(new ChangeListener<String>() {
@@ -181,12 +184,31 @@ public class LandInterface {
                     Nerd.setText(newValue.replaceAll("[^\\d]", ""));
                //     nrd = parseInt(Nerd.getText());
                 }
+                artil[3] = parseInt(Nerd.getText());
+                control.setNerd(artil[3]);
             }
         });
-        System.out.println(artil[0]);
-        arti = artil[0];
     }
     public void relocated() throws IOException {
 
+    }
+
+    public void setInf(int inf) {
+        this.inf = inf;
+    }
+
+    public void setNerd(int nrd) {
+        this.nrd  = nrd;
+    }
+
+    public void setTank(int tnk){
+        this.tnk = tnk;
+    }
+
+    public void handle(ActionEvent e) {
+        control.textFields(false);
+        apply.setDisable(false);
+        control.getAmounts(this);
+        System.out.println("asd" + this.artil);
     }
 }
