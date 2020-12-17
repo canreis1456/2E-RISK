@@ -30,7 +30,7 @@ public class LandInterface {
     LandInterface control;
     Pane root;
 
-    int artil, inf, tnk, nrd;
+    int artil, inf, tnk, nrd, landNofrom;
     Stage stag;
     Board board;
 
@@ -77,7 +77,7 @@ public class LandInterface {
         Tank.setText(land.getTankAmount() + " ");
         Nerds.setText(land.getNerdsAmount() + " ");
         DefensePoints.setText(land.getDefensePoints() + " ");
-        System.out.println(land.isOwnedByPlayer());
+        //System.out.println(land.isOwnedByPlayer());
         if (land.isOwnedByPlayer()) {
             isBot.setText(board.getPlay().getControl().getPlayer(land.getOwnerName()).getName());
         } else
@@ -108,13 +108,16 @@ public class LandInterface {
         biggerPane.setCenter(root);
         biggerPane.setBottom(bottom);
         bottom.setAlignment(Pos.CENTER);
-        relocate.setAlignment(Pos.BOTTOM_CENTER);
+        relocate.setAlignment(Pos.BOTTOM_LEFT);
         control = loader.<LandInterface>getController();
         control.setBoard(board);
         control.setTexts(land);
         control.textFields(true);
 
         relocate.setOnAction(this::handle);
+        System.out.println(land.getLandNo());
+        board.setLandNoFrom(land.getLandNo());
+
 
         apply.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -122,13 +125,17 @@ public class LandInterface {
                 if(artil > land.getArtilleryAmount() || inf > land.getInfantryAmount() || tnk > land.getTankAmount() || nrd > land.getNerdsAmount())
                     System.out.println("insufficient a: " +  artil + " i : " + inf );
                     else{
-                    board.getPlay().setInfoDisable(false);
-                    System.out.println("a: " + artil + " i: " + inf + " t: " + tnk + " n: " + nrd);
-                    try {
-                        board.getPlay().relocateMap(board.relocateMap());
-                    } catch (IOException ioException) {
-                        ioException.printStackTrace();
-                    }
+                        if(artil > 0 || inf > 0 || tnk > 0 || nrd > 0) {
+                            board.getPlay().setInfoDisable(false);
+                            System.out.println("a: " + artil + " i: " + inf + " t: " + tnk + " n: " + nrd);
+                            System.out.println(land.getLandNo());
+                            board.setRelocate(artil,inf ,tnk, nrd, land.getLandNo());
+                            try {
+                                board.getPlay().relocateMap(board.relocateMap());
+                            } catch (IOException ioException) {
+                                ioException.printStackTrace();
+                            }
+                        }
                 }
             }
         });

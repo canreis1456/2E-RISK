@@ -233,6 +233,18 @@ public class Player {
         }
     }
 
+    public void relocateTroops(int landNoFrom, int landNoTo, int unitType, int amount){
+        int count = 0;
+            for (Troop a:troops.get(unitType)
+             ) {
+            if(a.getPosition() == landNoFrom && count < amount) {
+                a.setPosition(landNoTo);
+                count++;
+                System.out.println(count + "   ::   " + a.getPosition() + "   " + a.getType());
+            }
+        }
+    }
+
     public boolean isEnoughTroop(int unitType, int amount){
         int ammnt = 0;
         for (Troop a :troops.get(unitType)
@@ -247,7 +259,14 @@ public class Player {
     public void print(){
         System.out.println(name + "\n"  +  countryName+ " : "+ country.getInUse().getName() + "\n" + troopNumber + "   " + country.getIdeology());
         for (int i = 0 ; i < 4 ; i++) {
-            System.out.println(troops.get(i).get(0).getType());
+            System.out.print(troops.get(i).get(0).getType() + ":  ");
+            int count  = 0;
+            for (Troop a: troops.get(i)
+                 ) {
+                if(a.getPosition() == 0)
+                    count++;
+            }
+            System.out.println(count);
             System.out.println(troops.get(i).get(0).getAttack() + " " + troops.get(i).get(0).getDefense() + "  " + troops.get(i).get(0).getPosition());
         }
     }

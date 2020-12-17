@@ -151,6 +151,14 @@ public class GamePlay {
         return control;
     }
 
+    public void relocateTroop(int landNoFrom, int landNoTo, int unitType, int amount){
+        control.relocateTroops(turnIndex,landNoFrom, landNoTo, unitType, amount);
+    }
+
+    public void setMap(){
+        pane.setCenter(map);
+        setInfoDisable(true);
+    }
 
     public void endTurn(){
 

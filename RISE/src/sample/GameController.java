@@ -100,6 +100,9 @@ public class GameController extends Application{
         lands.getLandTroops();
     }
 
+    public void relocateTroops(int turnIndex,int landNoFrom, int landNoTo, int unitType, int amount){
+        players[turnIndex].relocateTroops(landNoFrom, landNoTo, unitType, amount);
+    }
 
     public void positionTroopOnLand(Player player, int landNo, int unitType, int amount){
         if(player.getCountry().equals(lands.getLand(landNo).getOwnerName())){

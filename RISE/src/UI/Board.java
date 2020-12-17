@@ -17,8 +17,16 @@ import static java.lang.Integer.parseInt;
 public class Board{
 
     GamePlay play;
+    Board control;
     String currentDir;
+    int artil, inf, tnk, nrd, landNoFrom, landNoTo;
     public Board(){
+        artil = 0;
+        inf = 0;
+        tnk = 0;
+        nrd = 0;
+        landNoFrom = 0;
+        landNoTo = 0;
     }
 
     public void setPlay(GamePlay play){
@@ -29,10 +37,20 @@ public class Board{
         return play;
     }
 
+    public void setRelocate(int artil, int inf, int tnk, int nrd, int landNoFrom){
+        this.artil = artil;
+        this.inf = inf;
+        this.tnk = tnk;
+        this.nrd = nrd;
+        this.landNoFrom = landNoFrom;
+        System.out.println("  klnlonoln " + landNoFrom);
+    }
+
+
     public Pane show() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/UI/Map.fxml"));
         Pane root = (Pane) loader.load();
-        Board control = loader.<Board>getController();
+        control = loader.<Board>getController();
         control.setPlay(play);
         return root;
     }
@@ -40,12 +58,25 @@ public class Board{
         int a = parseInt(((Node) e.getSource()).getAccessibleText());
         LandInterface land = new LandInterface();
         land.show(play.getControl().getLands().getLand(a), this);
-        System.out.println(((Node) e.getSource()).getAccessibleText());
+        landNoFrom = parseInt(((Node) e.getSource()).getAccessibleText());
+        System.out.println(landNoFrom);
     }
-    public void clicke(MouseEvent e){
 
-        if(this.getPlay() != null)
-        System.out.println(getPlay().getTurnIndex() + "  "  + ((Node) e.getSource()).getAccessibleText());
+    public void setLandNoFrom(int landNoFrom) {
+        this.landNoFrom = landNoFrom;
+    }
+
+    public void clicke(MouseEvent e) throws IOException {
+
+        if(this.getPlay() != null) {
+           // relocateTroop(this.getPlay(), landNoFrom, parseInt(((Node) e.getSource()).getAccessibleText()), 0, artil);
+            System.out.println("juhuıhuıtgy" + landNoFrom);
+            relocateTroop(this.getPlay(), landNoFrom, parseInt(((Node) e.getSource()).getAccessibleText()), 1, inf);
+           // relocateTroop(this.getPlay(), landNoFrom, parseInt(((Node) e.getSource()).getAccessibleText()), 0, artil);
+          //  relocateTroop(this.getPlay(), landNoFrom, parseInt(((Node) e.getSource()).getAccessibleText()), 0, artil);
+            System.out.println(getPlay().getTurnIndex() + "  " + ((Node) e.getSource()).getAccessibleText());
+            this.getPlay().setMap();
+        }
     }
 
     public Pane relocateMap() throws IOException {
@@ -53,7 +84,13 @@ public class Board{
         Pane root2 = (Pane) loader.load();
         Board control = loader.<Board>getController();
         control.setPlay(play);
+        control.setLandNoFrom(landNoFrom);
         return root2;
     }
 
+
+    public void relocateTroop(GamePlay play, int landNoFrom, int landNoTo, int unitType, int amount){
+        System.out.println(unitType + "  " + landNoFrom + "  " + landNoTo);
+        play.relocateTroop(landNoFrom, landNoTo, unitType, amount);
+    }
 }

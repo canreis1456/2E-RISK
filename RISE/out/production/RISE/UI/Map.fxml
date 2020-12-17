@@ -11,6 +11,11 @@
             <Image url="@../UI/ProjeResimler/Afganistan.png" />
          </image>
       </ImageView>
+      <ImageView accessibleText="6" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicked">
+         <image>
+            <Image url="@../UI/ProjeResimler/Grönland.png" />
+         </image>
+      </ImageView>
       <ImageView accessibleText="1" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicked">
          <image>
             <Image url="@../UI/ProjeResimler/Alaska.png" />
