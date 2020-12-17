@@ -29,7 +29,7 @@ public class MenuController {
         Credits cre = new Credits(stag, this);
         try {
             cre.show();
-        } catch (FileNotFoundException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
