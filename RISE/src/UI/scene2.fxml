@@ -4,14 +4,19 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="384.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fitHeight="362.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@DesignTeam.png" />
-         </image>
-      </ImageView>
-      <Button layoutX="250.0" layoutY="345.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Next" />
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="404.0" prefWidth="606.0">
+         <children>
+            <ImageView fitHeight="348.0" fitWidth="606.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@DesignTeam.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="253.0" layoutY="351.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Next" />
+         </children>
+      </Pane>
    </children>
-</Pane>
+</StackPane>
