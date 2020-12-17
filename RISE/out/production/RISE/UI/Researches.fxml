@@ -8,9 +8,9 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="412.0" prefWidth="830.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.Researches">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="422.0" prefWidth="830.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.Researches">
   <content>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="414.0" prefWidth="828.0">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="418.0" prefWidth="828.0">
          <children>
             <Group layoutX="30.0" layoutY="155.0">
                <children>

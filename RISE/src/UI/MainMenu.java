@@ -3,6 +3,7 @@ import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.EventListener;
 
 import entities.Player;
@@ -50,13 +51,14 @@ public class MainMenu implements EventHandler {
         Button deneme = new Button("sona");
         deneme.setOnAction(e -> {
             upperMenu.setPlayerCount(3);
+            upperMenu.initBoard();
             upperMenu.countrySelected("German Reich", "Adolf Hitler", "ben");
             upperMenu.countrySelected("Soviet Union", "Joseph Stalin", "sen");
             upperMenu.countrySelected("Italy", "Benito Mussolini", "biz");
 
             try {
                 upperMenu.gameplay();
-            } catch (FileNotFoundException fileNotFoundException) {
+            } catch (IOException fileNotFoundException) {
                 fileNotFoundException.printStackTrace();
             }
         });

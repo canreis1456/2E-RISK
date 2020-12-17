@@ -7,7 +7,7 @@ import javafx.scene.layout.Pane;
 
 import java.io.FileNotFoundException;
 
-public class BoardBuilder extends Pane {
+/*public class BoardBuilder extends Pane {
 
     private Board board;
     Land[] lands = new Land[42];
@@ -23,4 +23,4 @@ public class BoardBuilder extends Pane {
     public Board getBoard() {
         return board;
     }
-}
+}*/
