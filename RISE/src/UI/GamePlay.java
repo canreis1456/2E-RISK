@@ -31,8 +31,12 @@ public class GamePlay {
     int playerCount;
     Player[] players;
     int turn, turnIndex = 0;
+    Pane map;
     String currentDir;
+    VBox playerInfo;
+    BorderPane pane;
     GameController control;
+    int inputLand;
 
     public GamePlay(Stage stage, int playerCount, Player[] players, GameController control){
         this.control = control;
@@ -40,6 +44,11 @@ public class GamePlay {
         this.playerCount = playerCount;
         this.players = players;
         turn = 0;
+        inputLand= -1;
+    }
+
+    public void setInputLand(int inputLand) {
+        this.inputLand = inputLand;
     }
 
     public void show() throws IOException {
@@ -52,7 +61,8 @@ public class GamePlay {
         Land landTry2 = new Land(2, players[0].getCountryObject(), new Image(new FileInputStream(currentDir + "\\src\\images\\countries\\1 (2).png")));
         */Text landInfo = new Text();
         Board board = new Board();
-        Pane map = board.show(this);
+        board.setPlay(this);
+        map = board.show();
         /*landTry.setPickOnBounds(false); // allows click on transparent areas
         landTry2.setPickOnBounds(false);
         landTry.maxHeight(100);
@@ -66,7 +76,7 @@ public class GamePlay {
         map.getChildren().addAll(landTry, landTry2);*/
 
         //right
-        VBox playerInfo = new VBox(10);
+        playerInfo = new VBox(10);
         playerInfo.setMaxWidth(100);
         Text info = new Text();
         info.setWrappingWidth(200);
@@ -86,6 +96,8 @@ public class GamePlay {
             }
         });
 
+
+
         Button turnEnd = new Button("Turn");
         playerInfo.getChildren().addAll(info, turnEnd, landInfo, research, attack);
         playerInfo.setAlignment(Pos.CENTER);
@@ -104,7 +116,7 @@ public class GamePlay {
             }
             info.setText(players[turnIndex].toString());
         });
-        BorderPane pane = new BorderPane();
+        pane = new BorderPane();
         pane.setMaxSize(1920,1080);
 
 
@@ -118,12 +130,34 @@ public class GamePlay {
 
     }
 
+    public void setInfoDisable(boolean flag){
+        playerInfo.setVisible(flag);
+    }
+
+    public void relocateMap(Pane pane){
+        this.pane.setCenter(pane);
+    }
+
+
     public boolean isOver(){
         return false;
     }
 
     public int getTurnIndex() {
         return turnIndex;
+    }
+
+    public GameController getControl() {
+        return control;
+    }
+
+    public void relocateTroop(int landNoFrom, int landNoTo, int unitType, int amount){
+        control.relocateTroops(turnIndex,landNoFrom, landNoTo, unitType, amount);
+    }
+
+    public void setMap(){
+        pane.setCenter(map);
+        setInfoDisable(true);
     }
 
     public void endTurn(){

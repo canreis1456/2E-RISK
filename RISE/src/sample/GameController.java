@@ -47,6 +47,10 @@ public class GameController extends Application{
         men.launch();
     }
 
+    public Lands getLands() {
+        return lands;
+    }
+
     public ArrayList<String> getSelectedCountries() {
         return selectedCountries;
     }
@@ -80,6 +84,7 @@ public class GameController extends Application{
         System.out.println("ıjı" + playerIndex);
        // positionTroopOnLand(players[playerIndex],2, 1, 5);
         positionTroopOnLand(players[playerIndex],12, 1, 5);
+        lands.setOwnedPlayer(country);
         lands.setDefForLands(country);
         printLands();
         players[playerIndex].print();
@@ -95,6 +100,9 @@ public class GameController extends Application{
         lands.getLandTroops();
     }
 
+    public void relocateTroops(int turnIndex,int landNoFrom, int landNoTo, int unitType, int amount){
+        players[turnIndex].relocateTroops(landNoFrom, landNoTo, unitType, amount);
+    }
 
     public void positionTroopOnLand(Player player, int landNo, int unitType, int amount){
         if(player.getCountry().equals(lands.getLand(landNo).getOwnerName())){

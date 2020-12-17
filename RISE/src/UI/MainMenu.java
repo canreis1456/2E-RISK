@@ -54,7 +54,7 @@ public class MainMenu implements EventHandler {
             upperMenu.initBoard();
             upperMenu.countrySelected("German Reich", "Adolf Hitler", "ben");
             upperMenu.countrySelected("Soviet Union", "Joseph Stalin", "sen");
-            upperMenu.countrySelected("Italy", "Benito Mussolini", "biz");
+            upperMenu.countrySelected("USA", "Franklin Delano Roosevelt", "biz");
 
             try {
                 upperMenu.gameplay();
