@@ -15,13 +15,15 @@ public class Land {
     boolean ownedByPlayer;
     String owner;
     int[] troopcounts, borders;
+    String landName;
     Player own;
     ArrayList<ArrayList<Troop>> troop;
 
-    public Land(int landNo, String owner, int[] borders){
+    public Land(int landNo, String owner, int[] borders, String landName){
         this.landNo = landNo;
         this.owner = owner;
         this.borders = borders;
+        this.landName = landName;
         troopcounts = new int[4];
         defensePoints = 30;
         ownedByPlayer = false;
@@ -80,6 +82,9 @@ public class Land {
 
     public int getLandNo() {
         return landNo;
+    }
+    public String getLandName(){
+        return landName;
     }
 
     /*public Country getOwner() {
