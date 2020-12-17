@@ -55,7 +55,7 @@ public class Credits implements EventHandler{
     @FXML
     private Button nbutton;
     @FXML
-    private AnchorPane anchorpane;
+    private Pane anchorpane;
     @FXML
     private StackPane parentStack;
 
@@ -70,7 +70,7 @@ public class Credits implements EventHandler{
         BorderPane bPane = new BorderPane();
         bPane.setStyle("-fx-background-color: #701515;");
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("\\src\\UI\\scene1.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/UI/scene1.fxml"));
         Pane root = (Pane) loader.load();
         bPane.getChildren().addAll(root);
 
@@ -83,7 +83,7 @@ public class Credits implements EventHandler{
     @FXML
     public void nextscene(ActionEvent event) throws IOException
     {
-        Parent root = FXMLLoader.load(getClass().getResource("\\src\\UI\\scene2.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/UI/scene2.fxml"));
         Scene scene = nbutton.getScene();
 
         root.translateYProperty().set(scene.getHeight());
