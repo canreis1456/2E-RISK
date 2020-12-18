@@ -38,7 +38,7 @@ public class Research{
     }
 
     public boolean startResearch(){
-        System.out.println("55436");
+     //   System.out.println("55436");
         if(!isAvailable())
             return false;
         else{
@@ -48,7 +48,8 @@ public class Research{
     }
 
     public String print(){
-        return name + "\n" + text;
+        System.out.println("res: " + cost);
+        return name + "\n" + text + "\n Cost: " + cost + " turn";
     }
 
     public boolean isDone() {

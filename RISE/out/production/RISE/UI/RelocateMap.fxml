@@ -3,6 +3,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1720.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.Board">
     <children>
@@ -212,6 +213,7 @@
                 <Image url="@ProjeResimler/YeniGine.png" />
             </image>
         </ImageView>
+      <Text layoutX="754.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose a land to relocate your troops" />
 
 
 

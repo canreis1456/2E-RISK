@@ -5,215 +5,215 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1720.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.Board">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1720.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.PositionController">
     <children>
-        <ImageView accessibleText="29" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicke">
+        <ImageView accessibleText="29" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicked">
             <image>
                 <Image url="@../UI/ProjeResimler/Afganistan.png" />
             </image>
         </ImageView>
-        <ImageView accessibleText="1" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicke">
+        <ImageView accessibleText="1" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicked">
             <image>
                 <Image url="@../UI/ProjeResimler/Alaska.png" />
             </image>
         </ImageView>
-        <ImageView accessibleText="3" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicke">
+        <ImageView accessibleText="3" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicked">
             <image>
                 <Image url="@../UI/ProjeResimler/Alberta.png" />
             </image>
         </ImageView>
-        <ImageView accessibleText="13" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicke">
+        <ImageView accessibleText="13" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicked">
             <image>
                 <Image url="@../UI/ProjeResimler/Arjantin.png" />
             </image>
         </ImageView>
-        <ImageView accessibleText="41" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicke">
+        <ImageView accessibleText="41" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicked">
             <image>
                 <Image url="@../UI/ProjeResimler/BatıAvustralya.png" />
             </image>
         </ImageView>
-        <ImageView accessibleText="20" fitHeight="1000.0" fitWidth="1720.0" layoutX="2" onMouseClicked="#clicke">
+        <ImageView accessibleText="20" fitHeight="1000.0" fitWidth="1720.0" layoutX="2" onMouseClicked="#clicked">
             <image>
                 <Image url="@../UI/ProjeResimler/Bavrupa.png" />
             </image>
         </ImageView>
-        <ImageView accessibleText="11" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicke">
+        <ImageView accessibleText="11" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicked">
             <image>
                 <Image url="@../UI/ProjeResimler/Brezilya.png" />
             </image>
         </ImageView>
-        <ImageView accessibleText="15" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicke">
+        <ImageView accessibleText="15" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicked">
             <image>
                 <Image url="@../UI/ProjeResimler/büyükB.png" />
             </image>
         </ImageView>
-        <ImageView accessibleText="30" fitHeight="1000.0" fitWidth="1720.0" layoutX="-8" layoutY="10" onMouseClicked="#clicke">
+        <ImageView accessibleText="30" fitHeight="1000.0" fitWidth="1720.0" layoutX="-8" layoutY="10" onMouseClicked="#clicked">
             <image>
                 <Image url="@../UI/ProjeResimler/Çin.png" />
             </image>
         </ImageView>
-        <ImageView accessibleText="42" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicke">
+        <ImageView accessibleText="42" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicked">
             <image>
                 <Image url="@../UI/ProjeResimler/DoğuAvustralya.png" />
             </image>
         </ImageView>
-        <ImageView accessibleText="8" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicke">
+        <ImageView accessibleText="8" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicked">
             <image>
                 <Image url="@../UI/ProjeResimler/DoğuAmerika.png" />
             </image>
         </ImageView>
-        <ImageView accessibleText="5" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicke">
+        <ImageView accessibleText="5" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicked">
             <image>
                 <Image url="@../UI/ProjeResimler/DoğuKanada.png" />
             </image>
         </ImageView>
-        <ImageView accessibleText="39" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicke">
+        <ImageView accessibleText="39" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicked">
             <image>
                 <Image url="@../UI/ProjeResimler/Endonezya.png" />
             </image>
         </ImageView>
-        <ImageView accessibleText="19" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicke">
+        <ImageView accessibleText="19" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicked">
             <image>
                 <Image url="@../UI/ProjeResimler/gavrupa.png" />
             </image>
         </ImageView>
 
-        <ImageView accessibleText="31" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicke">
+        <ImageView accessibleText="31" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicked">
             <image>
                 <Image url="@ProjeResimler/GüneydoğuAsya.png" />
             </image>
         </ImageView>
-        <ImageView accessibleText="28" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicke">
+        <ImageView accessibleText="28" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicked">
             <image>
                 <Image url="@ProjeResimler/Hindistan.png" />
             </image>
         </ImageView>
-        <ImageView accessibleText="14" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicke">
+        <ImageView accessibleText="14" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicked">
             <image>
                 <Image url="@ProjeResimler/Iceland.png" />
             </image>
         </ImageView>
-        <ImageView accessibleText="36" fitHeight="1000.0" fitWidth="1720.0" layoutY="18" onMouseClicked="#clicke">
+        <ImageView accessibleText="36" fitHeight="1000.0" fitWidth="1720.0" layoutY="18" onMouseClicked="#clicked">
             <image>
                 <Image url="@ProjeResimler/İrkut.png" />
             </image>
         </ImageView>
-        <ImageView accessibleText="16" fitHeight="1000.0" fitWidth="1720.0" layoutX="3" onMouseClicked="#clicke">
+        <ImageView accessibleText="16" fitHeight="1000.0" fitWidth="1720.0" layoutX="3" onMouseClicked="#clicked">
             <image>
                 <Image url="@ProjeResimler/iskan.png" />
             </image>
         </ImageView>
-        <ImageView accessibleText="33" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicke">
+        <ImageView accessibleText="33" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicked">
             <image>
                 <Image url="@ProjeResimler/Japonya.png" />
             </image>
         </ImageView>
-        <ImageView accessibleText="37" fitHeight="1000.0" fitWidth="1720.0" layoutX="-3" layoutY="18" onMouseClicked="#clicke">
+        <ImageView accessibleText="37" fitHeight="1000.0" fitWidth="1720.0" layoutX="-3" layoutY="18" onMouseClicked="#clicked">
             <image>
                 <Image url="@ProjeResimler/Kamçatka.png" />
             </image>
         </ImageView>
-        <ImageView accessibleText="18" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicke">
+        <ImageView accessibleText="18" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicked">
             <image>
                 <Image url="@ProjeResimler/Kavrupa.png" />
             </image>
         </ImageView>
-        <ImageView accessibleText="26" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicke">
+        <ImageView accessibleText="26" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicked">
             <image>
                 <Image url="@ProjeResimler/Madagaskar.png" />
             </image>
         </ImageView>
-        <ImageView accessibleText="9" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicke">
+        <ImageView accessibleText="9" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicked">
             <image>
                 <Image url="@ProjeResimler/MiddleAmerica.png" />
             </image>
         </ImageView>
-        <ImageView accessibleText="22" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicke">
+        <ImageView accessibleText="22" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicked">
             <image>
                 <Image url="@ProjeResimler/Mısır.png" />
             </image>
         </ImageView>
-        <ImageView accessibleText="32" fitHeight="1000.0" fitWidth="1720.0" layoutY="12" onMouseClicked="#clicke">
+        <ImageView accessibleText="32" fitHeight="1000.0" fitWidth="1720.0" layoutY="12" onMouseClicked="#clicked">
             <image>
                 <Image url="@ProjeResimler/Moğolistan.png" />
             </image>
         </ImageView>
-        <ImageView accessibleText="2" fitHeight="1000.0" fitWidth="1720.0" layoutY="4" onMouseClicked="#clicke">
+        <ImageView accessibleText="2" fitHeight="1000.0" fitWidth="1720.0" layoutY="4" onMouseClicked="#clicked">
             <image>
                 <Image url="@ProjeResimler/NorthWest.png" />
             </image>
         </ImageView>
-        <ImageView accessibleText="4" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicke">
+        <ImageView accessibleText="4" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicked">
             <image>
                 <Image url="@ProjeResimler/Ontario.png" />
             </image>
         </ImageView>
-        <ImageView accessibleText="27" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicke">
+        <ImageView accessibleText="27" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicked">
             <image>
                 <Image url="@ProjeResimler/OrtaDoğu.png" />
             </image>
         </ImageView>
-        <ImageView accessibleText="12" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicke">
+        <ImageView accessibleText="12" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicked">
             <image>
                 <Image url="@ProjeResimler/Peru.png" />
             </image>
         </ImageView>
-        <ImageView accessibleText="17" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicke">
+        <ImageView accessibleText="17" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicked">
             <image>
                 <Image url="@ProjeResimler/rusya.png" />
             </image>
         </ImageView>
-        <ImageView accessibleText="35" fitHeight="1000.0" fitWidth="1720.0" layoutX="8" layoutY="21" onMouseClicked="#clicke">
+        <ImageView accessibleText="35" fitHeight="1000.0" fitWidth="1720.0" layoutX="8" layoutY="21" onMouseClicked="#clicked">
             <image>
                 <Image url="@ProjeResimler/Sibirya.png" />
             </image>
         </ImageView>
-        <ImageView accessibleText="23" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicke">
+        <ImageView accessibleText="23" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicked">
             <image>
                 <Image url="@ProjeResimler/Toto-DoğuAfrika.png" />
             </image>
         </ImageView>
-        <ImageView accessibleText="25" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicke">
+        <ImageView accessibleText="25" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicked">
             <image>
                 <Image url="@ProjeResimler/Toto-GüneyAfriika.png" />
             </image>
         </ImageView>
-        <ImageView accessibleText="21" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicke">
+        <ImageView accessibleText="21" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicked">
             <image>
                 <Image url="@ProjeResimler/toto-kuzeyafrika.png" />
             </image>
         </ImageView>
-        <ImageView accessibleText="24" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicke">
+        <ImageView accessibleText="24" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicked">
             <image>
                 <Image url="@ProjeResimler/Toto-OrtaAfrika.png" />
             </image>
         </ImageView>
-        <ImageView accessibleText="34" fitHeight="1000.0" fitWidth="1720.0" layoutX="-5" layoutY="5" onMouseClicked="#clicke">
+        <ImageView accessibleText="34" fitHeight="1000.0" fitWidth="1720.0" layoutX="-5" layoutY="5" onMouseClicked="#clicked">
             <image>
                 <Image url="@ProjeResimler/Ural.png" />
             </image>
         </ImageView>
-        <ImageView accessibleText="10" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicke">
+        <ImageView accessibleText="10" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicked">
             <image>
                 <Image url="@ProjeResimler/Venezuela.png" />
             </image>
         </ImageView>
-        <ImageView accessibleText="7" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicke">
+        <ImageView accessibleText="7" fitHeight="1000.0" fitWidth="1720.0" onMouseClicked="#clicked">
             <image>
                 <Image url="@ProjeResimler/WestAmerica.png" />
             </image>
         </ImageView>
-        <ImageView accessibleText="38" fitHeight="1000.0" fitWidth="1720.0" layoutY="20" onMouseClicked="#clicke">
+        <ImageView accessibleText="38" fitHeight="1000.0" fitWidth="1720.0" layoutY="20" onMouseClicked="#clicked">
             <image>
                 <Image url="@ProjeResimler/Yakut.png" />
             </image>
         </ImageView>
-        <ImageView accessibleText="40" fitHeight="1000.0" fitWidth="1720.0" layoutX="-5.0" layoutY="5.0" onMouseClicked="#clicke">
+        <ImageView accessibleText="40" fitHeight="1000.0" fitWidth="1720.0" layoutX="-5.0" layoutY="5.0" onMouseClicked="#clicked">
             <image>
                 <Image url="@ProjeResimler/YeniGine.png" />
             </image>
         </ImageView>
-      <Text layoutX="754.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose a land to relocate your troops" />
+        <Text layoutX="754.0" layoutY="34.0" onMouseClicked="#clicked" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose a land to relocate your troops" />
 
 
 

@@ -153,8 +153,9 @@ public class Player {
         return resourceBuff;
     }
 
-        float attack = 0;    public float attackPointsAt(int coordinates){
 
+    public float attackPointsAt(int coordinates){
+        float attack = 0;
             for (int j = 0; j < 4; j++) {
             for (int i = 0; i < troops.get(j).size(); i++) {
                 if (troops.get(j).get(i).getPosition() == coordinates)
@@ -237,6 +238,7 @@ public class Player {
         int count = 0;
             for (Troop a:troops.get(unitType)
              ) {
+                System.out.println("asd" + a.getType() + "  " + a.getPosition());
             if(a.getPosition() == landNoFrom && count < amount) {
                 a.setPosition(landNoTo);
                 count++;
@@ -252,8 +254,17 @@ public class Player {
             if(a.getPosition() == 0)
                 ammnt++;
         }
+        return ammnt >= amount;
+    }
 
-        return ammnt > amount;
+    public int troopsAtHand(int unitType){
+        int number = 0;
+            for ( Troop a: troops.get(unitType)
+             ) {
+            if(a.getPosition() == 0)
+                number++;
+        }
+            return number;
     }
 
     public void print(){
@@ -272,9 +283,9 @@ public class Player {
     }
 
     public String toString(){
-        String result = name  + "\n"  +  countryName+ " : "+ country.getInUse().getName() + "   " + country.getIdeology() + "\n";
+        String result ="Name:  " +  name  + "\n"  +"  " + countryName+ " :  "+ country.getInUse().getName() + " \n   " + country.getIdeology() + "\n";
         for (int i = 0; i< 4; i++)
-            result += "\n " + troops.get(i).get(0).getType() + "\n " + troops.get(i).get(0).getAttack() + " " + troops.get(i).get(0).getDefense();
+            result += "\n " + troops.get(i).get(0).getType() +"  :  " + troopsAtHand(i) +"\n " + troops.get(i).get(0).getAttack() + " " + troops.get(i).get(0).getDefense();
         return  result;
     }
 

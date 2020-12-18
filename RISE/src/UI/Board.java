@@ -29,6 +29,10 @@ public class Board{
         landNoTo = 0;
     }
 
+    public Board getControl() {
+        return control;
+    }
+
     public void setPlay(GamePlay play){
         this.play = play;
     }
@@ -43,7 +47,6 @@ public class Board{
         this.tnk = tnk;
         this.nrd = nrd;
         this.landNoFrom = landNoFrom;
-        System.out.println("  klnlonoln " + landNoFrom);
     }
 
 
@@ -59,7 +62,7 @@ public class Board{
         LandInterface land = new LandInterface();
         land.show(play.getControl().getLands().getLand(a), this);
         landNoFrom = parseInt(((Node) e.getSource()).getAccessibleText());
-        System.out.println(landNoFrom);
+        System.out.println(landNoFrom + ""+ play.getControl().getLands().getLand(landNoFrom).getTroopcounts()[0] + "ss");
     }
 
     public void setLandNoFrom(int landNoFrom) {
@@ -68,12 +71,11 @@ public class Board{
 
     public void clicke(MouseEvent e) throws IOException {
 
-        if(this.getPlay() != null) {
-           // relocateTroop(this.getPlay(), landNoFrom, parseInt(((Node) e.getSource()).getAccessibleText()), 0, artil);
-            System.out.println("juhuıhuıtgy" + landNoFrom);
+        if(this.getPlay() != null && this.getPlay().getControl().getLands().getLand(landNoFrom).hasBorder(parseInt(((Node) e.getSource()).getAccessibleText()))) {
+            relocateTroop(this.getPlay(), landNoFrom, parseInt(((Node) e.getSource()).getAccessibleText()), 0, artil);
             relocateTroop(this.getPlay(), landNoFrom, parseInt(((Node) e.getSource()).getAccessibleText()), 1, inf);
-           // relocateTroop(this.getPlay(), landNoFrom, parseInt(((Node) e.getSource()).getAccessibleText()), 0, artil);
-          //  relocateTroop(this.getPlay(), landNoFrom, parseInt(((Node) e.getSource()).getAccessibleText()), 0, artil);
+            relocateTroop(this.getPlay(), landNoFrom, parseInt(((Node) e.getSource()).getAccessibleText()), 2, artil);
+            relocateTroop(this.getPlay(), landNoFrom, parseInt(((Node) e.getSource()).getAccessibleText()), 3, artil);
             System.out.println(getPlay().getTurnIndex() + "  " + ((Node) e.getSource()).getAccessibleText());
             this.getPlay().setMap();
         }
@@ -85,12 +87,13 @@ public class Board{
         Board control = loader.<Board>getController();
         control.setPlay(play);
         control.setLandNoFrom(landNoFrom);
+        control.setRelocate(artil,inf,tnk,nrd,landNoFrom);
         return root2;
     }
 
 
     public void relocateTroop(GamePlay play, int landNoFrom, int landNoTo, int unitType, int amount){
-        System.out.println(unitType + "  " + landNoFrom + "  " + landNoTo);
+        System.out.println(unitType + "  " + landNoFrom + "  " + landNoTo + "  " + amount);
         play.relocateTroop(landNoFrom, landNoTo, unitType, amount);
     }
 }
