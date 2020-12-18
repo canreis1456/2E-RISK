@@ -25,6 +25,10 @@ public class Land {
         this.borders = borders;
         this.landName = landName;
         troopcounts = new int[4];
+        for (int a : troopcounts
+             ) {
+            a = 0;
+        }
         defensePoints = 30;
         ownedByPlayer = false;
     }
@@ -49,14 +53,19 @@ public class Land {
         this.troopcounts = troopcounts;
     }
 
+    public void setOneTypeTroop(int unitType, int amount){
+        troopcounts[unitType] = amount;
+    }
+
     public float getDefensePoints() {
         return defensePoints;
 
     }
 
     public boolean hasBorder(int landNo){
-        for (int i = 0; i < borders.length; i++){
-            if(borders[i] == landNo)
+        for (int a : borders
+             ) {
+            if(a == landNo)
                 return true;
         }
         return false;

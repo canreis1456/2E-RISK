@@ -19,13 +19,28 @@ public class ResearchTree {
 
     public ResearchTree(){
         head = new Node();
-        head.next = new Node(new Research("TroopResearch1",new TroopResearch(),1,1,0,0,0,new int[]{0,1,2,3}));
+        head.next = new Node(new Research("TroopResearch1",new TroopResearch(),2,1,0,0,0,new int[]{0,1,2,3}));
         head.next.res.setText("All units will have +1 attack");
         head.next.res.setAvailable(true);
+
+        //Upper Path
         head.next.next1 = new Node(new Research("TroopResearch2",new TroopResearch(),3,2,-1,0,0,new int[]{1,2}));
         head.next.next1.res.setText("Infantries and Tanks will have +2 attack but -1 defense");
-        head.next.next = new Node(new Research("ResearchResearch1",new ResearchTurnResearch(),2,0,0,1,0,null));
+        head.next.next1.next = new Node( new Research("TroopResearch3", new TroopResearch(), 3, -1, 3, 0,0, new int[]{0,3}));
+        head.next.next1.next.res.setText("Artillery and Nerds will have +3 defense but -1 attack");
+        head.next.next1.next.next = new Node( new Research("TroopResearch4", new TroopResearch(), 3, 1, 1, 0,0, new int[]{0,1,2,3}));
+        head.next.next1.next.next.res.setText("All troops will have +1 attack and + defense");
+
+
+        //Middle path
+        head.next.next = new Node(new Research("ResearchResearch1",new ResearchTurnResearch(),3,0,0,1,0,null));
         head.next.next.res.setText("Every research will cost 1 turn less");
+        head.next.next.next = new Node(new Research("ResearchResearch2",new ResearchTurnResearch(),4,0,0,1,0,null));
+        head.next.next.next.res.setText("Every research will cost 1 turn loss");
+        head.next.next.next.next= new Node(new Research("ResearchResearch3",new ResearchTurnResearch(),6,0,0,1,0,null));
+        head.next.next.next.next.res.setText("Every research will cost 1 turn loss");
+
+        //Bottom Path
         head.next.next2 = new Node(new Research("ResourceResearch1",new ResourceResearch(),4,0,0,0,1,null));
         head.next.next2.res.setText("Resources increase");
         flag = false;

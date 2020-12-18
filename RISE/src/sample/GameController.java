@@ -81,13 +81,12 @@ public class GameController extends Application{
 
         players[playerIndex] = new Player(country, leader, playerName);
         selectedCountries.add(country);
-        System.out.println("ıjı" + playerIndex);
        // positionTroopOnLand(players[playerIndex],2, 1, 5);
-        positionTroopOnLand(players[playerIndex],12, 1, 5);
+        positionTroopOnLand(playerIndex,12, 1, 5);
         lands.setOwnedPlayer(country);
         lands.setDefForLands(country);
-        printLands();
-        players[playerIndex].print();
+     //   printLands();
+      //  players[playerIndex].print();
     }
 
     public void defensePointsAtLand(int landNo){
@@ -100,15 +99,22 @@ public class GameController extends Application{
         lands.getLandTroops();
     }
 
-    public void relocateTroops(int turnIndex,int landNoFrom, int landNoTo, int unitType, int amount){
-        players[turnIndex].relocateTroops(landNoFrom, landNoTo, unitType, amount);
+    public Player[] getPlayers() {
+        return players;
     }
 
-    public void positionTroopOnLand(Player player, int landNo, int unitType, int amount){
-        if(player.getCountry().equals(lands.getLand(landNo).getOwnerName())){
-            if(player.isEnoughTroop(unitType, amount)) {
+    public void relocateTroops(int turnIndex, int landNoFrom, int landNoTo, int unitType, int amount){
+        System.out.println(unitType + "  " + landNoFrom + "  " + landNoTo + "  " + amount +  "  "  + turnIndex);
+        players[turnIndex].relocateTroops(landNoFrom, landNoTo, unitType, amount);
+        lands.positionTroopOnLand(unitType,amount,landNoTo);
+        lands.positionTroopOnLand(unitType, - amount, landNoFrom);
+    }
+
+    public void positionTroopOnLand(int turnIndex, int landNo, int unitType, int amount){
+        if(players[turnIndex].getCountry().equals(lands.getLand(landNo).getOwnerName())){
+            if(players[turnIndex].isEnoughTroop(unitType, amount)) {
                 lands.positionTroopOnLand(unitType, amount, landNo);
-                player.positionTroops(unitType,amount, landNo);
+                players[turnIndex].positionTroops(unitType,amount, landNo);
             }
         }else
             System.out.println("not the owner");

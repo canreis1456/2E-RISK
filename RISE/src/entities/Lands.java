@@ -20,7 +20,7 @@ public class Lands {
         lands[7] = new Land(7, "USA", new int[]{3, 4, 8, 9},"BatıAmerika ");
         lands[8] = new Land(8, "USA", new int[]{4, 5, 7, 9},"DoğuAmerika ");
         lands[9] = new Land(9, "USA", new int[]{7, 8, 10},"OrtaAmerika ");
-        lands[10] = new Land(10, "USA", new int[]{11, 12},"Venezuala ");
+        lands[10] = new Land(10, "USA", new int[]{9, 11, 12},"Venezuala ");
         lands[11] = new Land(11, "USA", new int[]{10, 12, 21},"Brezilya ");
         lands[12] = new Land(12, "USA", new int[]{10, 11, 13},"Peru ");
         lands[13] = new Land(13, "USA", new int[]{11, 12},"Arjantin ");
@@ -57,9 +57,19 @@ public class Lands {
 
     }
 
+
+    public void getTroopsFromLand(int unitType, int amount, int landNo){
+        lands[landNo].setOneTypeTroop(unitType,amount);
+    }
+
     public void positionTroopOnLand(int unitType, int amount, int landNo) {
-        int[] troops = new int[]{0, 0, 0, 0};
-        troops[unitType] = amount;
+        int[] troops = new int[4];
+        for (int i = 0; i < 4; i++){
+            if(i == unitType)
+                troops[unitType] = amount + lands[landNo].getTroopcounts()[unitType];
+            else
+                troops[i] = lands[landNo].getTroopcounts()[i];
+        }
         lands[landNo].setTroopcounts(troops);
     }
 
