@@ -28,7 +28,7 @@ import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
+import entities.Card;
 public class GameController extends Application{
 
     MenuController men;
@@ -88,6 +88,7 @@ public class GameController extends Application{
         lands.setDefForLands(country);
         printLands();
         players[playerIndex].print();
+        //players[playerIndex].addCard(new Card("Afganistan", "infantry",2,new Image("file:/C:/Users/Poseidon/IdeaProjects/2E-RISK/RISE/src/UI/ProjeResimler/sorryforwhat.png")));
     }
 
     public void defensePointsAtLand(int landNo){

@@ -1,14 +1,17 @@
 package entities;
+import javafx.scene.image.Image;
 
 public class Card {
     private String landName;
     private String troopName;
     private int landNo;
+    private Image image;
 
-    public Card(String landName, String troopName, int landNo){
+    public Card(String landName, String troopName, int landNo, Image image){
         this.landName = landName;
         this.troopName = troopName;
         this.landNo = landNo;
+        this.image = image;
     }
 
     public String getName(){

@@ -116,6 +116,19 @@ public class GamePlay {
             }
             info.setText(players[turnIndex].toString());
         });
+
+        //BEGIN
+        Button cardButton = new Button("Cards");
+        //playerInfo.getChildren().addAll(info, cardButton, landInfo, research, attack);
+        //playerInfo.setAlignment(Pos.CENTER);
+        //playerInfo.setSpacing(10);
+        //info.setText(players[turnIndex].toString());
+        cardButton.setOnAction(e -> {
+            Card cardsUI
+            //info.setText(players[turnIndex].toString());
+        });
+        //END
+
         pane = new BorderPane();
         pane.setMaxSize(1920,1080);
 

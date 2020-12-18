@@ -279,16 +279,17 @@ public class Player {
     }
 
     //NOT CORRECTLY IMPLEMENTED!!!!!
-    public boolean tradeCards(){
-            Card[] cardsTemp = new Card[3];
-            for(int i = 0; i < cards.size(); i++){
-                cardsTemp[0] = cards.get(i);
-                for(int j = i + 1; j < cards.size(); j++){
-                    if (cards.get(j).equalsTroop(cardsTemp[0])){
-                        return true;
+    public void tradeCards(Card[] cardRem){
+            for(int i = 0; i < cardRem.length; i++){
+                for(int j = 0; j < cards.size(); j++){
+                    if(cardRem[i].getTroopType() == cards.get(j).getTroopType() && cardRem[i].getLandNo() == cards.get(j).getLandNo()){
+                        cards.remove(j);
                     }
                 }
             }
-            return false;
+    }
+
+    public void addCard(Card card){
+            cards.add(card);
     }
 }
