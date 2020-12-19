@@ -91,7 +91,17 @@ public class GamePlay {
 
 
         Button turnEnd = new Button("Turn");
-        playerInfo.getChildren().addAll(info, turnEnd, landInfo, research);
+        Button selectGeneral = new Button("Select General");
+                selectGeneral.setOnAction(e -> {
+                    GeneralInterface generalInterface = new GeneralInterface(this);
+                    try {
+                        generalInterface.show();
+                    } catch (IOException ioException) {
+                        ioException.printStackTrace();
+                    }
+                });
+        playerInfo.getChildren().addAll(info, turnEnd, landInfo, research, attack, selectGeneral);
+       // playerInfo.getChildren().addAll(info, turnEnd, landInfo, research);
         playerInfo.setAlignment(Pos.CENTER);
         playerInfo.setSpacing(10);
         info.setText(players[turnIndex].toString());
@@ -161,7 +171,7 @@ public class GamePlay {
     }
 
     public void relocateTroop(int landNoFrom, int landNoTo, int unitType, int amount){
-        //System.out.println(unitType + "  " + landNoFrom + "  " + landNoTo + "  " + amount);
+        System.out.println(unitType + "  " + landNoFrom + "  " + landNoTo + "  " + amount);
         control.relocateTroops(turnIndex,landNoFrom, landNoTo, unitType, amount);
     }
 
