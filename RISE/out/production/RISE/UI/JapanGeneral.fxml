@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane prefHeight="434.0" prefWidth="816.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.GeneralControl">
+    <children>
+        <AnchorPane layoutY="-35.0" prefHeight="458.0" prefWidth="816.0">
+            <children>
+                <TextArea fx:id="infoBox" layoutX="23.0" layoutY="50.0" prefHeight="318.0" prefWidth="207.0" />
+                <ImageView fitHeight="237.0" fitWidth="171.0" layoutX="297.0" layoutY="50.0">
+                    <image>
+                        <Image url="@ProjeResimler/TomoyukiYamashita.jpg" />
+                    </image>
+                </ImageView>
+                <Button fx:id="gen3" layoutX="297.0" layoutY="315.0" mnemonicParsing="false" onAction="#setInfoBox" prefHeight="50.0" prefWidth="171.0" text="Tomoyuki Yamashita" />
+                <ImageView fitHeight="237.0" fitWidth="171.0" layoutX="547.0" layoutY="50.0">
+                    <image>
+                        <Image url="@ProjeResimler/HisaichiTerauchi.jpg" />
+                    </image>
+                </ImageView>
+                <Button fx:id="gen2" layoutX="542.0" layoutY="316.0" mnemonicParsing="false" onAction="#setInfoBox" prefHeight="49.0" prefWidth="171.0" text="Hisaichi Terauchi" />
+                <Button layoutX="342.0" layoutY="405.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="132.0" text="Select General" />
+            </children>
+        </AnchorPane>
+    </children>
+</Pane>
+
+

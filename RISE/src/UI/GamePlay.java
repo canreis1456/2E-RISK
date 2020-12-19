@@ -101,7 +101,16 @@ public class GamePlay {
 
 
         Button turnEnd = new Button("Turn");
-        playerInfo.getChildren().addAll(info, turnEnd, landInfo, research, attack);
+        Button selectGeneral = new Button("Select General");
+                selectGeneral.setOnAction(e -> {
+                    GeneralInterface generalInterface = new GeneralInterface(this);
+                    try {
+                        generalInterface.show();
+                    } catch (IOException ioException) {
+                        ioException.printStackTrace();
+                    }
+                });
+        playerInfo.getChildren().addAll(info, turnEnd, landInfo, research, attack, selectGeneral);
         playerInfo.setAlignment(Pos.CENTER);
         playerInfo.setSpacing(10);
         info.setText(players[turnIndex].toString());
