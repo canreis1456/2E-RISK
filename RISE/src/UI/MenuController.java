@@ -49,7 +49,7 @@ public class MenuController {
         return cntrl;
     }
 
-    public void countrySelected(String country, String leader, String playerName){
+    public void countrySelected(String country, String leader, String playerName) throws FileNotFoundException {
         System.out.println("selected:  " + country + leader + playerName);
         selectedCountries.add(country);
         cntrl.initPlayer(country, leader, playerName, playerIndex);

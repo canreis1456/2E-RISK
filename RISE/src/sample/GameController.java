@@ -1,18 +1,15 @@
 package sample;
 
 import UI.*;
-import entities.Country;
-import entities.Land;
-import entities.Lands;
-import entities.Player;
+import entities.*;
 import javafx.stage.Stage;
 
-import java.io.FileNotFoundException;
+import java.io.*;
+
 import UI.MainMenu;
 import javafx.application.Application;
-import java.io.FileInputStream;
+
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 
 import javafx.fxml.FXMLLoader;
@@ -36,6 +33,8 @@ public class GameController extends Application{
     Lands lands;
     ArrayList<String> selectedCountries = new ArrayList<>();
     Country[] countries;
+    File currentDirFile = new File("");
+    String currentDir;
     @Override
     public void start(Stage stage) throws FileNotFoundException {
         initUI(stage);
@@ -77,7 +76,7 @@ public class GameController extends Application{
         return null;
     }
 
-    public void initPlayer(String country, String leader, String playerName, int playerIndex){
+    public void initPlayer(String country, String leader, String playerName, int playerIndex) throws FileNotFoundException {
 
         players[playerIndex] = new Player(country, leader, playerName);
         selectedCountries.add(country);
@@ -85,6 +84,25 @@ public class GameController extends Application{
         positionTroopOnLand(playerIndex,12, 1, 5);
         lands.setOwnedPlayer(country);
         lands.setDefForLands(country);
+        currentDir = currentDirFile.getAbsolutePath();
+        Image image1 = new Image(new FileInputStream(currentDir + "\\src\\UI\\ProjeResimler\\sorryforwhat.png"));
+        Image image2 = new Image(new FileInputStream(currentDir + "\\src\\UI\\ProjeResimler\\interruption.png"));
+        Image image3 = new Image(new FileInputStream(currentDir + "\\src\\UI\\ProjeResimler\\GoddHoward.png"));
+        Image image4 = new Image(new FileInputStream(currentDir + "\\src\\UI\\ProjeResimler\\hmm.jpg"));
+
+        Card card1 = new Card("Cumshotka", "Infantry", 5, image1);
+        players[playerIndex].addCard(card1);
+
+        Card card2 = new Card("America", "Infantry", 5, image2);
+        players[playerIndex].addCard(card2);
+
+        Card card3 = new Card("Middle East", "Infantry", 5, image3);
+        players[playerIndex].addCard(card3);
+
+        Card card4 = new Card("ahha", "Cavallary", 5, image4);
+        players[playerIndex].addCard(card4);
+
+        System.out.println("The size of player's deck is " + players[playerIndex].getCards().size());
      //   printLands();
       //  players[playerIndex].print();
     }

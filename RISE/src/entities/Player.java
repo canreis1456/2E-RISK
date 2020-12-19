@@ -2,7 +2,11 @@ package entities;
 
 
 import entities.Troops.Troop;
+import javafx.scene.image.Image;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class Player {
@@ -19,17 +23,24 @@ public class Player {
     private General selectedGeneral;
     private int troopNumber, turnCount, researchBuff, setsTraded;
     private boolean researching;
+    private Card defaultCard;
+    private File currentDirFile;
+    String currentDir;
 
-    public Player(String countr, String leade, String name){
+
+
+    public Player(String countr, String leade, String name) throws FileNotFoundException {
         trpnms = new String[]{"Artillery", "Infantry", "Tank", "Nerds"};
         trpInstance = new float[8];
-
         countryName = countr;
         leader = leade;
         this.name = name;
         turnCount = 0;
         researchBuff = 0;
         setsTraded = 0;
+        currentDirFile = new File("");
+        currentDir = currentDirFile.getAbsolutePath();
+        defaultCard = new Card("", "", -1, new Image(new FileInputStream(currentDir + "\\src\\UI\\ProjeResimler\\blank.png")));
         if(countr.equals("German Reich")) {
             country = new Country(new GermanyInitializer(), leader);
             country.initializeTroops(troops);
@@ -359,17 +370,23 @@ public class Player {
     }
 
     //NOT CORRECTLY IMPLEMENTED!!!!!
-    public boolean tradeCards(){
-            Card[] cardsTemp = new Card[3];
+    public ArrayList<Card> tradeCards(ArrayList <Card> cardRem){
+        ArrayList<Card> toBoard = new ArrayList<Card>();
+        for(int j = 0; j < cardRem.size(); j++){
             for(int i = 0; i < cards.size(); i++){
-                cardsTemp[0] = cards.get(i);
-                for(int j = i + 1; j < cards.size(); j++){
-                    if (cards.get(j).equalsTroop(cardsTemp[0])){
-                        return true;
-                    }
+                if(cards.get(i).getSelected() == true){
+                    toBoard.add(cards.remove(i));
+                    break;
                 }
             }
-            return false;
+        }
+
+        System.out.println("New cards size = " + cards.size());
+        return toBoard;
+    }
+
+    public void addCard(Card card){
+            cards.add(card);
     }
 
     public String getGeneralInfo(String s){
@@ -387,5 +404,17 @@ public class Player {
 
         }
      return "";
+    }
+
+    public ArrayList<Card> getCards(){
+        return cards;
+    }
+
+    public Card getCard( int index){
+        return cards.get(index);
+    }
+
+    public Card getDefaultCard(){
+        return defaultCard;
     }
 }
