@@ -52,7 +52,7 @@ class SovietInitializer implements CountryInitializer{
     }
 
     public int initializeLandCount(int landCount){
-        landCount = 4;
+        landCount = 1;
         return landCount;
     }
 
@@ -73,7 +73,7 @@ class FranceInitializer implements CountryInitializer {
     }
 
     public int initializeLandCount(int landCount){
-        landCount = 4;
+        landCount = 1;
         return landCount;
     }
 }
@@ -138,7 +138,7 @@ class USAInitializer implements CountryInitializer {
     }
 
     public int initializeLandCount(int landCount){
-        landCount = 4;
+        landCount = 1;
         return landCount;
     }
 }

@@ -2,6 +2,8 @@ package entities;
 
 import sample.GameController;
 
+import java.util.ArrayList;
+
 public class Lands {
 
     Land[] lands;
@@ -30,7 +32,7 @@ public class Lands {
         lands[17] = new Land(17, "USA", new int[]{16, 18, 19, 34, 29, 27},"Rusya ");
         lands[18] = new Land(18, "USA", new int[]{14, 15, 16, 17, 19, 20},"KuzeyAvrupa ");
         lands[19] = new Land(19, "Soviet Union", new int[]{17, 18, 20, 27},"GüneyAvrupa ");
-        lands[20] = new Land(20, "USA", new int[]{15, 18, 19, 21},"BatıAvrupa ");
+        lands[20] = new Land(20, "France", new int[]{15, 18, 19, 21},"BatıAvrupa ");
         lands[21] = new Land(21, "USA", new int[]{11, 19, 20, 22},"KuzeyAfrika ");
         lands[22] = new Land(22, "German Reich", new int[]{19, 21, 23, 27},"Mısır ");
         lands[23] = new Land(23, "German Reich", new int[]{21, 22, 24, 25, 26},"DoğuAfrika ");
@@ -59,6 +61,19 @@ public class Lands {
     }
 
 
+    public String getLandsByOwner(String owner){
+        int count = 0;
+        String landsOf = "";
+        for (Land a: lands
+             ) {
+            if (a.getOwnerName().equals(owner)) {
+                landsOf += a.getLandName() + "\n";
+                count++;
+            }
+        }
+        return landsOf;
+    }
+
     public void getTroopsFromLand(int unitType, int amount, int landNo){
         lands[landNo].setOneTypeTroop(unitType,amount);
     }
@@ -82,6 +97,7 @@ public class Lands {
                 troops[unitType] = amount + lands[landNo].getTroopcounts()[unitType];
             else
                 troops[i] = lands[landNo].getTroopcounts()[i];
+            System.out.println("landsPositi:  "+ troops[i]);
         }
         lands[landNo].setTroopcounts(troops);
     }

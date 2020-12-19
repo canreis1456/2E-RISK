@@ -6,6 +6,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -33,10 +34,12 @@ public class GamePlay {
     Player[] players;
     int turn, turnIndex = 0;
     Pane map;
+    Button research, position;
     String currentDir;
     VBox playerInfo;
     BorderPane pane;
     GameController control;
+    CountryFallen defet;
     int inputLand;
     Text info;
 
@@ -47,6 +50,10 @@ public class GamePlay {
         this.players = players;
         turn = 0;
         inputLand= -1;
+    }
+
+    public Button researchh(){
+        return research;
     }
 
     public void setInputLand(int inputLand) {
@@ -65,7 +72,7 @@ public class GamePlay {
         Board board = new Board();
         board.setPlay(this);
         map = board.show();
-
+        TextArea landsof = new TextArea();
 
         //right
         playerInfo = new VBox(10);
@@ -78,7 +85,7 @@ public class GamePlay {
             control.attacking(players[turnIndex], 12);
         });
 
-        Button research = new Button("Research");
+        research = new Button("Research");
         research.setOnAction(e -> {
             Researches researches = new Researches();
             try {
@@ -88,8 +95,8 @@ public class GamePlay {
             }
         });
 
-
-        Button cardButton = new Button("Cards");;
+        position = new Button("Position");
+        Button cardButton = new Button("Cards");
         Button turnEnd = new Button("Turn");
         Button selectGeneral = new Button("Select General");
                 selectGeneral.setOnAction(e -> {
@@ -101,27 +108,36 @@ public class GamePlay {
                     }
                     selectGeneral.setDisable(true);
                 });
-        playerInfo.getChildren().addAll(info, turnEnd, landInfo, research, attack, selectGeneral, cardButton);
+        playerInfo.getChildren().addAll(info, turnEnd, landInfo, position, research, selectGeneral, cardButton, landsof);
        // playerInfo.getChildren().addAll(info, turnEnd, landInfo, research);
         playerInfo.setAlignment(Pos.CENTER);
         playerInfo.setSpacing(10);
         info.setText(players[turnIndex].toString());
         turnEnd.setOnAction(e -> {
-            System.out.println(turnIndex);
+     //       System.out.println("plpl: " + playerCount );
+            int toDelete = -1;
+
             players[turnIndex].turnEndAdd();
             selectGeneral.setDisable(false);
-            System.out.println("TUETNURN " + turnIndex);
+     //       System.out.println("TUETNURN " + turnIndex);
             if(turnIndex < playerCount-1)
                 turnIndex++;
             else {
-                System.out.println("turn ended");
+         //       System.out.println("turn ended");
                 turnIndex = 0;
+                turn++;
                 for (Player a:players
                      ) {
                     a.turnCounter();
                 }
             }
-            System.out.println("a " + players.length);
+     //       System.out.println(players[turnIndex].isResearching());
+            if (players[turnIndex].isResearching())
+                research.setDisable(true);
+            else
+                research.setDisable(false);
+            landsof.setText( "Land Count:  "+ players[turnIndex].getLandCount()+ "\n" + getControl().getLands().getLandsByOwner(players[turnIndex].getCountry())); // Bu kullanıcının landlerinin isimlerini string arraylisti döndürüyo
+      //      System.out.println("a " + players.length);
             PositionInterface pos = new PositionInterface(players[turnIndex], this);
             try {
                 pos.show();
@@ -129,6 +145,16 @@ public class GamePlay {
                 ioException.printStackTrace();
             }
             info.setText(players[turnIndex].toString());
+
+        });
+
+        position.setOnAction(event -> {
+            PositionInterface pos = new PositionInterface(players[turnIndex], this);
+            try {
+                pos.show();
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
         });
 
         //BEGIN
@@ -146,6 +172,8 @@ public class GamePlay {
             }
         });
         //END
+
+        landsof.setText(getControl().getLands().getLandsByOwner(players[0].getCountry()));
 
         pane = new BorderPane();
         pane.setMaxSize(1920,1080);
@@ -167,7 +195,7 @@ public class GamePlay {
     }
 
     public void positionTroop(int unitType, int amount,int landNo ){
-        System.out.println(unitType  + "  " + amount + "  " + landNo);
+  //      System.out.println(unitType  + "  " + amount + "  " + landNo);
         control.positionTroopOnLand(turnIndex,landNo, unitType, amount);
 
     }
@@ -178,6 +206,33 @@ public class GamePlay {
 
     public void relocateMap(Pane pane){
         this.pane.setCenter(pane);
+    }
+
+    public void hasFallen() throws IOException {
+        for (int a = 0; a < playerCount; a++){
+            if(players[a].getLandCount() == 0 && !players[a].isDefeated()){
+                defet = new CountryFallen();
+                try {
+                    defet.call(players[a].getCountry());
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+                players[a].setDefeated(true);
+                for (int i = a; i < playerCount-1; i++ ) {
+                    players[i] = players[i + 1];
+                }
+                playerCount--;
+                a--;
+            }
+        }
+        if(playerCount == 1){
+            endGame();
+        }
+    }
+
+    public void endGame() throws IOException {
+        endGame end = new endGame();
+        end.hide(stag, (players[0].getName() + "\n" + players[0].getCountry()));
     }
 
 
@@ -194,7 +249,7 @@ public class GamePlay {
     }
 
     public void relocateTroop(int landNoFrom, int landNoTo, int unitType, int amount){
-        System.out.println(unitType + "  " + landNoFrom + "  " + landNoTo + "  " + amount);
+      //  System.out.println(unitType + "  " + landNoFrom + "  " + landNoTo + "  " + amount);
         control.relocateTroops(turnIndex,landNoFrom, landNoTo, unitType, amount);
     }
 

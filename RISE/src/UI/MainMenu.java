@@ -51,20 +51,13 @@ public class MainMenu implements EventHandler {
 
         Button deneme = new Button("sona");
         deneme.setOnAction(e -> {
-            upperMenu.setPlayerCount(3);
+            upperMenu.setPlayerCount(4);
             upperMenu.initBoard();
             try {
                 upperMenu.countrySelected("German Reich", "Adolf Hitler", "ben");
-            } catch (FileNotFoundException fileNotFoundException) {
-                fileNotFoundException.printStackTrace();
-            }
-            try {
                 upperMenu.countrySelected("Soviet Union", "Joseph Stalin", "sen");
-            } catch (FileNotFoundException fileNotFoundException) {
-                fileNotFoundException.printStackTrace();
-            }
-            try {
                 upperMenu.countrySelected("USA", "Franklin Delano Roosevelt", "biz");
+                upperMenu.countrySelected("France", "Charles de Gaulle", "siz");
             } catch (FileNotFoundException fileNotFoundException) {
                 fileNotFoundException.printStackTrace();
             }

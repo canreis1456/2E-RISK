@@ -22,7 +22,7 @@ public class Player {
     private int resourceBuff;
     private General selectedGeneral;
     private int troopNumber, turnCount, researchBuff, setsTraded;
-    private boolean researching;
+    private boolean researching, defeated;
     int landCount;
     private Card defaultCard;
     private File currentDirFile;
@@ -39,6 +39,7 @@ public class Player {
         turnCount = 0;
         researchBuff = 0;
         setsTraded = 0;
+        defeated = false;
 
         currentDirFile = new File("");
         currentDir = currentDirFile.getAbsolutePath();
@@ -95,6 +96,22 @@ public class Player {
         researching = false;
     }
 
+    public boolean isDefeated() {
+        return defeated;
+    }
+
+    public void setDefeated(boolean defeated) {
+        this.defeated = defeated;
+    }
+
+    public void setLandCount(int landCount) {
+        this.landCount = landCount;
+    }
+
+    public int getLandCount() {
+        return landCount;
+    }
+
     public String getName() {
         return name;
     }
@@ -128,6 +145,10 @@ public class Player {
                 System.out.println(a.get(0).getType() +" \n atck: " + a.get(0).getAttack() + " def: "+ a.get(0).getDefense());
             }
         }
+    }
+
+    public boolean isResearching() {
+        return researching;
     }
 
     public ArrayList<ArrayList<Troop>> getTroops() {
@@ -193,8 +214,10 @@ public class Player {
         float attack = 0;
             for (int j = 0; j < 4; j++) {
             for (int i = 0; i < troops.get(j).size(); i++) {
-                if (troops.get(j).get(i).getPosition() == coordinates)
+                if (troops.get(j).get(i).getPosition() == coordinates) {
                     attack += troops.get(j).get(i).getAttack();
+                    System.out.println("aatt " + attack);
+                }
             }
         }
         for(int i = 0; i < 4; i++) {
@@ -289,7 +312,7 @@ public class Player {
              ) {
             if(a.getPosition() == landNoFrom && count < amount) {
                 a.setPosition(landNoTo);
-                //System.out.println(count + "   ::   " + a.getPosition() + "   " + a.getType());
+                System.out.println(count + "   ::   " + a.getPosition() + "   " + a.getType());
                 count++;
             }
         }
@@ -307,6 +330,7 @@ public class Player {
             }
             if (flag) {
                 troops.get(unitType).remove(i);
+                System.out.println("size " + troops.get(unitType).size());
                 i--;
                 flag = false;
             }

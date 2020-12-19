@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="780.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.CountryFallen">
+   <children>
+      <ImageView fitHeight="287.0" fitWidth="560.0" layoutX="110.0" layoutY="-10.0">
+         <image>
+            <Image url="@ProjeResimler/defeat.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="country" fill="#662825" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="United Kingdom has fallen" wrappingWidth="786.0">
+         <font>
+            <Font name="Times New Roman" size="69.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

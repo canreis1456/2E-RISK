@@ -9,7 +9,6 @@ import java.util.ArrayList;
 
 public class Land {
 
-    String name;
     int landNo;
     float defensePoints;
     boolean ownedByPlayer;
@@ -37,6 +36,8 @@ public class Land {
     //      this.owner = owner;
     // }
 
+
+
     @Override
     public String toString() {
         return "Land{" +
@@ -44,6 +45,7 @@ public class Land {
                 '}' +  "\n" + "owner: " + owner + "\n Artillery: " + troopcounts[0] + "\n Infantry: " + troopcounts[1] +
                 "\n Tank: " + troopcounts[2] + "\n Nerds: " + troopcounts[3] + "\n is: " + ownedByPlayer + "\n defPoints: " + defensePoints;
     }
+
 
     public String getTroopInfo(){
         Troop art = new Artillery();

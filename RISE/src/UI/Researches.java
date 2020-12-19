@@ -51,11 +51,21 @@ public class Researches {
         Researches control = loader.<Researches>getController();
         control.setGamePlay(play);
         Scene scene = new Scene(root, 600, 450);
+        control.hide(this);
         stag.setTitle("RISE");
         stag.setScene(scene);
         stag.show();
     }
 
+    public void hide(Researches cont){
+        start.setOnAction(event -> {
+            System.out.println("selec: " +selected);
+            play.players[play.getTurnIndex()].startResearch(selected);
+            cont.stag.hide();
+            play.researchh().setDisable(true);
+        });
+
+    }
 
 
 
@@ -80,9 +90,10 @@ public class Researches {
         }
     }
 
-    public void researchStarted(){
-        System.out.println("selec: " +selected);
-        play.players[play.getTurnIndex()].startResearch(selected);
+    public void researchStarted(Event e){
+
+
+        //stag.close();
     }
 }
 

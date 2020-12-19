@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 
+import java.io.IOException;
 import java.util.Random;
 
 import static java.lang.Float.parseFloat;
@@ -34,7 +35,7 @@ public class AttackController {
         this.upper = upper;
     }
 
-    public void declareWinner(){
+    public void declareWinner() throws IOException {
         System.out.println("att: " + parseFloat(totalAttack.getText()) + "def: " + parseFloat(totalDefense.getText()));
         upper.declareWinner(parseFloat(totalAttack.getText()) > parseFloat(totalDefense.getText()));
     }
@@ -72,9 +73,9 @@ public class AttackController {
     }
 
 
-    public void roll1(ActionEvent e){
+    public void roll1(ActionEvent e) throws IOException {
         Random rand = new Random();
-        dice1.setText("" + 11);//(rand.nextInt(11)+2));
+        dice1.setText("" + (rand.nextInt(11)+2));
         roll1.setDisable(true);
         totalDefense.setText((defenseP*parseFloat(dice1.getText())+ ""));
         showD(this);
@@ -85,9 +86,9 @@ public class AttackController {
             declareWinner();
     }
 
-    public void roll2(ActionEvent e){
+    public void roll2(ActionEvent e) throws IOException {
         Random rand = new Random();
-        dice2.setText("" + (rand.nextInt(10)+2));
+        dice2.setText("" + (rand.nextInt(11)+2));
         roll2.setDisable(true);
         totalAttack.setText((attackP*parseFloat(dice2.getText()))+ "");
         showA(this);

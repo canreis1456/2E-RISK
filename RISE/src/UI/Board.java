@@ -77,7 +77,7 @@ public class Board{
             relocateTroop(this.getPlay(), landNoFrom, parseInt(((Node) e.getSource()).getAccessibleText()), 3, nrd);
           //  System.out.println(getPlay().getTurnIndex() + "  " + ((Node) e.getSource()).getAccessibleText());
             this.getPlay().setMap();
-        }else if(this.getPlay().getControl().getLands().getLand(landNoFrom).hasBorder(parseInt(((Node) e.getSource()).getAccessibleText()))){
+        }else if(this.getPlay().getControl().getLands().getLand(landNoFrom).hasBorder(parseInt(((Node) e.getSource()).getAccessibleText())) && play.turn >= 1){
             relocateTroop(this.getPlay(), landNoFrom, 43, 0, artil);
             relocateTroop(this.getPlay(), landNoFrom, 43, 1, inf);
             relocateTroop(this.getPlay(), landNoFrom, 43, 2, tnk);
