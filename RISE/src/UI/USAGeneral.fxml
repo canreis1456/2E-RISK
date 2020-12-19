@@ -7,31 +7,30 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-
-<Pane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.GeneralControl">
+<Pane prefHeight="407.0" prefWidth="761.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.GeneralControl">
    <children>
-      <AnchorPane prefHeight="332.0" prefWidth="612.0">
+      <AnchorPane layoutY="-35.0" prefHeight="458.0" prefWidth="816.0">
           <children>
-              <TextArea layoutX="30.0" layoutY="50.0" prefHeight="190.0" prefWidth="132.0" />
-              <ImageView fitHeight="151.0" fitWidth="132.0" layoutX="170.0" layoutY="50.0">
+              <TextArea fx:id="infoBox" layoutX="5.0" layoutY="50.0" prefHeight="318.0" prefWidth="207.0" />
+              <ImageView fitHeight="237.0" fitWidth="171.0" layoutX="220.0" layoutY="50.0">
                   <image>
                       <Image url="@ProjeResimler/DouglasMacArthur.jpg" />
                   </image>
               </ImageView>
-              <Button layoutX="168.0" layoutY="205.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="132.0" text="Douglas MacArthur" />
-              <ImageView fitHeight="151.0" fitWidth="132.0" layoutX="310.0" layoutY="50.0">
+              <Button fx:id="gen3" layoutX="219.0" layoutY="317.0" mnemonicParsing="false" onAction="#setInfoBox" prefHeight="50.0" prefWidth="171.0" text="Douglas MacArthur" />
+              <ImageView fitHeight="237.0" fitWidth="171.0" layoutX="400.0" layoutY="50.0">
                   <image>
                       <Image url="@ProjeResimler/GeorgeS.Patton.jpg" />
                   </image>
               </ImageView>
-              <Button layoutX="310.0" layoutY="205.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="132.0" text="George S. Patton" />
-              <ImageView fitHeight="151.0" fitWidth="132.0" layoutX="450.0" layoutY="50.0">
+              <Button fx:id="gen2" layoutX="400.0" layoutY="317.0" mnemonicParsing="false" onAction="#setInfoBox" prefHeight="50.0" prefWidth="171.0" text="George S. Patton" />
+              <ImageView fitHeight="237.0" fitWidth="171.0" layoutX="580.0" layoutY="50.0">
                   <image>
                       <Image url="@ProjeResimler/DwightD.Eisenhower.jpg" />
                   </image>
               </ImageView>
-              <Button layoutX="450.0" layoutY="205.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="132.0" text="Dwight D. Eisenhower" />
-              <Button layoutX="234.0" layoutY="269.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="132.0" text="Select General" />
+              <Button fx:id="gen1" layoutX="580.0" layoutY="317.0" mnemonicParsing="false" onAction="#setInfoBox" prefHeight="50.0" prefWidth="171.0" text="Dwight D. Eisenhower" />
+              <Button fx:id= "selectGen" onAction="#setGeneral" layoutX="334.0" layoutY="394.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="132.0" text="Select General" />
           </children>
       </AnchorPane>
    </children>

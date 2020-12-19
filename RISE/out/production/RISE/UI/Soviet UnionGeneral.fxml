@@ -14,23 +14,23 @@
                 <TextArea fx:id="infoBox" layoutX="5.0" layoutY="50.0" prefHeight="318.0" prefWidth="207.0" />
                 <ImageView fitHeight="237.0" fitWidth="171.0" layoutX="220.0" layoutY="50.0">
                     <image>
-                        <Image url="@ProjeResimler/FevziCakmak.jpg" />
+                        <Image url="@ProjeResimler/GeorgyZhukov.jpg" />
                     </image>
                 </ImageView>
-                <Button fx:id="gen3" layoutX="219.0" layoutY="317.0" mnemonicParsing="false" onAction="#setInfoBox" prefHeight="50.0" prefWidth="171.0" text="Fevzi Cakmak" />
+                <Button fx:id="gen3" layoutX="219.0" layoutY="317.0" mnemonicParsing="false" onAction="#setInfoBox" prefHeight="50.0" prefWidth="171.0" text="Georgy Zhukov" />
                 <ImageView fitHeight="237.0" fitWidth="171.0" layoutX="400.0" layoutY="50.0">
                     <image>
-                        <Image url="@ProjeResimler/KazımKarabekir.jpg" />
+                        <Image url="@ProjeResimler/MikhailTukhachevsky.jpg" />
                     </image>
                 </ImageView>
-                <Button fx:id="gen2" layoutX="400.0" layoutY="317.0" mnemonicParsing="false" onAction="#setInfoBox" prefHeight="50.0" prefWidth="171.0" text="Kazım Karabekir" />
+                <Button fx:id="gen2" layoutX="400.0" layoutY="317.0" mnemonicParsing="false" onAction="#setInfoBox" prefHeight="50.0" prefWidth="171.0" text="Mikhail Tukhachevsky" />
                 <ImageView fitHeight="237.0" fitWidth="171.0" layoutX="580.0" layoutY="50.0">
                     <image>
-                        <Image url="@ProjeResimler/FahrettinAltay.jpeg" />
+                        <Image url="@ProjeResimler/KonstantinRokossovsky.jpg" />
                     </image>
                 </ImageView>
-                <Button fx:id="gen1" layoutX="580.0" layoutY="317.0" mnemonicParsing="false" onAction="#setInfoBox" prefHeight="50.0" prefWidth="171.0" text="Fahrettin Altay" />
-                <Button fx:id= "selectGen" onAction="#setGeneral" layoutX="334.0" layoutY="394.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="132.0" text="Select General" />
+                <Button fx:id="gen1" layoutX="580.0" layoutY="317.0" mnemonicParsing="false" onAction="#setInfoBox" prefHeight="50.0" prefWidth="171.0" text="Konstantin Rokossovsky" />
+                <Button layoutX="334.0" layoutY="394.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="132.0" text="Select General" />
             </children>
         </AnchorPane>
     </children>

@@ -302,4 +302,21 @@ public class Player {
             }
             return false;
     }
+
+    public String getGeneralInfo(String s){
+
+        for (General g: country.generals) {
+            if (g.getName().equals(s)) {
+                String a = "Attack Buffs \n Artillery = " + g.attackBuffers[0] + " \n Infantry = " + g.attackBuffers[1] + "\n Tanks = " + g.attackBuffers[2] + "\n Nerds = " + g.attackBuffers[3]
+                        + "\nDefense Buffs \n Artillery = " + g.defenseBuffers[0] + " \n Infantry = " + g.defenseBuffers[1] + "\n Tanks = " + g.defenseBuffers[2] + "\n Nerds = " + g.defenseBuffers[3]
+                        + "\nAgression = ";
+                if (g.getAggresion() != null) {
+                     a = a + g.getAggresion() + "\n Attack = " + g.aggresionAttack + "\n Defence = " + g.aggresionDef;
+                }
+                return a;
+            }
+
+        }
+     return "";
+    }
 }

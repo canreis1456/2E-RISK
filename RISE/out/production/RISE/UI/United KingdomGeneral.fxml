@@ -14,17 +14,17 @@
                 <TextArea fx:id="infoBox" layoutX="23.0" layoutY="50.0" prefHeight="318.0" prefWidth="207.0" />
                 <ImageView fitHeight="237.0" fitWidth="171.0" layoutX="297.0" layoutY="50.0">
                     <image>
-                        <Image url="@ProjeResimler/TomoyukiYamashita.jpg" />
+                        <Image url="@ProjeResimler/BernardMontgomery.jpg" />
                     </image>
                 </ImageView>
-                <Button fx:id="gen3" layoutX="297.0" layoutY="315.0" mnemonicParsing="false" onAction="#setInfoBox" prefHeight="50.0" prefWidth="171.0" text="Tomoyuki Yamashita" />
+                <Button fx:id="gen3" layoutX="297.0" layoutY="315.0" mnemonicParsing="false" onAction="#setInfoBox" prefHeight="50.0" prefWidth="171.0" text="Bernard Montgomery" />
                 <ImageView fitHeight="237.0" fitWidth="171.0" layoutX="547.0" layoutY="50.0">
                     <image>
-                        <Image url="@ProjeResimler/HisaichiTerauchi.jpg" />
+                        <Image url="@ProjeResimler/AlanBrooke.jpg" />
                     </image>
                 </ImageView>
-                <Button fx:id="gen2" layoutX="542.0" layoutY="316.0" mnemonicParsing="false" onAction="#setInfoBox" prefHeight="49.0" prefWidth="171.0" text="Hisaichi Terauchi" />
-                <Button fx:id= "selectGen" onAction="#setGeneral" layoutX="342.0" layoutY="405.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="132.0" text="Select General" />
+                <Button fx:id="gen2" layoutX="542.0" layoutY="316.0" mnemonicParsing="false" onAction="#setInfoBox" prefHeight="49.0" prefWidth="171.0" text="Alan Brooke" />
+                <Button layoutX="342.0" layoutY="405.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="132.0" text="Select General" />
             </children>
         </AnchorPane>
     </children>
