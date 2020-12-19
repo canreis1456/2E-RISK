@@ -6,6 +6,7 @@ import java.util.List;
 interface CountryInitializer {
     void initializeGenerals(List<General> generals);
     void initializeLeaders(List<Leader> leaders);
+    int initializeLandCount(int landCount);
 
 }
 
@@ -26,6 +27,11 @@ class GermanyInitializer implements CountryInitializer{
         leaders.add(Hitler);
         leaders.add(Wilhelm);
     }
+
+    public int initializeLandCount(int landCount){
+        landCount = 4;
+        return landCount;
+    }
 }
 
 class SovietInitializer implements CountryInitializer{
@@ -45,6 +51,11 @@ class SovietInitializer implements CountryInitializer{
         leaders.add(Trotsky);
     }
 
+    public int initializeLandCount(int landCount){
+        landCount = 4;
+        return landCount;
+    }
+
 }
 class FranceInitializer implements CountryInitializer {
     public void initializeGenerals(List<General> generals) {
@@ -60,6 +71,11 @@ class FranceInitializer implements CountryInitializer {
         leaders.add(Charles);
         leaders.add(Philippe);
     }
+
+    public int initializeLandCount(int landCount){
+        landCount = 4;
+        return landCount;
+    }
 }
 
 class ChinaInitializer implements CountryInitializer {
@@ -73,6 +89,11 @@ class ChinaInitializer implements CountryInitializer {
     public void initializeLeaders(List<Leader> leaders) {
         Leader Kaishek = new Leader("Chiang Kai-shek", "Non-Aligned", 0, 0, 4, 4, new int[]{0, 1, 2, 3});
         leaders.add(Kaishek);
+    }
+
+    public int initializeLandCount(int landCount){
+        landCount = 4;
+        return landCount;
     }
 }
 
@@ -90,6 +111,11 @@ class ItalyInitializer implements CountryInitializer{
         Leader Parri = new Leader("Ferruco Parri", "Democrat", 0, 0, 4, 4 , new int[]{0, 1, 2, 3});
         leaders.add(Mussolini);
         leaders.add(Parri);
+    }
+
+    public int initializeLandCount(int landCount){
+        landCount = 4;
+        return landCount;
     }
 }
 
@@ -110,6 +136,11 @@ class USAInitializer implements CountryInitializer {
         leaders.add(Rosewelt);
         leaders.add(London);
     }
+
+    public int initializeLandCount(int landCount){
+        landCount = 4;
+        return landCount;
+    }
 }
 
 class JapanInitializer implements CountryInitializer{
@@ -124,6 +155,11 @@ class JapanInitializer implements CountryInitializer{
     public void initializeLeaders(List<Leader> leaders) {
         Leader Hirohito = new Leader("Hirohito", "Fascist", 0, 0, 4, 4, new int[]{0, 1, 2, 3});
         leaders.add(Hirohito);
+    }
+
+    public int initializeLandCount(int landCount){
+        landCount = 4;
+        return landCount;
     }
 }
 
@@ -144,6 +180,11 @@ class TurkeyInitializer implements CountryInitializer{
         leaders.add(IsmetInonu);
         leaders.add(Abdulmejid);
     }
+
+    public int initializeLandCount(int landCount){
+        landCount = 4;
+        return landCount;
+    }
 }
 
 class UKInitializer implements CountryInitializer {
@@ -160,5 +201,10 @@ class UKInitializer implements CountryInitializer {
         Leader Mosley = new Leader("Oswald Mosley", "Fascist", 0, 0, 4, 4, new int[]{0, 1, 2, 3});
         leaders.add(Churchill);
         leaders.add(Mosley);
+    }
+
+    public int initializeLandCount(int landCount){
+        landCount = 4;
+        return landCount;
     }
 }

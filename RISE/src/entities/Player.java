@@ -1,7 +1,7 @@
 package entities;
 
 
-import entities.Troops.Troop;
+import entities.Troops.*;
 import javafx.scene.image.Image;
 
 import java.io.File;
@@ -23,6 +23,7 @@ public class Player {
     private General selectedGeneral;
     private int troopNumber, turnCount, researchBuff, setsTraded;
     private boolean researching;
+    int landCount;
     private Card defaultCard;
     private File currentDirFile;
     String currentDir;
@@ -38,6 +39,7 @@ public class Player {
         turnCount = 0;
         researchBuff = 0;
         setsTraded = 0;
+
         currentDirFile = new File("");
         currentDir = currentDirFile.getAbsolutePath();
         defaultCard = new Card("", "", -1, new Image(new FileInputStream(currentDir + "\\src\\UI\\ProjeResimler\\blank.png")));
@@ -45,39 +47,48 @@ public class Player {
             country = new Country(new GermanyInitializer(), leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
+            landCount = country.initializeLandCount(landCount);
         } else if(countr.equals("Soviet Union")){
             country = new Country(new SovietInitializer(), leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
+            landCount = country.initializeLandCount(landCount);
         } else if(countr.equals("France")){
             country = new Country(new FranceInitializer(), leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
+            landCount = country.initializeLandCount(landCount);
         } else if(countr.equals("Italy")){
             country = new Country(new ItalyInitializer(), leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
+            landCount = country.initializeLandCount(landCount);
         } else if(countr.equals("Japan")){
             country = new Country(new JapanInitializer(), leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
+            landCount = country.initializeLandCount(landCount);
         } else if(countr.equals("United Kingdom")){
             country = new Country(new UKInitializer(), leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
+            landCount = country.initializeLandCount(landCount);
         } else if(countr.equals("China")) {
             country = new Country(new ChinaInitializer(), leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
+            landCount = country.initializeLandCount(landCount);
         } else if(countr.equals("Turkey")){
             country = new Country(new TurkeyInitializer(), leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
+            landCount = country.initializeLandCount(landCount);
         }
         else if (countr.equals("USA")){
             country = new Country(new USAInitializer(), leader);
             country.initializeTroops(troops);
             setTroopTypePoints();
+            landCount = country.initializeLandCount(landCount);
         }
         tree = new ResearchTree();
         current = tree.getHead();
@@ -416,5 +427,40 @@ public class Player {
 
     public Card getDefaultCard(){
         return defaultCard;
+    }
+
+    public void turnEndAdd(){
+        int infNumber;
+        infNumber = 2 * landCount + resourceBuff;
+        int artNumber;
+        artNumber = 2 * landCount + resourceBuff;
+        int tankNumber;
+        tankNumber = 2 * landCount + resourceBuff;
+        int nerdNumber;
+        nerdNumber = 2 * landCount + resourceBuff;
+        for(int i = 0; i < artNumber; i++){
+            troops.get(0).add(new Artillery());
+            troops.get(0).get(troops.get(0).size() - 1).setAttack(trpInstance[0]);
+            troops.get(0).get(troops.get(0).size() - 1).setAttack(trpInstance[1]);
+        }
+
+        for(int i = 0; i < infNumber; i++){
+            troops.get(1).add(new Infantry());
+            troops.get(1).get(troops.get(1).size() - 1).setAttack(trpInstance[2]);
+            troops.get(1).get(troops.get(1).size() - 1).setAttack(trpInstance[3]);
+        }
+
+        for(int i = 0; i < tankNumber; i++){
+            troops.get(2).add(new Tank());
+            troops.get(2).get(troops.get(2).size() - 1).setAttack(trpInstance[4]);
+            troops.get(2).get(troops.get(2).size() - 1).setAttack(trpInstance[5]);
+        }
+
+        for(int i = 0; i < nerdNumber; i++){
+            troops.get(3).add(new Nerds());
+            troops.get(3).get(troops.get(3).size() - 1).setAttack(trpInstance[6]);
+            troops.get(3).get(troops.get(3).size() - 1).setAttack(trpInstance[7]);
+        }
+
     }
 }

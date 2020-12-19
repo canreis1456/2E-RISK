@@ -107,6 +107,8 @@ public class GamePlay {
         playerInfo.setSpacing(10);
         info.setText(players[turnIndex].toString());
         turnEnd.setOnAction(e -> {
+            System.out.println(turnIndex);
+            players[turnIndex].turnEndAdd();
             selectGeneral.setDisable(false);
             System.out.println("TUETNURN " + turnIndex);
             if(turnIndex < playerCount-1)
@@ -201,9 +203,6 @@ public class GamePlay {
         setInfoDisable(true);
     }
 
-    public void endTurn(){
-
-    }
 
     public void updateInfo(){
         info.setText(players[turnIndex].toString());
