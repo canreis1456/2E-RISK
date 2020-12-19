@@ -64,7 +64,7 @@ public class AttackInterface {
         for(int i = 0; i < 4; i++) {
             if (flag) {
                 System.out.println("if: "+ defAmount[i] + "   " + attackAmount[i]);
-                if (attackAmount[i] > defAmount[i]) {
+                if (attackAmount[i] >= defAmount[i]) {
                     attacking.removeTroopTypeFromLand(i, 43, defAmount[i]);
                     defense.removeTroopTypeFromLand(i, landNo, defAmount[i]);
                 } else {
@@ -80,15 +80,17 @@ public class AttackInterface {
                 remainingAttackTroops[i] = attacking.getTroopTypeAtLandInt(i, 43);
 
                 play.relocateTroop(43, landNo, i, remainingAttackTroops[i]);
-                play.positionTroop(i,-(attackAmount[i] - remainingAttackTroops[i]),43);
+                play.getControl().getLands().positionTroopOnLand(i,-(attackAmount[i] - remainingAttackTroops[i]),43);
                 attacking.relocateTroops(43, landNo, i, remainingAttackTroops[i]);
-
-
+                System.out.println(play.getControl().getLands().getLand(43).getArtilleryAmount());
+                System.out.println(play.getControl().getLands().getLand(43).getInfantryAmount());
+                System.out.println(play.getControl().getLands().getLand(43).getTankAmount());
+                System.out.println(play.getControl().getLands().getLand(43).getNerdsAmount());
 
 
             } else {
                 System.out.println("if: "+ defAmount[i] + "   " + attackAmount[i]);
-                if (attackAmount[i] > defAmount[i]) {
+                if (attackAmount[i] >= defAmount[i]) {
                     attacking.removeTroopTypeFromLand(i, 43, (attackAmount[i]*80/100));
                     defense.removeTroopTypeFromLand(i, landNo, (defAmount[i]*50/100));
                 } else {
@@ -105,8 +107,12 @@ public class AttackInterface {
                 remainingAttackTroops[i] = attacking.getTroopTypeAtLandInt(i, 43);
 
                 play.relocateTroop(43, landNo, i, remainingAttackTroops[i]);
-                play.positionTroop(i,-(attackAmount[i]-remainingAttackTroops[i]), 43);
+                play.getControl().getLands().positionTroopOnLand(i,-(attackAmount[i]-remainingAttackTroops[i]), 43);
                 attacking.relocateTroops(43, landNo, i, remainingAttackTroops[i]);
+                System.out.println(play.getControl().getLands().getLand(43).getArtilleryAmount());
+                System.out.println(play.getControl().getLands().getLand(43).getInfantryAmount());
+                System.out.println(play.getControl().getLands().getLand(43).getTankAmount());
+                System.out.println(play.getControl().getLands().getLand(43).getNerdsAmount());
             }
         }
 

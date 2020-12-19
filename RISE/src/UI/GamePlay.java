@@ -99,6 +99,7 @@ public class GamePlay {
                     } catch (IOException ioException) {
                         ioException.printStackTrace();
                     }
+                    selectGeneral.setDisable(true);
                 });
         playerInfo.getChildren().addAll(info, turnEnd, landInfo, research, attack, selectGeneral);
        // playerInfo.getChildren().addAll(info, turnEnd, landInfo, research);
@@ -106,6 +107,8 @@ public class GamePlay {
         playerInfo.setSpacing(10);
         info.setText(players[turnIndex].toString());
         turnEnd.setOnAction(e -> {
+            selectGeneral.setDisable(false);
+            System.out.println("TUETNURN " + turnIndex);
             if(turnIndex < playerCount-1)
                 turnIndex++;
             else {
@@ -116,6 +119,7 @@ public class GamePlay {
                     a.turnCounter();
                 }
             }
+            System.out.println("a " + players.length);
             PositionInterface pos = new PositionInterface(players[turnIndex], this);
             try {
                 pos.show();

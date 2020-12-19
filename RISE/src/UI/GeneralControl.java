@@ -45,5 +45,6 @@ public class GeneralControl {
     }
     public void setGeneral(Event e){
         upperClass.getPlay().getControl().getPlayers()[upperClass.getPlay().turnIndex].selectGeneral(id);
+        upperClass.hide();
     }
 }

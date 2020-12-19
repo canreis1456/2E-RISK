@@ -41,4 +41,8 @@ public class GeneralInterface {
         stage.show();
     }
 
+    public void hide(){
+        stage.hide();
+    }
+
 }

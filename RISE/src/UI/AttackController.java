@@ -35,8 +35,8 @@ public class AttackController {
     }
 
     public void declareWinner(){
-        System.out.println("att: " + attackP + "def: " + defenseP);
-        upper.declareWinner(attackP > defenseP);
+        System.out.println("att: " + parseFloat(totalAttack.getText()) + "def: " + parseFloat(totalDefense.getText()));
+        upper.declareWinner(parseFloat(totalAttack.getText()) > parseFloat(totalDefense.getText()));
     }
 
     public void setDefending(String res, String points, String general, String country){
