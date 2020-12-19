@@ -16,6 +16,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 //import sample.BoardBuilder;
+import javafx.stage.StageStyle;
 import sample.GameController;
 
 import javax.swing.*;
@@ -37,6 +38,7 @@ public class GamePlay {
     BorderPane pane;
     GameController control;
     int inputLand;
+    Text info;
 
     public GamePlay(Stage stage, int playerCount, Player[] players, GameController control){
         this.control = control;
@@ -78,7 +80,7 @@ public class GamePlay {
         //right
         playerInfo = new VBox(10);
         playerInfo.setMaxWidth(100);
-        Text info = new Text();
+        info = new Text();
         info.setWrappingWidth(200);
 
         Button attack = new Button("Attack!!");
@@ -114,6 +116,12 @@ public class GamePlay {
                     a.turnCounter();
                 }
             }
+            PositionInterface pos = new PositionInterface(players[turnIndex], this);
+            try {
+                pos.show();
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
             info.setText(players[turnIndex].toString());
         });
         pane = new BorderPane();
@@ -124,9 +132,20 @@ public class GamePlay {
         map.setStyle("-fx-background-color: #0EA0F0");
         pane.setRight(playerInfo);
         Scene scene = new Scene(pane, 1920, 1000);
+
         stag.setTitle("RISE");
         stag.setScene(scene);
+        stag.setX(0);
+        stag.setY(0);
         stag.show();
+        PositionInterface pos = new PositionInterface(players[0], this);
+        pos.show();
+
+    }
+
+    public void positionTroop(int unitType, int amount,int landNo ){
+        System.out.println(unitType  + "  " + amount + "  " + landNo);
+        control.positionTroopOnLand(turnIndex,landNo, unitType, amount);
 
     }
 
@@ -152,6 +171,7 @@ public class GamePlay {
     }
 
     public void relocateTroop(int landNoFrom, int landNoTo, int unitType, int amount){
+        System.out.println(unitType + "  " + landNoFrom + "  " + landNoTo + "  " + amount);
         control.relocateTroops(turnIndex,landNoFrom, landNoTo, unitType, amount);
     }
 
@@ -162,5 +182,9 @@ public class GamePlay {
 
     public void endTurn(){
 
+    }
+
+    public void updateInfo(){
+        info.setText(players[turnIndex].toString());
     }
 }

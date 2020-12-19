@@ -67,9 +67,10 @@ public class Researches {
             id += full.charAt(i);
         }
         boolean flag = play.players[play.getTurnIndex()].getTree().isAvailable(id);
-            researchScreen.setText(play.players[play.getTurnIndex()].getTree().printResearch(id));
+        System.out.println(",d:  " + id);
+        researchScreen.setText(play.players[play.getTurnIndex()].getTree().printResearch(id));
         if(flag){
-            System.out.println("yyyyy");
+            //System.out.println("yyyyy");
             start.setDisable(false);
             selected = id;
             play.players[play.getTurnIndex()].getTree().setFlag(false);

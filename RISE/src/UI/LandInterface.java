@@ -113,7 +113,9 @@ public class LandInterface {
         control.setBoard(board);
         control.setTexts(land);
         control.textFields(true);
-
+        if (!land.getOwnerName().equals(board.getPlay().getControl().getPlayers()[board.getPlay().turnIndex].getCountry())) {
+            relocate.setDisable(true);
+        }
         relocate.setOnAction(this::handle);
         System.out.println(land.getLandNo());
         board.setLandNoFrom(land.getLandNo());
@@ -130,6 +132,7 @@ public class LandInterface {
                             System.out.println("a: " + artil + " i: " + inf + " t: " + tnk + " n: " + nrd);
                             System.out.println(land.getLandNo());
                             board.setRelocate(artil,inf ,tnk, nrd, land.getLandNo());
+                            stag.close();
                             try {
                                 board.getPlay().relocateMap(board.relocateMap());
                             } catch (IOException ioException) {
