@@ -74,7 +74,7 @@ public class AttackController {
 
     public void roll1(ActionEvent e){
         Random rand = new Random();
-        dice1.setText("" + (rand.nextInt(10)+2));
+        dice1.setText("" + 11);//(rand.nextInt(11)+2));
         roll1.setDisable(true);
         totalDefense.setText((defenseP*parseFloat(dice1.getText())+ ""));
         showD(this);

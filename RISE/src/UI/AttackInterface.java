@@ -106,9 +106,9 @@ public class AttackInterface {
 
                 remainingAttackTroops[i] = attacking.getTroopTypeAtLandInt(i, 43);
 
-                play.relocateTroop(43, landNo, i, remainingAttackTroops[i]);
+                play.relocateTroop(43, landNoFrom, i, remainingAttackTroops[i]);
                 play.getControl().getLands().positionTroopOnLand(i,-(attackAmount[i]-remainingAttackTroops[i]), 43);
-                attacking.relocateTroops(43, landNo, i, remainingAttackTroops[i]);
+                attacking.relocateTroops(43, landNoFrom, i, remainingAttackTroops[i]);
                 System.out.println(play.getControl().getLands().getLand(43).getArtilleryAmount());
                 System.out.println(play.getControl().getLands().getLand(43).getInfantryAmount());
                 System.out.println(play.getControl().getLands().getLand(43).getTankAmount());
