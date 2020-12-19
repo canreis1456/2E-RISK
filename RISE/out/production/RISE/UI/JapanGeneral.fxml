@@ -24,7 +24,7 @@
                     </image>
                 </ImageView>
                 <Button fx:id="gen2" layoutX="542.0" layoutY="316.0" mnemonicParsing="false" onAction="#setInfoBox" prefHeight="49.0" prefWidth="171.0" text="Hisaichi Terauchi" />
-                <Button layoutX="342.0" layoutY="405.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="132.0" text="Select General" />
+                <Button fx:id= "selectGen" onAction="#setGeneral" layoutX="342.0" layoutY="405.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="132.0" text="Select General" />
             </children>
         </AnchorPane>
     </children>

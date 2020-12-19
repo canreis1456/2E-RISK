@@ -352,7 +352,11 @@ public class NewGame implements EventHandler {
 	}else if(event.getSource() == lock){
             System.out.println("pl: " +playerCount);
             if(playerCount > 1) {
-                upperMenu.countrySelected(selection, Leaders.getValue(), playerName.getText());
+                try {
+                    upperMenu.countrySelected(selection, Leaders.getValue(), playerName.getText());
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
                 playerCount--;
                 try {
                     upperMenu.countrySelection();
@@ -361,7 +365,11 @@ public class NewGame implements EventHandler {
                 }
             }else{
                 System.out.println("qasd");
-                upperMenu.countrySelected(selection, Leaders.getValue(), playerName.getText());
+                try {
+                    upperMenu.countrySelected(selection, Leaders.getValue(), playerName.getText());
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
                 try {
                     upperMenu.gameplay();
                 } catch (IOException e) {

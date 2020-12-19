@@ -30,7 +30,7 @@
                </image>
             </ImageView>
             <Button fx:id="gen1" layoutX="580.0" layoutY="317.0" mnemonicParsing="false" onAction="#setInfoBox" prefHeight="50.0" prefWidth="171.0" text="Fedor von Bock" />
-            <Button fx:id= "selectGen" layoutX="334.0" layoutY="394.0" mnemonicParsing="false" onAction="#setGeneral" prefHeight="34.0" prefWidth="132.0" text="Select General" />
+            <Button fx:id= "selectGen" onAction="#setGeneral" layoutX="334.0" layoutY="394.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="132.0" text="Select General" />
          </children>
       </AnchorPane>
    </children>
