@@ -53,8 +53,10 @@ public class MainMenu implements EventHandler {
             upperMenu.setPlayerCount(3);
             upperMenu.initBoard();
             upperMenu.countrySelected("German Reich", "Adolf Hitler", "ben");
-            upperMenu.countrySelected("Soviet Union", "Joseph Stalin", "sen");
+            upperMenu.countrySelected("France", "Charles de Gaulle", "sen");
             upperMenu.countrySelected("USA", "Franklin Delano Roosevelt", "biz");
+//            upperMenu.getCntrl().getPlayer("German Reich").selectGeneral("Erwin Rommel");
+//            upperMenu.getCntrl().getPlayer("Soviet Union").selectGeneral("Georgy Zhukov");
 
             try {
                 upperMenu.gameplay();

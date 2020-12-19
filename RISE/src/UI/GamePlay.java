@@ -65,17 +65,7 @@ public class GamePlay {
         Board board = new Board();
         board.setPlay(this);
         map = board.show();
-        /*landTry.setPickOnBounds(false); // allows click on transparent areas
-        landTry2.setPickOnBounds(false);
-        landTry.maxHeight(100);
-        landTry.maxWidth(100);
-        landTry.setOnMouseClicked(event -> {
-            landInfo.setText(landTry.toString());
-        });
-        landTry2.setOnMouseClicked(event -> {
-            landInfo.setText(landTry2.toString());
-        });
-        map.getChildren().addAll(landTry, landTry2);*/
+
 
         //right
         playerInfo = new VBox(10);
@@ -101,7 +91,17 @@ public class GamePlay {
 
 
         Button turnEnd = new Button("Turn");
-        playerInfo.getChildren().addAll(info, turnEnd, landInfo, research, attack);
+        Button selectGeneral = new Button("Select General");
+                selectGeneral.setOnAction(e -> {
+                    GeneralInterface generalInterface = new GeneralInterface(this);
+                    try {
+                        generalInterface.show();
+                    } catch (IOException ioException) {
+                        ioException.printStackTrace();
+                    }
+                });
+        playerInfo.getChildren().addAll(info, turnEnd, landInfo, research, attack, selectGeneral);
+       // playerInfo.getChildren().addAll(info, turnEnd, landInfo, research);
         playerInfo.setAlignment(Pos.CENTER);
         playerInfo.setSpacing(10);
         info.setText(players[turnIndex].toString());

@@ -9,7 +9,7 @@ public class Lands {
 
     public Lands(GameController control) {
         this.control = control;
-        lands = new Land[43];
+        lands = new Land[44];
         lands[0] = new Land(0, "Empty", null, "");
         lands[1] = new Land(1, "USA", new int[]{2, 3, 37},"Alaska");
         lands[2] = new Land(2, "USA", new int[]{1, 3, 4, 6},"Kuzeybatı Bölgesi");
@@ -29,7 +29,7 @@ public class Lands {
         lands[16] = new Land(16, "USA", new int[]{14, 15, 17, 18},"İskandinavya ");
         lands[17] = new Land(17, "USA", new int[]{16, 18, 19, 34, 29, 27},"Rusya ");
         lands[18] = new Land(18, "USA", new int[]{14, 15, 16, 17, 19, 20},"KuzeyAvrupa ");
-        lands[19] = new Land(19, "USA", new int[]{17, 18, 20, 27},"GüneyAvrupa ");
+        lands[19] = new Land(19, "Soviet Union", new int[]{17, 18, 20, 27},"GüneyAvrupa ");
         lands[20] = new Land(20, "USA", new int[]{15, 18, 19, 21},"BatıAvrupa ");
         lands[21] = new Land(21, "USA", new int[]{11, 19, 20, 22},"KuzeyAfrika ");
         lands[22] = new Land(22, "German Reich", new int[]{19, 21, 23, 27},"Mısır ");
@@ -53,6 +53,7 @@ public class Lands {
         lands[40] = new Land(42, "German Reich", new int[]{39, 42},"YeniGine ");
         lands[41] = new Land(41, "German Reich", new int[]{39, 42},"BatuAvusturalya ");
         lands[42] = new Land(42, "German Reich", new int[]{40, 41},"DoğuAvusturalya ");
+        lands[43] = new Land(43, "Empty", null, "attacking");
 
 
     }
@@ -60,6 +61,18 @@ public class Lands {
 
     public void getTroopsFromLand(int unitType, int amount, int landNo){
         lands[landNo].setOneTypeTroop(unitType,amount);
+    }
+
+    public void removePartiallyFromLand(int landNo, int amount){
+        int[] troops = new int[4];
+        for (int i = 0; i < 4; i++){
+            troops[i] = lands[landNo].getTroopcounts()[i] - amount;
+        }
+    }
+
+    public void removeTroopFromLand(int landNo){
+        int[] troops = new int[]{0,0,0,0};
+        lands[landNo].setTroopcounts(troops);
     }
 
     public void positionTroopOnLand(int unitType, int amount, int landNo) {

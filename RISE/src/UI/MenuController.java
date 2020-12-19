@@ -27,7 +27,11 @@ public class MenuController {
 
     public void credits(){
         Credits cre = new Credits(stag, this);
-        cre.show();
+        try {
+            cre.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     public void newGame() throws FileNotFoundException {
         cntrl.initBoard();
@@ -39,6 +43,10 @@ public class MenuController {
         System.out.println("count " +playerCount);
         NewGame newG = new NewGame(stag, playerCount-playerIndex, this, selectedCountries);
         newG.show();
+    }
+
+    public GameController getCntrl() {
+        return cntrl;
     }
 
     public void countrySelected(String country, String leader, String playerName){

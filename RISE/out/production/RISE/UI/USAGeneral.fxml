@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane prefHeight="407.0" prefWidth="761.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.GeneralControl">
+   <children>
+      <AnchorPane layoutY="-35.0" prefHeight="458.0" prefWidth="816.0">
+          <children>
+              <TextArea fx:id="infoBox" layoutX="5.0" layoutY="50.0" prefHeight="318.0" prefWidth="207.0" />
+              <ImageView fitHeight="237.0" fitWidth="171.0" layoutX="220.0" layoutY="50.0">
+                  <image>
+                      <Image url="@ProjeResimler/DouglasMacArthur.jpg" />
+                  </image>
+              </ImageView>
+              <Button fx:id="gen3" layoutX="219.0" layoutY="317.0" mnemonicParsing="false" onAction="#setInfoBox" prefHeight="50.0" prefWidth="171.0" text="Douglas MacArthur" />
+              <ImageView fitHeight="237.0" fitWidth="171.0" layoutX="400.0" layoutY="50.0">
+                  <image>
+                      <Image url="@ProjeResimler/GeorgeS.Patton.jpg" />
+                  </image>
+              </ImageView>
+              <Button fx:id="gen2" layoutX="400.0" layoutY="317.0" mnemonicParsing="false" onAction="#setInfoBox" prefHeight="50.0" prefWidth="171.0" text="George S. Patton" />
+              <ImageView fitHeight="237.0" fitWidth="171.0" layoutX="580.0" layoutY="50.0">
+                  <image>
+                      <Image url="@ProjeResimler/DwightD.Eisenhower.jpg" />
+                  </image>
+              </ImageView>
+              <Button fx:id="gen1" layoutX="580.0" layoutY="317.0" mnemonicParsing="false" onAction="#setInfoBox" prefHeight="50.0" prefWidth="171.0" text="Dwight D. Eisenhower" />
+              <Button layoutX="334.0" layoutY="394.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="132.0" text="Select General" />
+          </children>
+      </AnchorPane>
+   </children>
+</Pane>

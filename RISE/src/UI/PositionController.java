@@ -10,8 +10,10 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.text.Text;
 
+import javax.swing.text.html.ImageView;
 import java.io.IOException;
 
 import static java.lang.Integer.parseInt;
@@ -56,7 +58,6 @@ public class PositionController {
     }
 
     public void getAmounts(){
-        System.out.println("asdas qweedwqd qw ");
         Artil.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -111,7 +112,6 @@ public class PositionController {
             upperClass.positionTroop(parseInt(((Node) e.getSource()).getAccessibleText()));
             upperClass.setMap();
         }
-
         /* if(this.getPlay() != null && this.getPlay().getControl().getLands().getLand(landNoFrom).hasBorder(parseInt(((Node) e.getSource()).getAccessibleText()))) {
             // relocateTroop(this.getPlay(), landNoFrom, parseInt(((Node) e.getSource()).getAccessibleText()), 0, artil);
             relocateTroop(this.getPlay(), landNoFrom, parseInt(((Node) e.getSource()).getAccessibleText()), 1, inf);
