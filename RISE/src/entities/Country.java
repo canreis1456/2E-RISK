@@ -94,5 +94,7 @@ public class Country{
         }
         return null;
     }
-
+    public int initializeLandCount(int landCount){
+        return strategy.initializeLandCount(landCount);
+    }
 }

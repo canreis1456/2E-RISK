@@ -38,6 +38,7 @@ public class MainMenu implements EventHandler {
         newG.setOnAction(this::handle);
 
         Button loadG = new Button("Load Game");
+        loadG.setDisable(true);
         loadG.setLayoutX(1100);
         loadG.setLayoutY(270);
         loadG.setMinSize(230, 100);
