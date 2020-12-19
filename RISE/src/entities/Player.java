@@ -348,7 +348,7 @@ public class Player {
     }
 
     public void print(){
-      /*  System.out.println(name + "\n"  +  countryName+ " : "+ country.getInUse().getName() + "\n" + troopNumber + "   " + country.getIdeology());
+        System.out.println(name + "\n"  +  countryName+ " : "+ country.getInUse().getName() + "\n" + troopNumber + "   " + country.getIdeology());
         for (int i = 0 ; i < 4 ; i++) {
             System.out.print(troops.get(i).get(0).getType() + ":  ");
             int count  = 0;
@@ -359,13 +359,13 @@ public class Player {
             }
             System.out.println(count);
             System.out.println(troops.get(i).get(0).getAttack() + " " + troops.get(i).get(0).getDefense() + "  " + troops.get(i).get(0).getPosition());
-        }*/
+        }
     }
 
     public String toString(){
         String result ="Name:  " +  name  + "\n"  +"  " + countryName+ " :  "+ country.getInUse().getName() + " \n   " + country.getIdeology() + "\n";
         for (int i = 0; i< 4; i++)
-            result += "\n " + trpnms[i] +"  :  " + troopsAtHand(i) +"\n " + trpInstance[i] + " " + trpInstance[i+1];
+            result += "\n " + troops.get(i).get(0).getType() +"  :  " + troopsAtHand(i) +"\n " + troops.get(i).get(0).getAttack() + " " + troops.get(i).get(0).getDefense();
         return  result;
     }
 
