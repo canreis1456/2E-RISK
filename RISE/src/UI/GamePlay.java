@@ -65,17 +65,7 @@ public class GamePlay {
         Board board = new Board();
         board.setPlay(this);
         map = board.show();
-        /*landTry.setPickOnBounds(false); // allows click on transparent areas
-        landTry2.setPickOnBounds(false);
-        landTry.maxHeight(100);
-        landTry.maxWidth(100);
-        landTry.setOnMouseClicked(event -> {
-            landInfo.setText(landTry.toString());
-        });
-        landTry2.setOnMouseClicked(event -> {
-            landInfo.setText(landTry2.toString());
-        });
-        map.getChildren().addAll(landTry, landTry2);*/
+
 
         //right
         playerInfo = new VBox(10);
@@ -101,7 +91,7 @@ public class GamePlay {
 
 
         Button turnEnd = new Button("Turn");
-        playerInfo.getChildren().addAll(info, turnEnd, landInfo, research, attack);
+        playerInfo.getChildren().addAll(info, turnEnd, landInfo, research);
         playerInfo.setAlignment(Pos.CENTER);
         playerInfo.setSpacing(10);
         info.setText(players[turnIndex].toString());
@@ -171,7 +161,7 @@ public class GamePlay {
     }
 
     public void relocateTroop(int landNoFrom, int landNoTo, int unitType, int amount){
-        System.out.println(unitType + "  " + landNoFrom + "  " + landNoTo + "  " + amount);
+        //System.out.println(unitType + "  " + landNoFrom + "  " + landNoTo + "  " + amount);
         control.relocateTroops(turnIndex,landNoFrom, landNoTo, unitType, amount);
     }
 

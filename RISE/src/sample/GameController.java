@@ -128,7 +128,7 @@ public class GameController extends Application{
 
     public boolean attacking(Player player, int landNo){
         if(lands.isOwnedByPlayer(landNo)) {
-            System.out.println("koıjkıj: " + lands.getLand(landNo).getOwnerName());
+            //System.out.println("koıjkıj: " + lands.getLand(landNo).getOwnerName());
             player.attackingTo(getPlayer(lands.getLand(landNo).getOwnerName()), landNo);
 
         }else

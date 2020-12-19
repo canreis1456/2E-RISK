@@ -26,6 +26,7 @@ import static java.lang.Integer.parseInt;
 
 public class LandInterface {
 
+    Lands lands;
     Land land;
     LandInterface control;
     Pane root;
@@ -71,11 +72,12 @@ public class LandInterface {
         Nerd.setDisable(flag);
     }
 
-    public void setTexts(Land land) {
+    public void setTexts(Lands lands, Land land, int landNo) {
         Artillery.setText(land.getArtilleryAmount() + " ");
         Infantry.setText(land.getInfantryAmount() + " ");
         Tank.setText(land.getTankAmount() + " ");
         Nerds.setText(land.getNerdsAmount() + " ");
+        lands.setDefensePoints(landNo);
         DefensePoints.setText(land.getDefensePoints() + " ");
         //System.out.println(land.isOwnedByPlayer());
         if (land.isOwnedByPlayer()) {
@@ -94,7 +96,8 @@ public class LandInterface {
         DefensePoints.setText(land.getDefensePoints() + " ");
     }*/
 
-    public void show(Land land, Board board) throws IOException {
+    public void show(Lands lands, int landNo,Board board) throws IOException {
+        land = lands.getLand(landNo);
         relocate = new Button();
         apply = new Button("Apply");
         apply.setDisable(true);
@@ -111,13 +114,12 @@ public class LandInterface {
         relocate.setAlignment(Pos.BOTTOM_LEFT);
         control = loader.<LandInterface>getController();
         control.setBoard(board);
-        control.setTexts(land);
+        control.setTexts(lands, land, landNo);
         control.textFields(true);
         if (!land.getOwnerName().equals(board.getPlay().getControl().getPlayers()[board.getPlay().turnIndex].getCountry())) {
             relocate.setDisable(true);
         }
         relocate.setOnAction(this::handle);
-        System.out.println(land.getLandNo());
         board.setLandNoFrom(land.getLandNo());
 
 
@@ -129,8 +131,6 @@ public class LandInterface {
                     else{
                         if(artil > 0 || inf > 0 || tnk > 0 || nrd > 0) {
                             board.getPlay().setInfoDisable(false);
-                            System.out.println("a: " + artil + " i: " + inf + " t: " + tnk + " n: " + nrd);
-                            System.out.println(land.getLandNo());
                             board.setRelocate(artil,inf ,tnk, nrd, land.getLandNo());
                             stag.close();
                             try {
@@ -219,6 +219,6 @@ public class LandInterface {
         control.textFields(false);
         apply.setDisable(false);
         control.getAmounts(this);
-        System.out.println("asd" + this.artil);
+     //   System.out.println("asd" + this.artil);
     }
 }

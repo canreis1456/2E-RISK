@@ -60,9 +60,8 @@ public class Board{
     public void clicked(MouseEvent e) throws IOException {
         int a = parseInt(((Node) e.getSource()).getAccessibleText());
         LandInterface land = new LandInterface();
-        land.show(play.getControl().getLands().getLand(a), this);
+        land.show(play.getControl().getLands(),a, this);
         landNoFrom = parseInt(((Node) e.getSource()).getAccessibleText());
-        System.out.println(landNoFrom + ""+ play.getControl().getLands().getLand(landNoFrom).getTroopcounts()[0] + "ss");
     }
 
     public void setLandNoFrom(int landNoFrom) {
@@ -71,12 +70,21 @@ public class Board{
 
     public void clicke(MouseEvent e) throws IOException {
 
-        if(this.getPlay() != null && this.getPlay().getControl().getLands().getLand(landNoFrom).hasBorder(parseInt(((Node) e.getSource()).getAccessibleText()))) {
+        if(this.getPlay() != null && this.getPlay().getControl().getLands().getLand(landNoFrom).getOwnerName().equals(this.getPlay().getControl().getLands().getLand(parseInt(((Node) e.getSource()).getAccessibleText())).getOwnerName())) {
             relocateTroop(this.getPlay(), landNoFrom, parseInt(((Node) e.getSource()).getAccessibleText()), 0, artil);
             relocateTroop(this.getPlay(), landNoFrom, parseInt(((Node) e.getSource()).getAccessibleText()), 1, inf);
-            relocateTroop(this.getPlay(), landNoFrom, parseInt(((Node) e.getSource()).getAccessibleText()), 2, artil);
-            relocateTroop(this.getPlay(), landNoFrom, parseInt(((Node) e.getSource()).getAccessibleText()), 3, artil);
-            System.out.println(getPlay().getTurnIndex() + "  " + ((Node) e.getSource()).getAccessibleText());
+            relocateTroop(this.getPlay(), landNoFrom, parseInt(((Node) e.getSource()).getAccessibleText()), 2, tnk);
+            relocateTroop(this.getPlay(), landNoFrom, parseInt(((Node) e.getSource()).getAccessibleText()), 3, nrd);
+          //  System.out.println(getPlay().getTurnIndex() + "  " + ((Node) e.getSource()).getAccessibleText());
+            this.getPlay().setMap();
+        }else if(this.getPlay().getControl().getLands().getLand(landNoFrom).hasBorder(parseInt(((Node) e.getSource()).getAccessibleText()))){
+            relocateTroop(this.getPlay(), landNoFrom, 43, 0, artil);
+            relocateTroop(this.getPlay(), landNoFrom, 43, 1, inf);
+            relocateTroop(this.getPlay(), landNoFrom, 43, 2, tnk);
+            relocateTroop(this.getPlay(), landNoFrom, 43, 3, nrd);
+            AttackInterface attack = new AttackInterface(play.players[getPlay().turnIndex], parseInt(((Node) e.getSource()).getAccessibleText()),play, landNoFrom);
+            attack.show();
+
             this.getPlay().setMap();
         }
     }

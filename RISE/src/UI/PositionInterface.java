@@ -31,7 +31,7 @@ public class PositionInterface {
         this.inf = inf;
         this.tnk = tnk;
         this.nrd = nrd;
-        System.out.println(art + " " + inf + " " + tnk + " " + nrd);
+//        System.out.println(art + " " + inf + " " + tnk + " " + nrd);
     }
 
     public void positionTroop(int landNo){

@@ -154,7 +154,7 @@ public class Player {
     }
 
 
-    public float attackPointsAt(int coordinates){
+    public float attackPointsAt(int coordinates, String enemy){
         float attack = 0;
             for (int j = 0; j < 4; j++) {
             for (int i = 0; i < troops.get(j).size(); i++) {
@@ -167,6 +167,20 @@ public class Player {
             attack += selectedGeneral.attackEffectOnCertainUnit(troops, i, coordinates);
         }
         return attack;
+    }
+
+    public String getGeneral(){
+        if(selectedGeneral != null)
+        return selectedGeneral.name;
+        else
+            return "";
+    }
+
+    public void removeTroopFromLand(int[] troops, int landNo){
+        removeTroopTypeFromLand(0, landNo, troops[0]);
+        removeTroopTypeFromLand(1, landNo, troops[1]);
+        removeTroopTypeFromLand(2, landNo, troops[2]);
+        removeTroopTypeFromLand(3, landNo, troops[3]);
     }
 
     public float defensePointsAt(int coordinates){
@@ -207,7 +221,7 @@ public class Player {
     public boolean attackingTo(Player enemy, int attackingland) {
         float def = enemy.defensePointsAt(attackingland) + enemy.generalAggressionDefenseEffect(this.getCountry(), attackingland);
         System.out.println("defens:  " + def);
-        float attack = this.attackPointsAt(attackingland) + this.generalAggressionAttackEffect(enemy.getCountry(), attackingland);
+        float attack = this.attackPointsAt(attackingland,enemy.getCountry());
         System.out.println("attack : " + attack);
         return attack > def;
     }
@@ -215,7 +229,7 @@ public class Player {
     public boolean attackingToBot(int attackingLand, String enemy){
         float def = 30;
         System.out.println("defens:  " + def);
-        float attack = this.attackPointsAt(attackingLand) + this.generalAggressionAttackEffect(enemy, attackingLand);
+        float attack = this.attackPointsAt(attackingLand, enemy);
         System.out.println("attack : " + attack);
         return attack > def;
     }
@@ -238,13 +252,55 @@ public class Player {
         int count = 0;
             for (Troop a:troops.get(unitType)
              ) {
-                System.out.println("asd" + a.getType() + "  " + a.getPosition());
             if(a.getPosition() == landNoFrom && count < amount) {
                 a.setPosition(landNoTo);
+                //System.out.println(count + "   ::   " + a.getPosition() + "   " + a.getType());
                 count++;
-                System.out.println(count + "   ::   " + a.getPosition() + "   " + a.getType());
             }
         }
+    }
+
+    public int removeTroopTypeFromLand(int unitType, int landNo, int amount){
+        int count = 0;
+        System.out.println("amount: " + amount);
+        int index;
+        boolean flag = false;
+        for (int i = 0; i < amount; i++){
+            if (troops.get(unitType).get(i).getPosition() == landNo){
+                flag = true;
+                count++;
+            }
+            if (flag) {
+                troops.get(unitType).remove(i);
+                i--;
+                flag = false;
+            }
+
+            if (count >= amount)
+                break;
+        }
+        return troops.get(unitType).size();
+    }
+
+    public int getTroopTypeAtLandInt(int unitType, int landNo){
+        int count = 0;
+        for (Troop a: troops.get(unitType)
+        ) {
+            if(a.getPosition() == landNo)
+                count++;
+        }
+        return count;
+    }
+
+    public String getTroopTypeAtLand(int unitType, int landNo){
+        String result ="";
+        int count = 0;
+        for (Troop a: troops.get(unitType)
+             ) {
+            if(a.getPosition() == landNo)
+                count++;
+        }
+        return troops.get(unitType).get(0).getType() + " :  "  + count+ "\n" + troops.get(unitType).get(0).getAttack() + " " + troops.get(unitType).get(0).getDefense() + "\n";
     }
 
     public boolean isEnoughTroop(int unitType, int amount){

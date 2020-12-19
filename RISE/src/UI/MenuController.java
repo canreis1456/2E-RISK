@@ -41,6 +41,10 @@ public class MenuController {
         newG.show();
     }
 
+    public GameController getCntrl() {
+        return cntrl;
+    }
+
     public void countrySelected(String country, String leader, String playerName){
         System.out.println("selected:  " + country + leader + playerName);
         selectedCountries.add(country);
