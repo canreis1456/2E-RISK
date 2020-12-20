@@ -127,11 +127,11 @@ public class GamePlay implements java.io.Serializable {
             Save save = new Save(players,control,this);
             try {
                 String adsas = "asdfas asd";
-                System.out.println("pl: " + (players != null));
+                /*System.out.println("pl: " + (players != null));
                 System.out.println("pl: " + (control != null));
                 System.out.println("pl: " + (control.getMenu() != null));
                 System.out.println("pl: " + (this != null));
-                System.out.println("pl: " + (players != null));
+                System.out.println("pl: " + (players != null));*/
                 FileOutputStream fout = new FileOutputStream(currentDir+ "\\src\\saveGame.ser");
                 ObjectOutputStream oos = new ObjectOutputStream(fout);
                 oos.writeObject(save);
@@ -166,6 +166,14 @@ public class GamePlay implements java.io.Serializable {
                 for (Player a:players
                      ) {
                     a.turnCounter();
+                }
+            }
+            if(players[turnIndex].getCards().size() >= 3){
+                CardsInterface cardInterface = new CardsInterface(players[turnIndex], this);
+                try {
+                    cardInterface.show();
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
                 }
             }
      //       System.out.println(players[turnIndex].isResearching());
@@ -273,6 +281,7 @@ public class GamePlay implements java.io.Serializable {
 
     public void endGame() throws IOException {
         endGame end = new endGame();
+        end.setPlay(this);
         end.hide(stag, (players[0].getName() + "\n" + players[0].getCountry()));
     }
 
