@@ -3,14 +3,14 @@ package entities;
 
 import java.util.List;
 
-interface CountryInitializer {
+interface CountryInitializer  {
     void initializeGenerals(List<General> generals);
     void initializeLeaders(List<Leader> leaders);
     int initializeLandCount(int landCount);
 
 }
 
-class GermanyInitializer implements CountryInitializer{
+class GermanyInitializer implements CountryInitializer, java.io.Serializable {
 
     public void initializeGenerals(List<General> generals){
         General Manstein = new General("Erich von Manstein", new float[]{0,0,0,0}, new float[]{-2,-2,-2,-2}, 4, null , 0, 0);
@@ -34,7 +34,7 @@ class GermanyInitializer implements CountryInitializer{
     }
 }
 
-class SovietInitializer implements CountryInitializer{
+class SovietInitializer implements CountryInitializer ,java.io.Serializable{
     public void initializeGenerals(List<General> generals){
         General Zhukov = new General("Georgy Zhukov", new float[]{0,0,0,0}, new float[]{0,0,0,0}, 4, "German Reich" , 2, 0);
         General Tukhachevsky = new General("Mikhail Tukhachevsky", new float[]{1,1,1,1}, new float[]{1,1,1,1}, 0, null, 0, 0);
@@ -57,7 +57,7 @@ class SovietInitializer implements CountryInitializer{
     }
 
 }
-class FranceInitializer implements CountryInitializer {
+class FranceInitializer implements CountryInitializer,java.io.Serializable {
     public void initializeGenerals(List<General> generals) {
         General Tassigny = new General("Jean de Lattre de Tassigny", new float[]{0,0,0,0}, new float[]{0,0,0,0}, 4, "German Reich" , 0, 3);
         General Georges = new General("Alphonse Georges", new float[]{0,0,0,0}, new float[]{0,0,0,0}, 0, "German Reich", 3, 0);
@@ -78,7 +78,7 @@ class FranceInitializer implements CountryInitializer {
     }
 }
 
-class ChinaInitializer implements CountryInitializer {
+class ChinaInitializer implements CountryInitializer,java.io.Serializable {
     public void initializeGenerals(List<General> generals) {
         General Jen = new General("Sun Li Jen", new float[]{0,0,0,0}, new float[]{4,4,4,4}, 4, null , 0, 0);
         General Zongnan = new General("Hu Zongnan", new float[]{4,4,4,4}, new float[]{0,0,0,0}, 0, null, 0, 0);
@@ -97,7 +97,7 @@ class ChinaInitializer implements CountryInitializer {
     }
 }
 
-class ItalyInitializer implements CountryInitializer{
+class ItalyInitializer implements CountryInitializer,java.io.Serializable{
 
     public void initializeGenerals(List<General> generals) {
         General Cavallero = new General("Ugo Cavallero", new float[]{0,0,0,0}, new float[]{0,0,0,0}, 4, "France" , 0, 2);
@@ -119,7 +119,7 @@ class ItalyInitializer implements CountryInitializer{
     }
 }
 
-class USAInitializer implements CountryInitializer {
+class USAInitializer implements CountryInitializer,java.io.Serializable {
 
     public void initializeGenerals(List<General> generals) {
         General MacArthur = new General("Douglas MacArthur", new float[]{-3, -3, -3, -3}, new float[]{3, 3, 3, 3}, 4, null, 0, 0);
@@ -143,7 +143,7 @@ class USAInitializer implements CountryInitializer {
     }
 }
 
-class JapanInitializer implements CountryInitializer{
+class JapanInitializer implements CountryInitializer,java.io.Serializable{
 
     public void initializeGenerals(List<General> generals) {
         General Yamashita = new General("Tomoyuki Yamashita", new float[]{0,0,0,0}, new float[]{0,0,0,0}, 4, "Soviet Union" , -3, 0);
@@ -163,7 +163,7 @@ class JapanInitializer implements CountryInitializer{
     }
 }
 
-class TurkeyInitializer implements CountryInitializer{
+class TurkeyInitializer implements CountryInitializer,java.io.Serializable{
 
     public void initializeGenerals(List<General> generals) {
         General Cakmak = new General("Fevzi Cakmak", new float[]{1,1,1,1}, new float[]{1,1,1,1}, 4, null , 0, 0);
@@ -187,7 +187,7 @@ class TurkeyInitializer implements CountryInitializer{
     }
 }
 
-class UKInitializer implements CountryInitializer {
+class UKInitializer implements CountryInitializer,java.io.Serializable {
 
     public void initializeGenerals(List<General> generals) {
         General Montgomery = new General("Bernard Montgomery", new float[]{0, 0, 0, 0}, new float[]{2, 2, 2, 2}, 4, null, 0, 0);

@@ -7,7 +7,7 @@ import javafx.scene.image.ImageView;
 import java.util.ArrayList;
 
 
-public class Land {
+public class Land implements java.io.Serializable{
 
     int landNo;
     float defensePoints;

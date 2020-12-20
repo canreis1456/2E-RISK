@@ -26,7 +26,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class GameController extends Application{
+public class GameController extends Application implements java.io.Serializable{
 
     MenuController men;
     Player[] players = new Player[6];
@@ -90,7 +90,7 @@ public class GameController extends Application{
         Image image3 = new Image(new FileInputStream(currentDir + "\\src\\UI\\ProjeResimler\\GoddHoward.png"));
         Image image4 = new Image(new FileInputStream(currentDir + "\\src\\UI\\ProjeResimler\\hmm.jpg"));
 
-        Card card1 = new Card("Cumshotka", "Infantry", 5, image1);
+        Card card1 = new Card("Kamçatka", "Infantry", 5, image1);
         players[playerIndex].addCard(card1);
 
         Card card2 = new Card("America", "Infantry", 5, image2);
@@ -105,6 +105,14 @@ public class GameController extends Application{
         System.out.println("The size of player's deck is " + players[playerIndex].getCards().size());
      //   printLands();
       //  players[playerIndex].print();
+    }
+
+    public void setPlayers(Player[] players){
+        this.players = players;
+    }
+
+    public MenuController getMenu(){
+        return men;
     }
 
     public void defensePointsAtLand(int landNo){

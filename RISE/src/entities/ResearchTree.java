@@ -2,9 +2,9 @@ package entities;
 
 import java.util.LinkedList;
 
-public class ResearchTree {
+public class ResearchTree implements java.io.Serializable{
 
-    class Node {
+    class Node implements java.io.Serializable {
         Research res;
         Node next, next1, next2;
 

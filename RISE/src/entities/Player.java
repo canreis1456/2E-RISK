@@ -9,7 +9,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
-public class Player {
+public class Player implements java.io.Serializable {
     private String countryName, leader, name;
     private Country country;
     private ArrayList<ArrayList<Troop>> troops = new ArrayList<>();
@@ -94,6 +94,31 @@ public class Player {
         tree = new ResearchTree();
         current = tree.getHead();
         researching = false;
+    }
+
+    public Player( Player player) throws FileNotFoundException {
+        trpnms = new String[]{"Artillery", "Infantry", "Tank", "Nerds"};
+        trpInstance = new float[8];
+        this.countryName = player.countryName;
+        this.leader = player.leader;
+        this.name = player.name;
+        this.turnCount = player.turnCount;
+        this.researchBuff = player.researchBuff;
+        this.setsTraded = player.setsTraded;
+        defeated = player.defeated;
+
+        currentDirFile = new File("");
+        currentDir = currentDirFile.getAbsolutePath();
+        defaultCard = new Card("", "", -1, new Image(new FileInputStream(currentDir + "\\src\\UI\\ProjeResimler\\blank.png")));
+
+        country = player.country;
+        troops = player.troops;
+        //setTroopTypePoints();
+        landCount = player.landCount;
+
+        tree = player.tree;
+        current = player.current;
+        researching = player.researching;
     }
 
     public boolean isDefeated() {

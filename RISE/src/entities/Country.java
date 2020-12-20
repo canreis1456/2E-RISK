@@ -5,7 +5,7 @@ import entities.Troops.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Country{
+public class Country implements java.io.Serializable{
     String name;
     String ideology;
     Leader inUse;

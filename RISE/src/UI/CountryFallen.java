@@ -11,12 +11,12 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class CountryFallen {
+public class CountryFallen implements java.io.Serializable{
 
-    Stage stag;
+    transient Stage stag;
 
     @FXML
-    Text country;
+    transient Text country;
 
     public CountryFallen(){
         stag = new Stage();

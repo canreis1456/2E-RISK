@@ -19,6 +19,8 @@ import javafx.stage.Stage;
 //import sample.BoardBuilder;
 import javafx.stage.StageStyle;
 import sample.GameController;
+import sample.ResourceManager;
+import sample.Save;
 
 import javax.swing.*;
 import java.io.File;
@@ -27,21 +29,21 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 
-public class GamePlay {
+public class GamePlay implements java.io.Serializable {
 
-    Stage stag;
+    transient Stage stag;
     int playerCount;
     Player[] players;
     int turn, turnIndex = 0;
-    Pane map;
-    Button research, position;
+    transient Pane map;
+    transient Button research, position;
     String currentDir;
-    VBox playerInfo;
-    BorderPane pane;
+    transient VBox playerInfo;
+    transient BorderPane pane;
     GameController control;
     CountryFallen defet;
     int inputLand;
-    Text info;
+    transient Text info;
 
     public GamePlay(Stage stage, int playerCount, Player[] players, GameController control){
         this.control = control;
@@ -108,7 +110,22 @@ public class GamePlay {
                     }
                     selectGeneral.setDisable(true);
                 });
-        playerInfo.getChildren().addAll(info, turnEnd, landInfo, position, research, selectGeneral, cardButton, landsof);
+
+        Button saveButton = new Button ("Save");
+        saveButton.setOnAction(e -> {
+            Save save = new Save(players,control, control.getMenu(),this);
+            try {
+                ResourceManager.save(save, "savegame.ser");
+                System.out.println("Game is saved somewhere");
+            }
+            catch(Exception ev){
+                System.out.println("The game could not be saved:" + ev.getMessage());
+            }
+        });
+
+
+        //playerInfo.getChildren().addAll(info, turnEnd, landInfo, research, attack, selectGeneral, cardButton, saveButton);
+        playerInfo.getChildren().addAll(info, turnEnd, landInfo, position, research, selectGeneral, cardButton, landsof, saveButton);
        // playerInfo.getChildren().addAll(info, turnEnd, landInfo, research);
         playerInfo.setAlignment(Pos.CENTER);
         playerInfo.setSpacing(10);
