@@ -50,6 +50,7 @@ public class MainMenu implements EventHandler {
         credits.getStyleClass().add("country-Buttons");
         credits.setOnAction(this::handle);
 
+
         Button deneme = new Button("sona");
         deneme.setOnAction(e -> {
             upperMenu.setPlayerCount(2);
@@ -85,7 +86,7 @@ public class MainMenu implements EventHandler {
         imageView.setY(20);
         imageView.setFitHeight(750);
         imageView.setFitWidth(1000);
-        layout.getChildren().addAll(newG,loadG,credits,howtoPlay, imageView, deneme);
+        layout.getChildren().addAll(newG,loadG,credits,howtoPlay, imageView);
         Scene scene = new Scene(layout, 1440, 800);
         stag.setTitle("RISE");
         stag.setScene(scene);

@@ -95,14 +95,16 @@ public class GameController extends Application implements java.io.Serializable{
         lands.setOwnedPlayer(country);
         lands.setDefForLands(country);
 
-        /*
+    /*
         if(playerIndex == 0) {
-            players[playerIndex].addCard(deck.get(16));
-            players[playerIndex].addCard(deck.get(32));
             players[playerIndex].addCard(deck.get(1));
-            players[playerIndex].addCard(deck.get(15));
+            players[playerIndex].addCard(deck.get(2));
+            players[playerIndex].addCard(deck.get(3));
+            players[playerIndex].addCard(deck.get(4));
         }
-         */
+
+     */
+
     }
 
     public void initDeck() throws FileNotFoundException {

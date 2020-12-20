@@ -206,6 +206,7 @@ public class AttackInterface {
                 play.getControl().getLands().getLand(landNo).setOwner(attacking.getCountry());
                 play.getControl().getLands().getLand(landNo).setOwn(attacking);
                 play.getControl().getLands().getLand(landNo).setOwnedByPlayer(true);
+                play.getControl().Give(play.getTurnIndex());
             }
         }
         play.hasFallen();

@@ -105,12 +105,12 @@ public class CardsController {
             System.out.println("End Trade Pressed");
             boolean flag = true;
             if(tempTrade.size() == 3){
-                for(int i = 0; i < tempTrade.size() - 2; i++){
-                    if(!(tempTrade.get(i).equalsTroop(tempTrade.get(i + 1)) && tempTrade.get(i).equalsTroop(tempTrade.get(i + 2)))
-                            || !tempTrade.get(i).equalsTroop(tempTrade.get(i + 1)) && !tempTrade.get(i + 1).equalsTroop(tempTrade.get(i + 2)) && !tempTrade.get(i).equalsTroop(tempTrade.get(i + 2))
-                            || (tempTrade.get(i).equalsTroop(tempTrade.get(i + 1)) && tempTrade.get(i+2).getTroopType().equals("Joker")
-                            || tempTrade.get(i + 1).equalsTroop(tempTrade.get(i + 2)) && tempTrade.get(i).getTroopType().equals("Joker")
-                            || tempTrade.get(i).equalsTroop(tempTrade.get(i + 2)) && tempTrade.get(i+1).getTroopType().equals("Joker"))){
+
+                    if(!(tempTrade.get(0).equalsTroop(tempTrade.get(1)) && tempTrade.get(0).equalsTroop(tempTrade.get(2)))
+                            && !(!(tempTrade.get(0).equalsTroop(tempTrade.get(1))) && !(tempTrade.get(1).equalsTroop(tempTrade.get(2))) && !(tempTrade.get(0).equalsTroop(tempTrade.get(2))))
+                            && !(tempTrade.get(0).equalsTroop(tempTrade.get(1)) && tempTrade.get(2).getTroopType().equals("Joker"))
+                            && !(tempTrade.get(1).equalsTroop(tempTrade.get(2)) && tempTrade.get(0).getTroopType().equals("Joker"))
+                            && !(tempTrade.get(0).equalsTroop(tempTrade.get(2)) && tempTrade.get(1).getTroopType().equals("Joker"))){
                         for(int j = 0; j < tempTrade.size(); j++){
                             tempTrade.get(j).setSelected(false);
                         }
@@ -120,7 +120,7 @@ public class CardsController {
                         System.out.println("flag deemed false");
                         tempTrade.clear();
                     }
-                }
+
                 if(flag){
                     //selected = player.getDefaultCard();
                     //image = selected.getImage();
