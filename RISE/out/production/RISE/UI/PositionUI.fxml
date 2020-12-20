@@ -19,8 +19,9 @@
       <TextField fx:id="Infan" layoutX="283.0" layoutY="128.0" />
       <TextField fx:id="TankA" layoutX="283.0" layoutY="158.0" />
       <TextField fx:id="Nerd" layoutX="283.0" layoutY="188.0" />
-      <Button fx:id="position" layoutX="257.0" layoutY="330.0" mnemonicParsing="false" onAction="#positioning" text="Position" />
+      <Button fx:id="position" layoutX="179.0" layoutY="329.0" mnemonicParsing="false" onAction="#positioning" text="Position" />
       <Text fx:id="warning" layoutX="283.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount to deploy: " />
       <Text layoutX="78.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="At Hand:" />
+      <Button fx:id="convert" layoutX="327.0" layoutY="329.0" mnemonicParsing="false" onAction="#convertShow" text="Convert" />
    </children>
 </AnchorPane>

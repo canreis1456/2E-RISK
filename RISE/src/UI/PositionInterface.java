@@ -12,7 +12,7 @@ import java.io.IOException;
 public class PositionInterface {
 
     Stage stag;
-    PositionController control;
+    PositionController control, control2;
     Player player;
     GamePlay play;
     int art,inf,tnk,nrd;
@@ -56,6 +56,7 @@ public class PositionInterface {
     public void show() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/UI/PositionUI.fxml"));
 //        System.out.println(loader.getController().toString());
+        System.out.print(player.isHasWon());
         root = (AnchorPane) loader.load();
         control = loader.getController();
         control.setTexts(player);
@@ -74,4 +75,7 @@ public class PositionInterface {
         play.updateInfo();
         play.setMap();
     }
+
+
+
 }

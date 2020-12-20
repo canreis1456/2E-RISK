@@ -1,9 +1,6 @@
 package UI;
 import java.awt.event.ActionEvent;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.util.EventListener;
 
 import entities.Player;
@@ -107,16 +104,21 @@ public class MainMenu implements EventHandler {
         }
         else if(event.getSource() == loadG){
             try{
+                File currentDirFile = new File("");
+                String currentDir = currentDirFile.getAbsolutePath();
                 System.out.println("WE CANE HERE");
-                Save save = (Save) ResourceManager.load("savegame.ser");
-                System.out.println("Player count from save file is " + save.getMenuController().playerCount);
-                upperMenu.setPlayerCount(save.getMenuController().playerCount);
+               // Save save = (Save) ResourceManager.load("saveGame.ser");
+                FileInputStream streamIn = new FileInputStream(currentDir + "\\src\\saveGame.ser");
+                ObjectInputStream objectinputstream = new ObjectInputStream(streamIn);
+                Save save = (Save) objectinputstream.readObject();
+                System.out.println("Player count from save file is "+ save.getGamePlay().getTurn() + " asd "+ save.getGamePlay().getTurnIndex() );
                 //YANLIŞ OLABİLİR!
-                upperMenu.initBoard();
+                upperMenu.getCntrl().setBoard(save.getGameController().getLands());
                 upperMenu.getCntrl().setPlayers(save.getPlayers());
+
                     //countrySelected(save.getPlayers()[i].getCountry(),save.getPlayers()[i].getLeader(),save.getPlayers()[i].getName());
                 //upperMenu.countrySelected("German Reich", "Adolf Hitler", "ben");
-                upperMenu.gameplay();
+                upperMenu.loadGame(save.getGamePlay().getTurn(), save.getGamePlay().getTurnIndex());
             }
             catch(Exception e){
                 System.out.println("Corrupted Data:" + e.getMessage());

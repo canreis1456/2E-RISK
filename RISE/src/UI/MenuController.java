@@ -60,6 +60,10 @@ public class MenuController {
         cntrl.gameplay(stag);
     }
 
+    public void loadGame(int turn, int turnIndex) throws IOException {
+        cntrl.loadGame(stag,turn, turnIndex);
+    }
+
     public void initBoard(){
         cntrl.initBoard();
     }

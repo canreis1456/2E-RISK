@@ -29,6 +29,7 @@ public class PositionController {
 
     int art, inf, tnk, nrd;
     PositionInterface upperClass;
+    ConvertInterface lowerClass;
 
     public PositionController(){
         Artil = new TextField();
@@ -44,6 +45,10 @@ public class PositionController {
 
     public void setUpperClass(PositionInterface upperClass) {
         this.upperClass = upperClass;
+    }
+
+    public void setLowerClass(ConvertInterface upperClass) {
+        this.lowerClass = lowerClass;
     }
 
     public void positioning(ActionEvent e) throws IOException {
@@ -121,4 +126,17 @@ public class PositionController {
             this.getPlay().setMap();
         }*/
     }
+
+    public void convertShow(Event e) throws IOException {
+        if(art + inf + tnk + nrd > 0) {
+            lowerClass = new ConvertInterface(upperClass.getPlay());
+            lowerClass.show();
+            lowerClass.setAmounts(art, inf, tnk, nrd);
+            lowerClass.control.setSuperClass(upperClass);
+            lowerClass.setResourceBox((art * 9 + inf * 3 + tnk * 9 + nrd));
+            upperClass.stag.close();
+        }
+    }
+
+
 }
