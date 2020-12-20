@@ -168,6 +168,14 @@ public class GamePlay implements java.io.Serializable {
                     a.turnCounter();
                 }
             }
+            if(players[turnIndex].getCards().size() >= 3){
+                CardsInterface cardInterface = new CardsInterface(players[turnIndex], this);
+                try {
+                    cardInterface.show();
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+            }
      //       System.out.println(players[turnIndex].isResearching());
             if (players[turnIndex].isResearching())
                 research.setDisable(true);

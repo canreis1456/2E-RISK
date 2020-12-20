@@ -169,6 +169,7 @@ public class AttackInterface {
                 play.getControl().getLands().getLand(landNo).setOwn(attacking);
                 attacking.setLandCount(attacking.getLandCount() + 1);
                 defense.setLandCount(defense.getLandCount() - 1);
+                play.getControl().Give(play.getTurnIndex());
             }
 
         }else {// vsBot

@@ -33,6 +33,7 @@ public class CardsInterface {
         //System.out.println(loader.getController().toString());
         root = (AnchorPane) loader.load();
         control = loader.getController();
+        control.setUpperClass(this);
         control.setPlayer(player);
         control.setCards();
         //control.setSelectCard();
