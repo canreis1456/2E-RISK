@@ -52,7 +52,7 @@ public class Player implements java.io.Serializable {
 
         currentDirFile = new File("");
         currentDir = currentDirFile.getAbsolutePath();
-        defaultCard = new Card("", "", -1, new Image(new FileInputStream(currentDir + "\\src\\UI\\ProjeResimler\\blank.png")));
+        defaultCard = new Card("", "", -1, (currentDir + "\\src\\UI\\ProjeResimler\\blank.png"));
         if(countr.equals("German Reich")) {
             country = new Country(new GermanyInitializer(), leader);
             country.initializeTroops(troops);
@@ -121,7 +121,7 @@ public class Player implements java.io.Serializable {
 
         currentDirFile = new File("");
         currentDir = currentDirFile.getAbsolutePath();
-        defaultCard = new Card("", "", -1, new Image(new FileInputStream(currentDir + "\\src\\UI\\ProjeResimler\\blank.png")));
+        defaultCard = new Card("", "", -1,(currentDir + "\\src\\UI\\ProjeResimler\\blank.png"));
 
         country = player.country;
         troops = player.troops;

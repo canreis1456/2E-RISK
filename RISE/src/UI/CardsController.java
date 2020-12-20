@@ -69,10 +69,17 @@ public class CardsController {
             //Card selectedItem = cards.getSelectionModel().getSelectedItem();
 
             Card selectedItem = cards.getSelectionModel().getSelectedItem();
+
             if(selectedItem == null)
                 selectedItem = player.getDefaultCard();
+            try {
+                if(selectedItem.getImage() == null)
+                    selectedItem.setImage();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
             setSelected(selectedItem);
-
+            System.out.println("asd  " + (selected.getImage() != null) );
             image = selected.getImage();
 
             imageV.setImage(image);
