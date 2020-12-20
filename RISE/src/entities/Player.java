@@ -516,4 +516,29 @@ public class Player implements java.io.Serializable {
         }
 
     }
+
+    public void addTroop(int unitType, int amount){
+        if(unitType == 0){
+            for(int i = 0; i < amount; i++){
+                troops.get(0).add(new Artillery());
+                troops.get(0).get(troops.get(0).size() - 1).setAttack(trpInstance[0]);
+                troops.get(0).get(troops.get(0).size() - 1).setAttack(trpInstance[1]);
+            }
+        }
+        else if(unitType == 1){
+            troops.get(1).add(new Infantry());
+            troops.get(1).get(troops.get(1).size() - 1).setAttack(trpInstance[2]);
+            troops.get(1).get(troops.get(1).size() - 1).setAttack(trpInstance[3]);
+        }
+        else if(unitType == 2){
+            troops.get(2).add(new Tank());
+            troops.get(2).get(troops.get(2).size() - 1).setAttack(trpInstance[4]);
+            troops.get(2).get(troops.get(2).size() - 1).setAttack(trpInstance[5]);
+        }
+        else if(unitType == 3){
+            troops.get(3).add(new Nerds());
+            troops.get(3).get(troops.get(3).size() - 1).setAttack(trpInstance[6]);
+            troops.get(3).get(troops.get(3).size() - 1).setAttack(trpInstance[7]);
+        }
+    }
 }

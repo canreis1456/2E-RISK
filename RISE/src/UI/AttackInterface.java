@@ -111,6 +111,7 @@ public class AttackInterface {
                 } else {
                     System.out.println("if: "+ defAmount[i] + "   " + attackAmount[i]);
                     if (attackAmount[i] >= defAmount[i]) {
+                        System.out.println("Defans Amount" + defAmount[i]);
                         attacking.removeTroopTypeFromLand(i, 43, (attackAmount[i]*80/100));
                         defense.removeTroopTypeFromLand(i, landNo, (defAmount[i]*50/100));
                     } else {
