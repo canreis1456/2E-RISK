@@ -20,6 +20,9 @@ public class AttackController {
     Text pointsBeforeAttack, pointsBeforeDefense, dice1, dice2, totalDefense, totalAttack, attackingCountry, defendingCountry;
 
     @FXML
+    Text declare1, declare2;
+
+    @FXML
     Button roll1, roll2;
 
     boolean at,df;
@@ -38,6 +41,18 @@ public class AttackController {
     public void declareWinner() throws IOException {
         System.out.println("att: " + parseFloat(totalAttack.getText()) + "def: " + parseFloat(totalDefense.getText()));
         upper.declareWinner(parseFloat(totalAttack.getText()) > parseFloat(totalDefense.getText()));
+        if (parseFloat(totalAttack.getText()) > parseFloat(totalDefense.getText())){
+            declare1.setText("Defeat");
+            declare2.setText("Victory");
+        }else{
+            declare1.setText("Victory");
+            declare2.setText("Defeat");
+        }
+        declare1.setStyle("-fx-font-family: 'Comic Sans MS'; -fx-text-fill: #e90805;");
+        declare2.setStyle("-fx-font-family: 'Comic Sans MS'; -fx-text-fill: #e90805;");
+        declare1.setVisible(true);
+        declare2.setVisible(true);
+
     }
 
     public void setDefending(String res, String points, String general, String country){
@@ -104,6 +119,8 @@ public class AttackController {
         dice2.setVisible(false);
         totalDefense.setVisible(false);
         totalAttack.setVisible(false);
+        declare1.setVisible(false);
+        declare2.setVisible(false);
     }
 
     public void showD(AttackController controller){
