@@ -526,19 +526,25 @@ public class Player implements java.io.Serializable {
             }
         }
         else if(unitType == 1){
-            troops.get(1).add(new Infantry());
-            troops.get(1).get(troops.get(1).size() - 1).setAttack(trpInstance[2]);
-            troops.get(1).get(troops.get(1).size() - 1).setAttack(trpInstance[3]);
+            for(int i = 0; i < amount; i++) {
+                troops.get(1).add(new Infantry());
+                troops.get(1).get(troops.get(1).size() - 1).setAttack(trpInstance[2]);
+                troops.get(1).get(troops.get(1).size() - 1).setAttack(trpInstance[3]);
+            }
         }
         else if(unitType == 2){
-            troops.get(2).add(new Tank());
-            troops.get(2).get(troops.get(2).size() - 1).setAttack(trpInstance[4]);
-            troops.get(2).get(troops.get(2).size() - 1).setAttack(trpInstance[5]);
+            for(int i = 0; i < amount; i++) {
+                troops.get(2).add(new Tank());
+                troops.get(2).get(troops.get(2).size() - 1).setAttack(trpInstance[4]);
+                troops.get(2).get(troops.get(2).size() - 1).setAttack(trpInstance[5]);
+            }
         }
         else if(unitType == 3){
-            troops.get(3).add(new Nerds());
-            troops.get(3).get(troops.get(3).size() - 1).setAttack(trpInstance[6]);
-            troops.get(3).get(troops.get(3).size() - 1).setAttack(trpInstance[7]);
+            for(int i = 0; i < amount; i++) {
+                troops.get(3).add(new Nerds());
+                troops.get(3).get(troops.get(3).size() - 1).setAttack(trpInstance[6]);
+                troops.get(3).get(troops.get(3).size() - 1).setAttack(trpInstance[7]);
+            }
         }
     }
 }
