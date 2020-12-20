@@ -50,6 +50,7 @@ public class Researches {
         ScrollPane root = (ScrollPane) loader.load();
         Researches control = loader.<Researches>getController();
         control.setGamePlay(play);
+        control.start.setDisable(true);
         Scene scene = new Scene(root, 600, 450);
         control.hide(this);
         stag.setTitle("RISE");

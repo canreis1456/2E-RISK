@@ -17,6 +17,7 @@ public class Land implements java.io.Serializable{
     String landName;
     Player own;
     ArrayList<ArrayList<Troop>> troop;
+    boolean forted;
 
     public Land(int landNo, String owner, int[] borders, String landName){
         this.landNo = landNo;
@@ -30,13 +31,20 @@ public class Land implements java.io.Serializable{
         }
         defensePoints = 30;
         ownedByPlayer = false;
+        forted = false;
     }
 
     //   public void setOwner(Country owner) {
     //      this.owner = owner;
     // }
 
+    public boolean isForted() {
+        return forted;
+    }
 
+    public void setForted(boolean forted) {
+        this.forted = forted;
+    }
 
     @Override
     public String toString() {
