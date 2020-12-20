@@ -19,6 +19,7 @@ public class Save implements java.io.Serializable{
         this.play = play;
         play.setTurnIndex(play.getTurnIndex());
         play.setTurn(play.getTurn());
+
     }
 
   /*  public int getTurn() {

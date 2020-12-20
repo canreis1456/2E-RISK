@@ -31,7 +31,7 @@ public class Lands implements java.io.Serializable{
         lands[16] = new Land(16, "USA", new int[]{14, 15, 17, 18},"İskandinavya ");
         lands[17] = new Land(17, "USA", new int[]{16, 18, 19, 34, 29, 27},"Rusya ");
         lands[18] = new Land(18, "USA", new int[]{14, 15, 16, 17, 19, 20},"KuzeyAvrupa ");
-        lands[19] = new Land(19, "Italy", new int[]{17, 18, 20, 27},"GüneyAvrupa ");
+        lands[19] = new Land(19, "Soviet Union", new int[]{17, 18, 20, 27},"GüneyAvrupa ");
         lands[20] = new Land(20, "France", new int[]{15, 18, 19, 21},"BatıAvrupa ");
         lands[21] = new Land(21, "USA", new int[]{11, 19, 20, 22},"KuzeyAfrika ");
         lands[22] = new Land(22, "German Reich", new int[]{19, 21, 23, 27},"Mısır ");
