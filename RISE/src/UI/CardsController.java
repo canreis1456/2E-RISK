@@ -98,8 +98,12 @@ public class CardsController {
             System.out.println("End Trade Pressed");
             boolean flag = true;
             if(tempTrade.size() == 3){
-                for(int i = 0; i < tempTrade.size() - 1; i++){
-                    if(!(tempTrade.get(i).equalsLand(tempTrade.get(i + 1)) && tempTrade.get(i).equalsTroop(tempTrade.get(i + 1)))){
+                for(int i = 0; i < tempTrade.size() - 2; i++){
+                    if(!(tempTrade.get(i).equalsTroop(tempTrade.get(i + 1)) && tempTrade.get(i).equalsTroop(tempTrade.get(i + 2)))
+                            || !tempTrade.get(i).equalsTroop(tempTrade.get(i + 1)) && !tempTrade.get(i + 1).equalsTroop(tempTrade.get(i + 2)) && !tempTrade.get(i).equalsTroop(tempTrade.get(i + 2))
+                            || (tempTrade.get(i).equalsTroop(tempTrade.get(i + 1)) && tempTrade.get(i+2).getTroopType().equals("Joker")
+                            || tempTrade.get(i + 1).equalsTroop(tempTrade.get(i + 2)) && tempTrade.get(i).getTroopType().equals("Joker")
+                            || tempTrade.get(i).equalsTroop(tempTrade.get(i + 2)) && tempTrade.get(i+1).getTroopType().equals("Joker"))){
                         for(int j = 0; j < tempTrade.size(); j++){
                             tempTrade.get(j).setSelected(false);
                         }
@@ -116,6 +120,19 @@ public class CardsController {
                     for(int i = 0; i < tempTrade.size(); i++)
                         System.out.println("Troop type = " + tempTrade.get(i).getTroopType() + " selected flag = "  + tempTrade.get(i).getSelected());
                     player.tradeCards(tempTrade);
+                    if(upperClass.getPlay().getControl().getTradeCount() < 1){
+                        player.addTroop(0, 4);
+                        player.addTroop(1, 4);
+                        player.addTroop(2, 4);
+                        player.addTroop(3, 4);
+                    }
+                    for(int i = 0; i < upperClass.getPlay().getControl().getTradeCount(); i++){
+                        player.addTroop(0, 2);
+                        player.addTroop(1, 2);
+                        player.addTroop(2, 2);
+                        player.addTroop(3, 2);
+                    }
+
                     cardsList.removeAll();
                     cards.getItems().clear();
                     for(int i = 0; i < player.getCards().size(); i++){
@@ -134,6 +151,7 @@ public class CardsController {
                 System.out.println("Not enough cards to trade");
         });
     }
+
 
     public int setVal( int val){
         if(val == 2)

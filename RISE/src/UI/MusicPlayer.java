@@ -15,7 +15,7 @@ public class MusicPlayer extends Application implements java.io.Serializable
     public void start (Stage primaryStage) throws Exception {
         currentDirFile = new File("");
         currentDir =  currentDirFile.getAbsolutePath();
-        String path = currentDir + "\\src\\UI\\Music\\CumZone.mp3";
+        String path = currentDir + "\\src\\UI\\Music\\AOE2.mp3";
 
         //Instantiating Media class
         Media media = new Media(new File(path).toURI().toString());
