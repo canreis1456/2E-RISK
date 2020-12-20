@@ -128,12 +128,14 @@ public class PositionController {
     }
 
     public void convertShow(Event e) throws IOException {
-        lowerClass = new ConvertInterface(upperClass.getPlay());
-        lowerClass.show();
-        lowerClass.setAmounts(art, inf, tnk, nrd);
-        lowerClass.control.setSuperClass(upperClass);
-        lowerClass.setResourceBox((art*9 + inf*3 + tnk*9 + nrd));
-        upperClass.stag.close();
+        if(art + inf + tnk + nrd > 0) {
+            lowerClass = new ConvertInterface(upperClass.getPlay());
+            lowerClass.show();
+            lowerClass.setAmounts(art, inf, tnk, nrd);
+            lowerClass.control.setSuperClass(upperClass);
+            lowerClass.setResourceBox((art * 9 + inf * 3 + tnk * 9 + nrd));
+            upperClass.stag.close();
+        }
     }
 
 
