@@ -29,6 +29,7 @@ public class Player implements java.io.Serializable {
     private Card defaultCard;
     private File currentDirFile;
     String currentDir;
+    boolean hasWon;
 
 
 
@@ -47,6 +48,7 @@ public class Player implements java.io.Serializable {
             forted[i] = false;
         }
         fortedThisTurn = false;
+        hasWon = false;
 
         currentDirFile = new File("");
         currentDir = currentDirFile.getAbsolutePath();
@@ -115,6 +117,7 @@ public class Player implements java.io.Serializable {
         this.forted = player.forted;
         defeated = player.defeated;
         this.fortedThisTurn = player.fortedThisTurn;
+        this.hasWon = player.hasWon;
 
         currentDirFile = new File("");
         currentDir = currentDirFile.getAbsolutePath();
@@ -128,6 +131,15 @@ public class Player implements java.io.Serializable {
         tree = player.tree;
         current = player.current;
         researching = player.researching;
+    }
+
+
+    public boolean isHasWon() {
+        return hasWon;
+    }
+
+    public void setHasWon(boolean hasWon) {
+        this.hasWon = hasWon;
     }
 
     public boolean isFortedThisTurn() {
@@ -192,6 +204,7 @@ public class Player implements java.io.Serializable {
             }
         }
         fortedThisTurn = false;
+        hasWon = false;
     }
 
     public boolean isResearching() {

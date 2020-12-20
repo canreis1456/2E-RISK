@@ -56,6 +56,7 @@ public class PositionInterface {
     public void show() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/UI/PositionUI.fxml"));
 //        System.out.println(loader.getController().toString());
+        System.out.print(player.isHasWon());
         root = (AnchorPane) loader.load();
         control = loader.getController();
         control.setTexts(player);
