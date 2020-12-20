@@ -150,14 +150,14 @@ public class NewGame implements EventHandler {
 
         //center countries
         Image parsGermanBefore = new Image(new FileInputStream(currentDir + "\\src\\images\\parsomens\\parsomenGermanBefore.png"));
-        Image parsItalyBefore = new Image(new FileInputStream(currentDir + "\\src\\images\\parsomens\\parsomenItalyBefore.png"));
+        Image parsItalyBefore  = new Image(new FileInputStream(currentDir + "\\src\\images\\parsomens\\parsomenItalyBefore.png"));
         Image parsFranceBefore = new Image(new FileInputStream(currentDir + "\\src\\images\\parsomens\\parsomenFranceBefore.png"));
         Image parsTurkeyBefore = new Image(new FileInputStream(currentDir + "\\src\\images\\parsomens\\parsomenTurkeyBefore.png"));
-        Image parsChinaBefore = new Image(new FileInputStream(currentDir + "\\src\\images\\parsomens\\parsomenChinaBefore.png"));
+        Image parsChinaBefore  = new Image(new FileInputStream(currentDir + "\\src\\images\\parsomens\\parsomenChinaBefore.png"));
         Image parsSovietBefore = new Image(new FileInputStream(currentDir + "\\src\\images\\parsomens\\parsomenSovietBefore.png"));
-        Image parsJapanBefore = new Image(new FileInputStream(currentDir + "\\src\\images\\parsomens\\parsomenJapanBefore.png"));
-        Image parsUKBefore = new Image(new FileInputStream(currentDir + "\\src\\images\\parsomens\\parsomenUKBefore.png"));
-        Image parsUsaBefore = new Image(new FileInputStream(currentDir + "\\src\\images\\parsomens\\parsomenUSABefore.png"));
+        Image parsJapanBefore  = new Image(new FileInputStream(currentDir + "\\src\\images\\parsomens\\parsomenJapanBefore.png"));
+        Image parsUKBefore     = new Image(new FileInputStream(currentDir + "\\src\\images\\parsomens\\parsomenUKBefore.png"));
+        Image parsUsaBefore    = new Image(new FileInputStream(currentDir + "\\src\\images\\parsomens\\parsomenUSABefore.png"));
 
         Image pars = new Image(new FileInputStream(currentDir + "\\src\\images\\parsomens\\parsomen.png"));
         backgrond = new ImageView(pars);

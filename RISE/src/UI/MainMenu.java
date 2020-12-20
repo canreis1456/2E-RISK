@@ -115,6 +115,7 @@ public class MainMenu implements EventHandler {
                 //YANLIŞ OLABİLİR!
                 upperMenu.getCntrl().setBoard(save.getGameController().getLands());
                 upperMenu.getCntrl().setPlayers(save.getPlayers());
+                upperMenu.getCntrl().setCardDeck(save.getGameController().getCardDeck());
 
                     //countrySelected(save.getPlayers()[i].getCountry(),save.getPlayers()[i].getLeader(),save.getPlayers()[i].getName());
                 //upperMenu.countrySelected("German Reich", "Adolf Hitler", "ben");
