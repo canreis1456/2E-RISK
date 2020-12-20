@@ -68,22 +68,38 @@ public class AttackInterface {
                         attacking.removeTroopTypeFromLand(i, 43, defAmount[i]);
                         defense.removeTroopTypeFromLand(i, landNo, defAmount[i]);
                     } else {
-                        attacking.removeTroopTypeFromLand(i, 43, (attackAmount[i] * 80 / 100));
+                        attacking.removeTroopTypeFromLand(i, 43, (attackAmount[i]*80/100));
                         defense.removeTroopTypeFromLand(i, landNo, defAmount[i]);
                     }
-                    remainingDefenseTroops[i] = defense.getTroopTypeAtLandInt(i, landNo);
-
-                    play.getControl().getLands().positionTroopOnLand(i, -defAmount[i], landNo);
-                    play.getControl().getLands().getLand(landNo).setOwner(attacking.getCountry());
-                    play.getControl().getLands().getLand(landNo).setOwn(attacking);
+                    play.getControl().getLands().positionTroopOnLand(i,-(defAmount[i]), landNo);
 
                     remainingAttackTroops[i] = attacking.getTroopTypeAtLandInt(i, 43);
-                    System.out.println("i: " + i + "   " + landNo + " asd   " + remainingAttackTroops[i]);
-                    play.relocateTroop(43, landNo, i, remainingAttackTroops[i]);
-                     System.out.println("i: " + i + "   " + landNo + " asd   " + remainingAttackTroops[i]);
-                  //  play.getControl().getLands().positionTroopOnLand(i,-(attackAmount[i] - remainingAttackTroops[i]),43);
-                    attacking.relocateTroops(43, landNo, i, remainingAttackTroops[i]);
-                    System.out.println("attaccking end");
+                    play.relocateTroop(43,landNo, i,remainingAttackTroops[i]);
+                    play.getControl().getLands().positionTroopOnLand(i, -(attackAmount[i] - remainingAttackTroops[i]),43);
+
+
+
+                } else {
+                    System.out.println("if: "+ defAmount[i] + "   " + attackAmount[i]);
+                    if (attackAmount[i] >= defAmount[i]) {
+                        attacking.removeTroopTypeFromLand(i, 43, (attackAmount[i]*80/100));
+                        defense.removeTroopTypeFromLand(i, landNo, (defAmount[i]*50/100));
+                    } else {
+                        attacking.removeTroopTypeFromLand(i, 43, attackAmount[i]);
+                        defense.removeTroopTypeFromLand(i, landNo, attackAmount[i]);
+                    }
+
+
+                    remainingDefenseTroops[i] = defense.getTroopTypeAtLandInt(i, landNo);
+
+                    play.getControl().getLands().positionTroopOnLand(i,-(defAmount[i]-remainingDefenseTroops[i]),landNo);
+
+                    remainingAttackTroops[i] = attacking.getTroopTypeAtLandInt(i, 43);
+
+                    play.relocateTroop(43, landNoFrom, i, remainingAttackTroops[i]);
+                    play.getControl().getLands().positionTroopOnLand(i,-(attackAmount[i]-remainingAttackTroops[i]), 43);
+
+                   /* System.out.println("attaccking end");
                     System.out.println(play.getControl().getLands().getLand(43).getArtilleryAmount());
                     System.out.println(play.getControl().getLands().getLand(43).getInfantryAmount());
                     System.out.println(play.getControl().getLands().getLand(43).getTankAmount());
@@ -111,49 +127,13 @@ public class AttackInterface {
                     System.out.println(defense.getTroopTypeAtLandInt(0,43));
                     System.out.println(defense.getTroopTypeAtLandInt(1,43));
                     System.out.println(defense.getTroopTypeAtLandInt(2,43));
-                    System.out.println(defense.getTroopTypeAtLandInt(3,43));
-
-                } else {
-                    System.out.println("if: "+ defAmount[i] + "   " + attackAmount[i]);
-                    if (attackAmount[i] >= defAmount[i]) {
-                        attacking.removeTroopTypeFromLand(i, 43, (attackAmount[i]*80/100));
-                        defense.removeTroopTypeFromLand(i, landNo, (defAmount[i]*50/100));
-                    } else {
-                        attacking.removeTroopTypeFromLand(i, 43, attackAmount[i]);
-                        defense.removeTroopTypeFromLand(i, landNo, attackAmount[i]);
-                    }
-
-                    remainingDefenseTroops[i] = defense.getTroopTypeAtLandInt(i, landNo);
-
-                    play.getControl().getLands().positionTroopOnLand(i,-(defAmount[i]-remainingDefenseTroops[i]),landNo);
-
-                    remainingAttackTroops[i] = attacking.getTroopTypeAtLandInt(i, 43);
-
-                    play.relocateTroop(43, landNoFrom, i, remainingAttackTroops[i]);
-                    play.getControl().getLands().positionTroopOnLand(i,-(attackAmount[i]-remainingAttackTroops[i]), 43);
-                    attacking.relocateTroops(43, landNoFrom, i, remainingAttackTroops[i]);
-
-                    System.out.println("attaccking end");
-                    System.out.println(play.getControl().getLands().getLand(43).getArtilleryAmount());
-                    System.out.println(play.getControl().getLands().getLand(43).getInfantryAmount());
-                    System.out.println(play.getControl().getLands().getLand(43).getTankAmount());
-                    System.out.println(play.getControl().getLands().getLand(43).getNerdsAmount());
-                    System.out.println(attacking.getTroopTypeAtLandInt(0,43));
-                    System.out.println(attacking.getTroopTypeAtLandInt(1,43));
-                    System.out.println(attacking.getTroopTypeAtLandInt(2,43));
-                    System.out.println(attacking.getTroopTypeAtLandInt(3,43));
-                    System.out.println(attacking.getTroopTypeAtLandInt(0,landNoFrom));
-                    System.out.println(attacking.getTroopTypeAtLandInt(1,landNoFrom));
-                    System.out.println(attacking.getTroopTypeAtLandInt(2,landNoFrom));
-                    System.out.println(attacking.getTroopTypeAtLandInt(3,landNoFrom));
-                    System.out.println(defense.getTroopTypeAtLandInt(0,landNo));
-                    System.out.println(defense.getTroopTypeAtLandInt(1,landNo));
-                    System.out.println(defense.getTroopTypeAtLandInt(2,landNo));
-                    System.out.println(defense.getTroopTypeAtLandInt(3,landNo));
+                    System.out.println(defense.getTroopTypeAtLandInt(3,43));*/
 
                 }
             }
             if (flag) {
+                play.getControl().getLands().getLand(landNo).setOwner(attacking.getCountry());
+                play.getControl().getLands().getLand(landNo).setOwn(attacking);
                 attacking.setLandCount(attacking.getLandCount() + 1);
                 defense.setLandCount(defense.getLandCount() - 1);
             }
@@ -170,12 +150,9 @@ public class AttackInterface {
 
                     play.relocateTroop(43, landNo, i, remainingAttackTroops[i]);
                     play.getControl().getLands().positionTroopOnLand(i,-(attackAmount[i] - remainingAttackTroops[i]),43);
-                    attacking.relocateTroops(43, landNoFrom, i, remainingAttackTroops[i]);
-                    attacking.setLandCount(attacking.getLandCount() + 1);
+                    //attacking.relocateTroops(43, landNoFrom, i, remainingAttackTroops[i]);
 
-                    play.getControl().getLands().getLand(landNo).setOwner(attacking.getCountry());
-                    play.getControl().getLands().getLand(landNo).setOwn(attacking);
-                    play.getControl().getLands().getLand(landNo).setOwnedByPlayer(true);
+
 
 
                 } else {
@@ -186,12 +163,15 @@ public class AttackInterface {
 
                     play.relocateTroop(43, landNoFrom, i, remainingAttackTroops[i]);
                     play.getControl().getLands().positionTroopOnLand(i,-(attackAmount[i] - remainingAttackTroops[i]),43);
-                    attacking.relocateTroops(43, landNoFrom, i, remainingAttackTroops[i]);
 
                 }
             }
-            if (flag)
+            if (flag) {
                 attacking.setLandCount(attacking.getLandCount() + 1);
+                play.getControl().getLands().getLand(landNo).setOwner(attacking.getCountry());
+                play.getControl().getLands().getLand(landNo).setOwn(attacking);
+                play.getControl().getLands().getLand(landNo).setOwnedByPlayer(true);
+            }
         }
         play.hasFallen();
     }

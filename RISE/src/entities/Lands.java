@@ -95,9 +95,10 @@ public class Lands {
         for (int i = 0; i < 4; i++){
             if(i == unitType)
                 troops[unitType] = amount + lands[landNo].getTroopcounts()[unitType];
-            else
+            else {
                 troops[i] = lands[landNo].getTroopcounts()[i];
-            System.out.println("landsPositi:  "+ troops[i]);
+            }
+            System.out.println(i + " landsPositi:  "+ troops[i]);
         }
         lands[landNo].setTroopcounts(troops);
     }

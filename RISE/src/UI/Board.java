@@ -62,6 +62,7 @@ public class Board{
         LandInterface land = new LandInterface();
         land.show(play.getControl().getLands(),a, this);
         landNoFrom = parseInt(((Node) e.getSource()).getAccessibleText());
+        System.out.println("def: " + play.getControl().getLands().getLand(a).getArtilleryAmount() + "  " +play.getControl().getLands().getLand(a).getInfantryAmount() + "  " + play.getControl().getLands().getLand(a).getTankAmount() + "  " + play.getControl().getLands().getLand(a).getNerdsAmount() );
     }
 
     public void setLandNoFrom(int landNoFrom) {

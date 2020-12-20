@@ -247,7 +247,9 @@ public class Player {
             for (int i = 0; i < troops.get(j).size(); i++) {
                 if (troops.get(j).get(i).getPosition() == coordinates)
                     def += troops.get(j).get(i).getDefense();
+                    System.out.println("def  "  + def);
             }
+            System.out.println( troops.get(j).size());
         }
         for(int i = 0; i < 4; i++) {
              if (selectedGeneral != null)
