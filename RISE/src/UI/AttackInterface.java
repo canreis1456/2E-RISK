@@ -64,7 +64,7 @@ public class AttackInterface {
             for(int i = 0; i < 4; i++) {
                 if (flag) {
                     System.out.println("if: "+ defAmount[i] + "   " + attackAmount[i]);
-                    if (attackAmount[i] >= defAmount[i]) {
+                    if (attackAmount[i] > defAmount[i]) {
                         attacking.removeTroopTypeFromLand(i, 43, defAmount[i]);
                         defense.removeTroopTypeFromLand(i, landNo, defAmount[i]);
                     } else {
@@ -77,29 +77,7 @@ public class AttackInterface {
                     play.relocateTroop(43,landNo, i,remainingAttackTroops[i]);
                     play.getControl().getLands().positionTroopOnLand(i, -(attackAmount[i] - remainingAttackTroops[i]),43);
 
-
-
-                } else {
-                    System.out.println("if: "+ defAmount[i] + "   " + attackAmount[i]);
-                    if (attackAmount[i] >= defAmount[i]) {
-                        attacking.removeTroopTypeFromLand(i, 43, (attackAmount[i]*80/100));
-                        defense.removeTroopTypeFromLand(i, landNo, (defAmount[i]*50/100));
-                    } else {
-                        attacking.removeTroopTypeFromLand(i, 43, attackAmount[i]);
-                        defense.removeTroopTypeFromLand(i, landNo, attackAmount[i]);
-                    }
-
-
-                    remainingDefenseTroops[i] = defense.getTroopTypeAtLandInt(i, landNo);
-
-                    play.getControl().getLands().positionTroopOnLand(i,-(defAmount[i]-remainingDefenseTroops[i]),landNo);
-
-                    remainingAttackTroops[i] = attacking.getTroopTypeAtLandInt(i, 43);
-
-                    play.relocateTroop(43, landNoFrom, i, remainingAttackTroops[i]);
-                    play.getControl().getLands().positionTroopOnLand(i,-(attackAmount[i]-remainingAttackTroops[i]), 43);
-
-                   /* System.out.println("attaccking end");
+                    System.out.println("attaccking end");
                     System.out.println(play.getControl().getLands().getLand(43).getArtilleryAmount());
                     System.out.println(play.getControl().getLands().getLand(43).getInfantryAmount());
                     System.out.println(play.getControl().getLands().getLand(43).getTankAmount());
@@ -127,7 +105,58 @@ public class AttackInterface {
                     System.out.println(defense.getTroopTypeAtLandInt(0,43));
                     System.out.println(defense.getTroopTypeAtLandInt(1,43));
                     System.out.println(defense.getTroopTypeAtLandInt(2,43));
-                    System.out.println(defense.getTroopTypeAtLandInt(3,43));*/
+                    System.out.println(defense.getTroopTypeAtLandInt(3,43));
+
+
+                } else {
+                    System.out.println("if: "+ defAmount[i] + "   " + attackAmount[i]);
+                    if (attackAmount[i] >= defAmount[i]) {
+                        attacking.removeTroopTypeFromLand(i, 43, (attackAmount[i]*80/100));
+                        defense.removeTroopTypeFromLand(i, landNo, (defAmount[i]*50/100));
+                    } else {
+                        attacking.removeTroopTypeFromLand(i, 43, attackAmount[i]);
+                        defense.removeTroopTypeFromLand(i, landNo, attackAmount[i]);
+                    }
+
+
+                    remainingDefenseTroops[i] = defense.getTroopTypeAtLandInt(i, landNo);
+
+                    play.getControl().getLands().positionTroopOnLand(i,-(defAmount[i]-remainingDefenseTroops[i]),landNo);
+
+                    remainingAttackTroops[i] = attacking.getTroopTypeAtLandInt(i, 43);
+
+                    play.relocateTroop(43, landNoFrom, i, remainingAttackTroops[i]);
+                    play.getControl().getLands().positionTroopOnLand(i,-(attackAmount[i]-remainingAttackTroops[i]), 43);
+
+                    System.out.println("attaccking end");
+                    System.out.println(play.getControl().getLands().getLand(43).getArtilleryAmount());
+                    System.out.println(play.getControl().getLands().getLand(43).getInfantryAmount());
+                    System.out.println(play.getControl().getLands().getLand(43).getTankAmount());
+                    System.out.println(play.getControl().getLands().getLand(43).getNerdsAmount());
+                    System.out.println(attacking.getTroopTypeAtLandInt(0,43));
+                    System.out.println(attacking.getTroopTypeAtLandInt(1,43));
+                    System.out.println(attacking.getTroopTypeAtLandInt(2,43));
+                    System.out.println(attacking.getTroopTypeAtLandInt(3,43));
+                    System.out.println(attacking.getTroopTypeAtLandInt(0,landNoFrom));
+                    System.out.println(attacking.getTroopTypeAtLandInt(1,landNoFrom));
+                    System.out.println(attacking.getTroopTypeAtLandInt(2,landNoFrom));
+                    System.out.println(attacking.getTroopTypeAtLandInt(3,landNoFrom));
+                    System.out.println(attacking.getTroopTypeAtLandInt(0,landNo));
+                    System.out.println(attacking.getTroopTypeAtLandInt(1,landNo));
+                    System.out.println(attacking.getTroopTypeAtLandInt(2,landNo));
+                    System.out.println(attacking.getTroopTypeAtLandInt(3,landNo));
+                    System.out.println(defense.getTroopTypeAtLandInt(0,landNo));
+                    System.out.println(defense.getTroopTypeAtLandInt(1,landNo));
+                    System.out.println(defense.getTroopTypeAtLandInt(2,landNo));
+                    System.out.println(defense.getTroopTypeAtLandInt(3,landNo));
+                    System.out.println(defense.getTroopTypeAtLandInt(0,landNoFrom));
+                    System.out.println(defense.getTroopTypeAtLandInt(1,landNoFrom));
+                    System.out.println(defense.getTroopTypeAtLandInt(2,landNoFrom));
+                    System.out.println(defense.getTroopTypeAtLandInt(3,landNoFrom));
+                    System.out.println(defense.getTroopTypeAtLandInt(0,43));
+                    System.out.println(defense.getTroopTypeAtLandInt(1,43));
+                    System.out.println(defense.getTroopTypeAtLandInt(2,43));
+                    System.out.println(defense.getTroopTypeAtLandInt(3,43));
 
                 }
             }

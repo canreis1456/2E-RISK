@@ -325,8 +325,10 @@ public class Player {
         System.out.println("amount: " + amount);
         int index;
         boolean flag = false;
-        for (int i = 0; i < amount; i++){
+        for (int i = 0; i < troops.get(unitType).size(); i++){
+            System.out.println("i " + i+ "  " + troops.get(unitType).get(i).getPosition());
             if (troops.get(unitType).get(i).getPosition() == landNo){
+
                 flag = true;
                 count++;
             }

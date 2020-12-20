@@ -75,7 +75,7 @@ public class AttackController {
 
     public void roll1(ActionEvent e) throws IOException {
         Random rand = new Random();
-        dice1.setText("" + (rand.nextInt(11)+2));
+        dice1.setText("" + (rand.nextInt(1)+12));
         roll1.setDisable(true);
         totalDefense.setText((defenseP*parseFloat(dice1.getText())+ ""));
         showD(this);
@@ -88,7 +88,7 @@ public class AttackController {
 
     public void roll2(ActionEvent e) throws IOException {
         Random rand = new Random();
-        dice2.setText("" + (rand.nextInt(11)+2));
+        dice2.setText("" + (rand.nextInt(2)+2));
         roll2.setDisable(true);
         totalAttack.setText((attackP*parseFloat(dice2.getText()))+ "");
         showA(this);
