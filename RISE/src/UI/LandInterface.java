@@ -35,7 +35,7 @@ public class LandInterface {
     Stage stag;
     Board board;
 
-    Button relocate, apply;
+    Button relocate, apply, fortify;
 
     @FXML
     Text Artillery;
@@ -106,12 +106,15 @@ public class LandInterface {
         BorderPane biggerPane = new BorderPane();
 
         relocate = new Button("Relocate");
+        fortify = new Button("Fortify");
         VBox bottom = new VBox();
-        bottom.getChildren().addAll(relocate, apply);
+        bottom.getChildren().addAll(relocate, fortify, apply);
         biggerPane.setCenter(root);
         biggerPane.setBottom(bottom);
         bottom.setAlignment(Pos.CENTER);
         relocate.setAlignment(Pos.BOTTOM_LEFT);
+        if(board.getPlay().getControl().getPlayer(land.getOwnerName()).isFortedThisTurn() || lands.getLand(landNo).isForted() || !lands.getLand(landNo).getOwnerName().equals(board.getPlay().players[board.getPlay().turnIndex].getCountry()))
+            fortify.setDisable(true);
         control = loader.<LandInterface>getController();
         control.setBoard(board);
         control.setTexts(lands, land, landNo);
@@ -121,6 +124,15 @@ public class LandInterface {
         }
         relocate.setOnAction(this::handle);
         board.setLandNoFrom(land.getLandNo());
+        fortify.setOnAction(event -> {
+            if(!board.getPlay().getControl().getPlayer(land.getOwnerName()).getFort(landNo)) {
+                board.getPlay().getControl().getPlayer(land.getOwnerName()).fortify(landNo);
+                lands.getLand(landNo).setForted(true);
+                board.getPlay().getControl().getPlayer(land.getOwnerName()).setFortedThisTurn(true);
+                fortify.setDisable(true);
+            }
+
+        });
 
 
         apply.setOnAction(new EventHandler<ActionEvent>() {

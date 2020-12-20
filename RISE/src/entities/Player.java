@@ -14,6 +14,8 @@ public class Player implements java.io.Serializable {
     private Country country;
     private ArrayList<ArrayList<Troop>> troops = new ArrayList<>();
     private float[] trpInstance;
+    private boolean[] forted;
+    private boolean fortedThisTurn;
     private String[] trpnms;
     private ArrayList<Card> cards = new ArrayList<>();
     private Research res;
@@ -40,6 +42,11 @@ public class Player implements java.io.Serializable {
         researchBuff = 0;
         setsTraded = 0;
         defeated = false;
+        forted = new boolean[43];
+        for(int i =0; i<43; i++){
+            forted[i] = false;
+        }
+        fortedThisTurn = false;
 
         currentDirFile = new File("");
         currentDir = currentDirFile.getAbsolutePath();
@@ -105,7 +112,9 @@ public class Player implements java.io.Serializable {
         this.turnCount = player.turnCount;
         this.researchBuff = player.researchBuff;
         this.setsTraded = player.setsTraded;
+        this.forted = player.forted;
         defeated = player.defeated;
+        this.fortedThisTurn = player.fortedThisTurn;
 
         currentDirFile = new File("");
         currentDir = currentDirFile.getAbsolutePath();
@@ -119,6 +128,18 @@ public class Player implements java.io.Serializable {
         tree = player.tree;
         current = player.current;
         researching = player.researching;
+    }
+
+    public boolean isFortedThisTurn() {
+        return fortedThisTurn;
+    }
+
+    public void setFortedThisTurn(boolean fortedThisTurn) {
+        this.fortedThisTurn = fortedThisTurn;
+    }
+
+    public void fortify(int landNo){
+        forted[landNo] = true;
     }
 
     public boolean isDefeated() {
@@ -170,6 +191,7 @@ public class Player implements java.io.Serializable {
                 System.out.println(a.get(0).getType() +" \n atck: " + a.get(0).getAttack() + " def: "+ a.get(0).getDefense());
             }
         }
+        fortedThisTurn = false;
     }
 
     public boolean isResearching() {
@@ -280,7 +302,15 @@ public class Player implements java.io.Serializable {
              if (selectedGeneral != null)
                 def += selectedGeneral.defenseEffectOnCertainUnit(troops, i, coordinates);
         }
+        if(forted[coordinates])
+            def += 30;
+
         return def;
+
+    }
+
+    public boolean getFort(int landNo){
+        return forted[landNo];
     }
 
     public void selectGeneral(String name){//name of general
