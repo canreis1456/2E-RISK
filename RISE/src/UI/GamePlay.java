@@ -23,10 +23,7 @@ import sample.ResourceManager;
 import sample.Save;
 
 import javax.swing.*;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 
 
 public class GamePlay implements java.io.Serializable {
@@ -54,12 +51,26 @@ public class GamePlay implements java.io.Serializable {
         inputLand= -1;
     }
 
+    public void setTurn(int turn){
+        this.turn = turn;
+    }
+
+    public void setTurnIndex(int turnIndex) {
+        this.turnIndex = turnIndex;
+    }
+
     public Button researchh(){
         return research;
     }
 
     public void setInputLand(int inputLand) {
         this.inputLand = inputLand;
+    }
+
+    public void showFrom(int turn, int turnIndex) throws IOException {
+        this.turn = turn;
+        this.turnIndex = turnIndex;
+        show();
     }
 
     public void show() throws IOException {
@@ -113,9 +124,18 @@ public class GamePlay implements java.io.Serializable {
 
         Button saveButton = new Button ("Save");
         saveButton.setOnAction(e -> {
-            Save save = new Save(players,control, control.getMenu(),this);
+            Save save = new Save(players,control,this);
             try {
-                ResourceManager.save(save, "savegame.ser");
+                String adsas = "asdfas asd";
+                System.out.println("pl: " + (players != null));
+                System.out.println("pl: " + (control != null));
+                System.out.println("pl: " + (control.getMenu() != null));
+                System.out.println("pl: " + (this != null));
+                System.out.println("pl: " + (players != null));
+                FileOutputStream fout = new FileOutputStream(currentDir+ "\\src\\saveGame.ser");
+                ObjectOutputStream oos = new ObjectOutputStream(fout);
+                oos.writeObject(save);
+               // ResourceManager.save(save, "saveGame.ser");
                 System.out.println("Game is saved somewhere");
             }
             catch(Exception ev){
@@ -206,7 +226,7 @@ public class GamePlay implements java.io.Serializable {
         stag.setX(0);
         stag.setY(0);
         stag.show();
-        PositionInterface pos = new PositionInterface(players[0], this);
+        PositionInterface pos = new PositionInterface(players[turnIndex], this);
         pos.show();
 
     }
@@ -215,6 +235,10 @@ public class GamePlay implements java.io.Serializable {
   //      System.out.println(unitType  + "  " + amount + "  " + landNo);
         control.positionTroopOnLand(turnIndex,landNo, unitType, amount);
 
+    }
+
+    public int getTurn() {
+        return turn;
     }
 
     public void setInfoDisable(boolean flag){

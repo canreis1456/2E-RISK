@@ -33,6 +33,7 @@ public class GameController extends Application implements java.io.Serializable{
     Lands lands;
     ArrayList<String> selectedCountries = new ArrayList<>();
     Country[] countries;
+    GamePlay gmp;
     File currentDirFile = new File("");
     String currentDir;
     @Override
@@ -60,6 +61,10 @@ public class GameController extends Application implements java.io.Serializable{
 
     public void initBoard(){
         lands = new Lands(this);
+    }
+
+    public void setBoard(Lands land){
+        lands = land;
     }
 
     public void initCountries(){
@@ -146,10 +151,19 @@ public class GameController extends Application implements java.io.Serializable{
             System.out.println("not the owner");
     }
 
+    public GamePlay getGmp() {
+        return gmp;
+    }
+
     public void gameplay(Stage stag) throws IOException {
         //stag.setFullScreen(true);
-        GamePlay gmp = new GamePlay(stag, players.length, players, this);
+        gmp = new GamePlay(stag, players.length, players, this);
         gmp.show();
+    }
+
+    public void loadGame(Stage stag, int turn, int turnIndex) throws IOException {
+        gmp = new GamePlay(stag, players.length, players, this);
+        gmp.showFrom(turn, turnIndex);
     }
 
     public boolean attacking(Player player, int landNo){
