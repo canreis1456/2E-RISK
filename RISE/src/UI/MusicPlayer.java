@@ -17,19 +17,12 @@ public class MusicPlayer extends Application implements java.io.Serializable
         currentDir =  currentDirFile.getAbsolutePath();
         String path = currentDir + "\\src\\UI\\Music\\AOE2.mp3";
 
-        //Instantiating Media class
         Media media = new Media(new File(path).toURI().toString());
 
-        //Instantiating MediaPlayer class
         MediaPlayer mediaPlayer = new MediaPlayer(media);
 
-        //by setting this property to true, the audio will be played
         mediaPlayer.setAutoPlay(true);
-        primaryStage.setTitle("Playing Audio");
         primaryStage.show();
-    }
-    public static void main(String[] args) {
-        launch(args);
     }
 
 }
