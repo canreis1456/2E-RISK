@@ -98,9 +98,13 @@ public class ConvertController {
         if (((9 * art) + (3 * inf) + (9 * tnk) + (nrd)) > parseFloat(resourceInfoBox.getText()))
             System.out.println("Insufficient Troop");
         else {
+            if(artGot > 0)
             upperClass.getPlay().players[upperClass.getPlay().turnIndex].removeTroopTypeFromLand(0,0,artGot);
+            if(infGot > 0)
             upperClass.getPlay().players[upperClass.getPlay().turnIndex].removeTroopTypeFromLand(1,0,infGot);
+            if(tnkGot > 0)
             upperClass.getPlay().players[upperClass.getPlay().turnIndex].removeTroopTypeFromLand(2,0,tnkGot);
+            if(nrdGot > 0)
             upperClass.getPlay().players[upperClass.getPlay().turnIndex].removeTroopTypeFromLand(3,0,nrdGot);
             upperClass.getPlay().players[upperClass.getPlay().turnIndex].addTroop(0, art);
             upperClass.getPlay().players[upperClass.getPlay().turnIndex].addTroop(1, inf);
