@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.io.IOException;
 
 public class AttackInterface {
@@ -63,6 +64,7 @@ public class AttackInterface {
             System.out.println("flga: " + flag);
             for(int i = 0; i < 4; i++) {
                 if (flag) {
+                    attacking.setHasWon(true);
                     System.out.println("if: "+ defAmount[i] + "   " + attackAmount[i]);
                     if (attackAmount[i] > defAmount[i]) {
                         attacking.removeTroopTypeFromLand(i, 43, defAmount[i]);
@@ -78,6 +80,7 @@ public class AttackInterface {
                     play.getControl().getLands().positionTroopOnLand(i, -(attackAmount[i] - remainingAttackTroops[i]),43);
 
                     System.out.println("attaccking end");
+                    System.out.println(attacking.isHasWon());
                     System.out.println(play.getControl().getLands().getLand(43).getArtilleryAmount());
                     System.out.println(play.getControl().getLands().getLand(43).getInfantryAmount());
                     System.out.println(play.getControl().getLands().getLand(43).getTankAmount());
