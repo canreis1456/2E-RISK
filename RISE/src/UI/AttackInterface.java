@@ -64,7 +64,6 @@ public class AttackInterface {
             System.out.println("flga: " + flag);
             for(int i = 0; i < 4; i++) {
                 if (flag) {
-                    attacking.setHasWon(true);
                     System.out.println("if: "+ defAmount[i] + "   " + attackAmount[i]);
                     if (attackAmount[i] > defAmount[i]) {
                         attacking.removeTroopTypeFromLand(i, 43, defAmount[i]);
@@ -165,6 +164,7 @@ public class AttackInterface {
                 }
             }
             if (flag) {
+                attacking.setHasWon(true);
                 play.getControl().getLands().getLand(landNo).setOwner(attacking.getCountry());
                 play.getControl().getLands().getLand(landNo).setOwn(attacking);
                 attacking.setLandCount(attacking.getLandCount() + 1);
@@ -200,6 +200,7 @@ public class AttackInterface {
                 }
             }
             if (flag) {
+                attacking.setHasWon(true);
                 attacking.setLandCount(attacking.getLandCount() + 1);
                 play.getControl().getLands().getLand(landNo).setOwner(attacking.getCountry());
                 play.getControl().getLands().getLand(landNo).setOwn(attacking);
