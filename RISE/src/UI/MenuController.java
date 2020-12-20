@@ -72,4 +72,8 @@ public class MenuController {
         this.playerCount = playerCount;
         cntrl.setPlayerCount(playerCount);
     }
+
+    public int getPlayerIndex(){
+        return playerIndex;
+    }
 }

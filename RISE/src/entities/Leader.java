@@ -1,6 +1,6 @@
 package entities;
 
-public class Leader {
+public class Leader implements java.io.Serializable{
     String ideology;
     String name;
     boolean selected = false;

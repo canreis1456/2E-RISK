@@ -15,11 +15,14 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import sample.ResourceManager;
+import sample.Save;
 
 
 public class MainMenu implements EventHandler {
     Button newG = new Button("New Game");
     Button credits;
+    Button loadG;
     int selection;
     MenuController upperMenu;
     Stage stag;
@@ -37,11 +40,12 @@ public class MainMenu implements EventHandler {
         newG.setMinSize(230, 100);
         newG.setOnAction(this::handle);
 
-        Button loadG = new Button("Load Game");
-        loadG.setDisable(true);
+        loadG = new Button("Load Game");
+        //loadG.setDisable(true);
         loadG.setLayoutX(1100);
         loadG.setLayoutY(270);
         loadG.setMinSize(230, 100);
+        loadG.setOnAction(this::handle);
         credits = new Button("Credits");
         credits.setLayoutX(1100);
         credits.setLayoutY(440);
@@ -99,6 +103,23 @@ public class MainMenu implements EventHandler {
                 upperMenu.newGame();
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
+            }
+        }
+        else if(event.getSource() == loadG){
+            try{
+                System.out.println("WE CANE HERE");
+                Save save = (Save) ResourceManager.load("savegame.ser");
+                System.out.println("Player count from save file is " + save.getMenuController().playerCount);
+                upperMenu.setPlayerCount(save.getMenuController().playerCount);
+                //YANLIŞ OLABİLİR!
+                upperMenu.initBoard();
+                upperMenu.getCntrl().setPlayers(save.getPlayers());
+                    //countrySelected(save.getPlayers()[i].getCountry(),save.getPlayers()[i].getLeader(),save.getPlayers()[i].getName());
+                //upperMenu.countrySelected("German Reich", "Adolf Hitler", "ben");
+                upperMenu.gameplay();
+            }
+            catch(Exception e){
+                System.out.println("Corrupted Data:" + e.getMessage());
             }
         }
     }

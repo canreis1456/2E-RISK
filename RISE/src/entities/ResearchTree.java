@@ -2,9 +2,9 @@ package entities;
 
 import java.util.LinkedList;
 
-public class ResearchTree {
+public class ResearchTree implements java.io.Serializable{
 
-    class Node {
+    class Node implements java.io.Serializable {
         Research res;
         Node next, next1, next2;
 
@@ -41,8 +41,13 @@ public class ResearchTree {
         head.next.next.next.next.res.setText("Every research will cost 1 turn loss");
 
         //Bottom Path
-        head.next.next2 = new Node(new Research("ResourceResearch1",new ResourceResearch(),4,0,0,0,1,null));
-        head.next.next2.res.setText("Resources increase");
+        head.next.next2 = new Node(new Research("ResourceResearch1",new ResourceResearch(),4,0,0,0,2,null));
+        head.next.next2.res.setText("Resources increase by 2 each");
+        head.next.next2.next2 = new Node(new Research("ResearchResearch2",new ResourceResearch(),4,0,0,1,3,null));
+        head.next.next2.next2.res.setText("Resources increase by 3 each");
+        head.next.next2.next2.next2 = new Node(new Research("ResearchResearch3",new ResourceResearch(),6,0,0,1,3,null));
+        head.next.next2.next2.next2.res.setText("Resources increase by 3 each");
+
         flag = false;
         text = "";
     }

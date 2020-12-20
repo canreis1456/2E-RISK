@@ -1,11 +1,11 @@
 package entities;
 import javafx.scene.image.Image;
 
-public class Card {
+public class Card implements java.io.Serializable{
     private String landName;
     private String troopName;
     private int landNo;
-    private Image image;
+    private transient Image image;
     boolean selected;
 
     public Card(String landName, String troopName, int landNo, Image image){

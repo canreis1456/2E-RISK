@@ -4,7 +4,7 @@ import entities.Troops.Troop;
 
 import java.util.ArrayList;
 
-public class Research{
+public class Research implements java.io.Serializable{
 
     //String name, aggressionCountry, aggressionIdeology;
     int[] unitType;

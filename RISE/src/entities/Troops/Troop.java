@@ -1,6 +1,6 @@
 package entities.Troops;
 
-public abstract class Troop {
+public abstract class Troop implements java.io.Serializable{
     String type;
     float attack, defense;
     int position;

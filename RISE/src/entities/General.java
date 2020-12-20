@@ -4,7 +4,7 @@ import entities.Troops.Troop;
 
 import java.util.ArrayList;
 
-public class General {
+public class General implements java.io.Serializable{
     String name;
     boolean selected;
     String aggresion;

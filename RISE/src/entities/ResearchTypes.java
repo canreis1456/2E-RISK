@@ -5,11 +5,11 @@ import entities.Troops.Troop;
 
 import java.util.ArrayList;
 
-interface ResearchTypes {
+interface ResearchTypes  {
     void researchBuff(Research res, Player player);
 }
 
-class TroopResearch implements ResearchTypes{
+class TroopResearch implements ResearchTypes,java.io.Serializable{
 
     int[] unitType;
     /*int def, atck;
@@ -31,7 +31,7 @@ class TroopResearch implements ResearchTypes{
     }
 }
 
-class ResearchTurnResearch implements ResearchTypes{
+class ResearchTurnResearch implements ResearchTypes,java.io.Serializable{
 
 
     public void researchBuff( Research res, Player player) {
@@ -39,7 +39,7 @@ class ResearchTurnResearch implements ResearchTypes{
     }
 }
 
-class ResourceResearch implements ResearchTypes{
+class ResourceResearch implements ResearchTypes,java.io.Serializable{
 
 
     public void researchBuff( Research res, Player player) {

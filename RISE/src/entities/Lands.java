@@ -4,7 +4,7 @@ import sample.GameController;
 
 import java.util.ArrayList;
 
-public class Lands {
+public class Lands implements java.io.Serializable{
 
     Land[] lands;
     GameController control;
