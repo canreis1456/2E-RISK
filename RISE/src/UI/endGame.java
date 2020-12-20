@@ -74,7 +74,7 @@ public class endGame {
         stag.show();
     }
 
-    public void playAgain() throws FileNotFoundException {
+    public void playAgain() throws Exception {
         System.out.println("wasdfasfas");
         play.getControl().start(stag);
     }
